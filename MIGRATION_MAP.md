@@ -134,3 +134,4 @@ This file records how the original local CRL files were mapped into the public G
 | `` | `docs/en/spec-summaries/constitution-summary.md` | generated | English summary of CRL Constitution v0.3 |
 | `` | `docs/en/spec-summaries/core-object-spec-summary.md` | generated | English summary of CRL Core Object Specification v0.2 |
 | `` | `docs/en/spec-summaries/language-protocol-summary.md` | generated | English summary of CRL Language Protocol v0.1 |
+| `` | `.github/CODEOWNERS` | generated | maintainer-review template; replace @YOUR_GITHUB_USERNAME before enabling code owner review |

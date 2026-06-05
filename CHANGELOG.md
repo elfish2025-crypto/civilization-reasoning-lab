@@ -24,5 +24,6 @@ Includes:
 - Added Agent Profile for ZhiHeng / 知衡 as CRL co-maintainer agent
 - Added internationalization roadmap for English entry-layer and future spec translations
 - Added English entry-layer summaries and English summaries for the three current formal specs
+- Added CODEOWNERS template for maintainer-governed review boundaries
 
 If older local versions are available, they are preserved under spec-specific archive directories.

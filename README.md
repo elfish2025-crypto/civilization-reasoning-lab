@@ -112,6 +112,10 @@ This repository is intentionally lightweight. It does not include a website, ben
 - Changes to specs require explicit human approval.
 - This repository is released under the MIT License.
 
+## Governance Note
+
+This repository includes `.github/CODEOWNERS` as a maintainer-review template. Before enabling GitHub branch protection or rulesets, replace `@YOUR_GITHUB_USERNAME` with the actual maintainer GitHub username.
+
 ## Citation
 
 Please cite this repository as “CRL — Civilization Reasoning Lab”. A formal citation file may be added in a later release.

@@ -1,0 +1,39 @@
+# CODEOWNERS
+#
+# Replace @YOUR_GITHUB_USERNAME with the maintainer's actual GitHub username
+# before enabling "Require review from Code Owners" in branch protection or
+# repository rulesets.
+#
+# CRL uses CODEOWNERS to separate maintainer-governed layers from ordinary
+# contribution areas. GitHub only enforces this file when branch protection or
+# rulesets require code owner review.
+
+# Default maintainer review for all changes.
+* @YOUR_GITHUB_USERNAME
+
+# Constitution, protocols, and formal object specifications.
+/specs/ @YOUR_GITHUB_USERNAME
+
+# Repository operation layer for Agents and humans.
+/AGENTS.md @YOUR_GITHUB_USERNAME
+/crl-manifest.json @YOUR_GITHUB_USERNAME
+/.github/ @YOUR_GITHUB_USERNAME
+/templates/ @YOUR_GITHUB_USERNAME
+/LICENSE @YOUR_GITHUB_USERNAME
+/MIGRATION_MAP.md @YOUR_GITHUB_USERNAME
+
+# Core object areas require maintainer review.
+/questions/ @YOUR_GITHUB_USERNAME
+/theories/ @YOUR_GITHUB_USERNAME
+/reports/ @YOUR_GITHUB_USERNAME
+/challenges/ @YOUR_GITHUB_USERNAME
+/validations/ @YOUR_GITHUB_USERNAME
+
+# Auxiliary records and system views.
+/agents/ @YOUR_GITHUB_USERNAME
+/models/ @YOUR_GITHUB_USERNAME
+/sources/ @YOUR_GITHUB_USERNAME
+/system/ @YOUR_GITHUB_USERNAME
+
+# Explanatory docs can accept external PRs, but still require maintainer review.
+/docs/ @YOUR_GITHUB_USERNAME
