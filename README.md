@@ -16,8 +16,9 @@ License: MIT
 2. [CRL Core Object Specification v0.2](specs/core-object-spec/core-object-spec_v0.2.zh-CN.md)
 3. [CRL Language Protocol v0.1](specs/language-protocol/language-protocol_v0.1.zh-CN.md)
 4. [Questions README](questions/README.md)
-5. [Non-Induction Checklist Light](docs/non-induction-checklist-light.md)
-6. [Double Helix Civilization Simulation v0.3](docs/double-helix-civilization-simulation_v0.3.zh-CN.md) — Method document
+5. [Object Relations](docs/object-relations.md)
+6. [Non-Induction Checklist Light](docs/non-induction-checklist-light.md)
+7. [Double Helix Civilization Simulation v0.3](docs/double-helix-civilization-simulation_v0.3.zh-CN.md) — Method document
 
 ## Repository map
 
@@ -49,6 +50,14 @@ CRL 的核心知识层只由问题、理论、研究报告、反驳、验证构�
 - Report Node：展开理论推演，形成完整论证。
 - Challenge Node：对问题、理论、报告或验证提出结构化反驳。
 - Validation Node：提供现实、模拟、历史或逻辑验证路径与结果。
+
+## Question, Theory, Report
+
+CRL uses `Question -> Theory -> Report` as the main path. Questions open unknowns; theories form the reusable and refutable branches of the theory life tree; reports expand theories into fuller reasoning.
+
+CRL also allows `Question -> Exploratory Report -> Theory` as an early research path. Exploratory reports may be attached directly to questions when no stable theory exists yet, but reusable claims should later be extracted into Theory Nodes.
+
+中文说明：主干关系是“问题 -> 理论 -> 报告”。过渡机制是“问题 -> 探索性报告 -> 理论”。这样既避免 CRL 退化为论文库，也允许早期探索先发生。
 
 ## Agent-first submission
 

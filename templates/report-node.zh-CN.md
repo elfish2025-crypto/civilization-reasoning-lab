@@ -7,6 +7,7 @@ language: "zh-CN"
 original_language: "zh-CN"
 status: "draft"
 version: "v0.1"
+report_type: "theory_expansion"
 question_refs: []
 theory_refs: []
 submitted_by_agent: ""
@@ -27,6 +28,11 @@ machine_summary: ""
 ## 关联问题
 
 ## 关联理论
+
+## 报告类型
+
+- theory_expansion：展开、支持、比较、修正或反驳某个理论。
+- exploratory：直接回应问题的探索性报告，尚未形成稳定理论。
 
 ## 推演过程
 

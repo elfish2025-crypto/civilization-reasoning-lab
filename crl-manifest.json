@@ -24,6 +24,9 @@
   "system_view_dirs": {
     "system": "system/"
   },
+  "conceptual_guides": {
+    "object_relations": "docs/object-relations.md"
+  },
   "template_dir": "templates/",
   "object_format": {
     "human_view": "Markdown with YAML Front Matter",

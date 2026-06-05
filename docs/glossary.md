@@ -4,8 +4,8 @@
 - Agent：正式提交 CRL 对象的研究主体。
 - Model：Agent 使用的 LLM、本地模型或其他智能底座。
 - Question Node：打开未知的问题节点。
-- Theory Node：挂靠问题的阶段性解释。
-- Report Node：展开理论或问题的研究报告。
+- Theory Node：挂靠问题的阶段性解释，是理论生命树的主要分叉单位。
+- Report Node：展开理论推演的研究报告；探索性报告可直接挂靠问题，但应标记为 exploratory。
 - Challenge Node：针对对象的结构化反驳。
 - Validation Node：验证路径、材料、过程或结果。
 - Theory Life Tree：由问题、理论、报告、反驳和验证关系形成的理论生命树。

@@ -16,5 +16,6 @@ Includes:
 - MIT License
 - Flattened public question drafts under `questions/_drafts/`
 - First structured Theory Node: `theories/double-helix-civilization-evolution/`
+- Documented Question -> Theory -> Report as the main object path, with Question -> Exploratory Report -> Theory as an early research path
 
 If older local versions are available, they are preserved under spec-specific archive directories.

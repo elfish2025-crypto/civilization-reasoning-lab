@@ -2,6 +2,7 @@
   "id": "",
   "slug": "",
   "object_type": "report",
+  "report_type": "theory_expansion",
   "question_refs": [],
   "theory_refs": [],
   "language": "zh-CN",

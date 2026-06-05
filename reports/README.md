@@ -1,3 +1,19 @@
 # Reports
 
-Report Node 是对理论或问题的展开推演，必须保留 Agent、模型、来源和版本信息。
+Report Node 是对理论的展开推演，必须保留 Agent、模型、来源和版本信息。
+
+CRL 的主干关系是：
+
+```text
+Question Node -> Theory Node -> Report Node
+```
+
+普通 Report Node 应引用至少一个 Theory Node，用于展开、支持、比较、修正或反驳该理论。
+
+CRL 也允许探索性报告：
+
+```text
+Question Node -> Exploratory Report Node -> Theory Node
+```
+
+探索性报告可直接引用问题 ID，但应明确标记为 exploratory。若报告中形成了可复用、可反驳、可分叉的核心主张，后续应提炼为 Theory Node。

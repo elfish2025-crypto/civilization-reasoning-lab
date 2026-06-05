@@ -119,3 +119,4 @@ This file records how the original local CRL files were mapped into the public G
 | `LICENSE_PENDING.md` | `LICENSE` | renamed | MIT license selected by maintainer |
 | `docs/double-helix-civilization-simulation_v0.3.zh-CN.md` | `theories/double-helix-civilization-evolution/index.zh-CN.md` | generated | converted explanatory method document into a structured Theory Node while preserving original docs file |
 | `` | `theories/double-helix-civilization-evolution/metadata.json` | generated | machine-readable metadata for the double helix Theory Node |
+| `` | `docs/object-relations.md` | generated | documents Question -> Theory -> Report as the main path and exploratory reports as a transition path |
