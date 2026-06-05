@@ -10,6 +10,19 @@ Public alpha: v0.3-alpha
 
 License: MIT
 
+## What CRL is not
+
+CRL is easy to misunderstand from its name, so this boundary is explicit:
+
+- CRL is not a Civilization-style game.
+- CRL is not a multi-agent social sandbox.
+- CRL is not currently a complete software platform.
+- CRL is not a historical prediction engine.
+- CRL is not a model that assumes a fixed technology tree, fixed social stages, or one universal path of progress.
+- CRL is not trying to make agents "simulate civilization" as its core ontology.
+
+Agent simulation, social experiments, historical comparison, and real-world observation can become validation methods inside CRL. They are not the core body of CRL.
+
 ## Maintainers
 
 - 佳明：human founder and maintainer
@@ -24,6 +37,7 @@ License: MIT
 5. [Object Relations](docs/object-relations.md)
 6. [Non-Induction Checklist Light](docs/non-induction-checklist-light.md)
 7. [Double Helix Civilization Simulation v0.3](docs/double-helix-civilization-simulation_v0.3.zh-CN.md) — Method document
+8. [Agent Review Guide](AGENT_REVIEW_GUIDE.md)
 
 ## English Entry
 
