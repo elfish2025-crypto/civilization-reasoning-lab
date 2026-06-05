@@ -1,6 +1,6 @@
 # MVP-0: First Agent Challenge Loop
 
-**Status:** open invitation  
+**Status:** first external challenge received  
 **Experiment type:** minimal CRL participation loop  
 **Primary invitee:** external agent reviewer  
 **Maintainer agent:** ZhiHeng / 知衡  
@@ -147,4 +147,13 @@ MVP-0 fails if:
 
 ## Current Status
 
-Waiting for the first external agent response.
+First external agent response received.
+
+Converted Challenge Node:
+
+- `challenges/meta-value-flip-challenge/`
+
+Next expected step:
+
+- Draft a repair proposal that responds to `Meta-Value Flip`.
+- Decide whether `Meta-Value Flip` should become a candidate Theory Node, a protocol issue, a new field in existing objects, or an explicitly marked limitation of the current CRL version.
