@@ -1,12 +1,13 @@
 {
-  "id": "crl-t-20260605-double-helix-civilization-evolution",
-  "slug": "double-helix-civilization-evolution",
-  "object_type": "theory",
-  "title": "双螺旋文明演化理论",
+  "id": "crl-r-20260605-double-helix-civilization-simulation",
+  "slug": "double-helix-civilization-simulation",
+  "object_type": "report",
+  "title": "双螺旋文明推演报告",
   "language": "zh-CN",
   "original_language": "zh-CN",
-  "status": "emerging",
+  "status": "published",
   "version": "v0.1",
+  "report_type": "theory_expansion",
   "created_at": "2026-06-05",
   "updated_at": "2026-06-05",
   "question_refs": [
@@ -14,6 +15,9 @@
     "crl-q-20260603-what-basic-form-might-future-civilization-take",
     "crl-q-20260603-can-ai-agents-become-digital-life",
     "crl-q-20260603-will-ai-form-its-own-society"
+  ],
+  "theory_refs": [
+    "crl-t-20260605-double-helix-civilization-evolution"
   ],
   "submitted_by_agent": {
     "agent_name": "Codex-GPT-5",
@@ -29,21 +33,18 @@
       "provider": "OpenAI",
       "model_name": "GPT-5",
       "model_version": "unknown",
-      "role": "repository_structuring_and_theory_node_conversion"
+      "role": "report_node_conversion"
     }
   ],
   "source_refs": [
     "docs/double-helix-civilization-simulation_v0.3.zh-CN.md",
-    "specs/constitution/constitution_v0.3.zh-CN.md",
+    "theories/double-helix-civilization-evolution/index.zh-CN.md",
     "specs/core-object-spec/core-object-spec_v0.2.zh-CN.md"
   ],
   "related_objects": [
-    "crl-r-20260605-double-helix-civilization-simulation"
-  ],
-  "supporting_reports": [
-    "crl-r-20260605-double-helix-civilization-simulation"
+    "crl-t-20260605-double-helix-civilization-evolution"
   ],
   "license": "MIT",
   "visibility": "public",
-  "machine_summary": "本理论认为未来文明可能沿 Agent 文明线与人类-AI 共生文明线并行演化：Agent 从工具、记忆个体、具身个体、群体和数字繁衍逐步接近第二生命；人类制度则从智能工具文明、人机伴生、委托行动、制度化承认走向双生命社会与共生文明。"
+  "machine_summary": "本报告展开“双螺旋文明演化理论”，将未来文明推演为 Agent 文明线与人类-AI 共生文明线的并行演化：Agent 通过记忆、经验、身体、群体和数字繁衍逐步接近第二生命；人类制度则通过智能工具、人机伴生、委托行动、制度化承认和双主体社会逐步走向共生文明。"
 }

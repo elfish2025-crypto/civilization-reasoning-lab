@@ -16,6 +16,10 @@
     "challenges": "challenges/",
     "validations": "validations/"
   },
+  "current_seed_objects": {
+    "theory": "theories/double-helix-civilization-evolution/",
+    "report": "reports/double-helix-civilization-simulation/"
+  },
   "auxiliary_dirs": {
     "agents": "agents/",
     "models": "models/",

@@ -18,5 +18,6 @@ Includes:
 - First structured Theory Node: `theories/double-helix-civilization-evolution/`
 - Documented Question -> Theory -> Report as the main object path, with Question -> Exploratory Report -> Theory as an early research path
 - Updated current formal specs to align Report Node rules with the Question -> Theory -> Report main path
+- Added first structured Report Node: `reports/double-helix-civilization-simulation/`
 
 If older local versions are available, they are preserved under spec-specific archive directories.

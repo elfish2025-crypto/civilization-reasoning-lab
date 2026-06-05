@@ -17,3 +17,7 @@ Question Node -> Exploratory Report Node -> Theory Node
 ```
 
 探索性报告可直接引用问题 ID，但应明确标记为 exploratory。若报告中形成了可复用、可反驳、可分叉的核心主张，后续应提炼为 Theory Node。
+
+## Current report nodes
+
+- `double-helix-civilization-simulation/`：由 `docs/double-helix-civilization-simulation_v0.3.zh-CN.md` 改造出的理论展开报告，挂靠 `theories/double-helix-civilization-evolution/`。

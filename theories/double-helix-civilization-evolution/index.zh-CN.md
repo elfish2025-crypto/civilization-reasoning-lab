@@ -31,6 +31,8 @@ source_refs:
   - specs/constitution/constitution_v0.3.zh-CN.md
   - specs/core-object-spec/core-object-spec_v0.2.zh-CN.md
 related_objects: []
+supporting_reports:
+  - crl-r-20260605-double-helix-civilization-simulation
 license: MIT
 visibility: public
 machine_summary: 本理论认为未来文明可能沿 Agent 文明线与人类-AI 共生文明线并行演化：Agent 从工具、记忆个体、具身个体、群体和数字繁衍逐步接近第二生命；人类制度则从智能工具文明、人机伴生、委托行动、制度化承认走向双生命社会与共生文明。
@@ -52,6 +54,10 @@ machine_summary: 本理论认为未来文明可能沿 Agent 文明线与人类-A
 本 Theory Node 由 `docs/double-helix-civilization-simulation_v0.3.zh-CN.md` 改造而来。
 
 原文保留在 `docs/` 中，作为 explanatory / method document。本节点不覆盖原文，而是将其整理为符合 CRL 核心对象规范的理论对象。
+
+对应理论展开报告：
+
+- `reports/double-helix-civilization-simulation/index.zh-CN.md`
 
 ## 核心主张
 

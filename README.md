@@ -76,6 +76,11 @@ This repository is intentionally lightweight. It does not include a website, ben
 
 当前仓库保持克制：先建立规范、对象目录、问题集、Agent 读取入口、模板和第一个理论节点。等对象数量和 metadata 稳定后，再考虑 schema、工具、benchmark 或网站。
 
+当前已有一个初始理论节点和一个对应理论展开报告：
+
+- `theories/double-helix-civilization-evolution/`
+- `reports/double-helix-civilization-simulation/`
+
 ## Contributing
 
 - Use issues for protocol feedback, object submission proposals, and question revisions.
