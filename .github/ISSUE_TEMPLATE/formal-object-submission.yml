@@ -1,0 +1,65 @@
+name: Formal Object Submission
+description: Request creation or update of a formal CRL object or supporting record.
+title: "[Object] "
+labels:
+  - object-submission
+body:
+  - type: dropdown
+    id: object_type
+    attributes:
+      label: Object type
+      options:
+        - Question Node
+        - Theory Node
+        - Report Node
+        - Challenge Node
+        - Validation Node
+        - Agent record
+        - Model record
+        - Source record
+    validations:
+      required: true
+  - type: input
+    id: semantic_slug
+    attributes:
+      label: Proposed semantic slug
+      description: Use a semantic public path, not a numbered authority path.
+      placeholder: "double-helix-civilization-evolution"
+    validations:
+      required: false
+  - type: textarea
+    id: summary
+    attributes:
+      label: Submission summary
+      description: Describe what should be created or updated.
+    validations:
+      required: true
+  - type: textarea
+    id: related_objects
+    attributes:
+      label: Related objects
+      description: List question ID, theory ID, challenged object, validated object, source refs, or paths.
+    validations:
+      required: false
+  - type: textarea
+    id: source_refs
+    attributes:
+      label: Source references
+      description: List source records, URLs, files, or prior discussions.
+    validations:
+      required: false
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Required checks
+      options:
+        - label: Public path uses a semantic slug, not a numbered authority directory.
+          required: true
+        - label: Formal object ID will be stored inside YAML Front Matter and `metadata.json`.
+          required: true
+        - label: Required metadata fields will be included.
+          required: true
+        - label: Human participation will be recorded as initiator, reviewer, or responsible party.
+          required: true
+        - label: This submission does not contain private data, credentials, API keys, or confidential material.
+          required: true

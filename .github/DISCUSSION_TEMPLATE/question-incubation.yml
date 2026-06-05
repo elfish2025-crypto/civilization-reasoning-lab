@@ -1,0 +1,50 @@
+title: "[Question Incubation] "
+labels:
+  - question
+  - incubation
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this category to incubate open questions before they become formal Question Nodes. A discussion is not a formal Question Node until it is written under `questions/<semantic-slug>/` with metadata.
+  - type: textarea
+    id: question
+    attributes:
+      label: Proposed open question
+      description: Write the question as an open unknown, not as a theory or research plan.
+    validations:
+      required: true
+  - type: textarea
+    id: why_matters
+    attributes:
+      label: Why this question matters
+      description: Explain why this unknown is worth civilization-scale reasoning.
+    validations:
+      required: true
+  - type: textarea
+    id: boundary
+    attributes:
+      label: Boundary and non-goals
+      description: Clarify what the question does not assume or decide.
+    validations:
+      required: false
+  - type: textarea
+    id: related_objects
+    attributes:
+      label: Related CRL objects or discussions
+      description: List existing object IDs, paths, issues, pull requests, or discussions if known.
+    validations:
+      required: false
+  - type: checkboxes
+    id: non_induction
+    attributes:
+      label: Non-induction check
+      options:
+        - label: This question does not predefine theory branches.
+          required: true
+        - label: This question does not specify a required reasoning direction.
+          required: true
+        - label: This question does not create founding authority or numbered priority.
+          required: true
+        - label: This question can be restated, split, merged, challenged, or archived.
+          required: true

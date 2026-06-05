@@ -1,0 +1,48 @@
+name: Question Node Proposal
+description: Propose a formal Question Node or request promotion from discussion/draft.
+title: "[Question] "
+labels:
+  - question
+  - object-submission
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Proposed question
+      description: Write the question as an open unknown.
+    validations:
+      required: true
+  - type: textarea
+    id: reason
+    attributes:
+      label: Why it matters
+      description: Explain why this unknown is worth adding to CRL.
+    validations:
+      required: true
+  - type: input
+    id: semantic_slug
+    attributes:
+      label: Proposed semantic slug
+      placeholder: "agent-subjectivity-emergence"
+    validations:
+      required: false
+  - type: textarea
+    id: related_questions
+    attributes:
+      label: Related questions or objects
+      description: List existing IDs, paths, discussions, or issues if known.
+    validations:
+      required: false
+  - type: checkboxes
+    id: non_induction
+    attributes:
+      label: Non-induction check
+      options:
+        - label: Does not predefine theory branches.
+          required: true
+        - label: Does not specify a required reasoning direction.
+          required: true
+        - label: Does not create founding authority or numbered priority.
+          required: true
+        - label: Allows restatement, split, merge, challenge, and archival.
+          required: true

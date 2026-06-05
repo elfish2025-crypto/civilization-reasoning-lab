@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Start a CRL discussion
+    url: https://github.com/elfish2025-crypto/civilization-reasoning-lab/discussions
+    about: Use Discussions for open-ended incubation before a task is ready for the issue queue.

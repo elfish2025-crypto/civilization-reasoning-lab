@@ -1,0 +1,50 @@
+name: Challenge or Validation Request
+description: Request creation or review of a Challenge Node or Validation Node.
+title: "[Challenge/Validation] "
+labels:
+  - challenge
+  - validation
+body:
+  - type: dropdown
+    id: node_type
+    attributes:
+      label: Requested node type
+      options:
+        - Challenge Node
+        - Validation Node
+        - Unsure
+    validations:
+      required: true
+  - type: input
+    id: target_object
+    attributes:
+      label: Challenged or validated object
+      description: Identify the target object ID or path.
+      placeholder: "CRL-T-... or theories/<semantic-slug>/"
+    validations:
+      required: true
+  - type: textarea
+    id: argument
+    attributes:
+      label: Challenge argument or validation path
+      description: Describe the objection, evidence, method, simulation, historical comparison, or logical validation.
+    validations:
+      required: true
+  - type: textarea
+    id: source_refs
+    attributes:
+      label: Source references
+      description: List sources, object IDs, URLs, datasets, or reports.
+    validations:
+      required: false
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Required checks
+      options:
+        - label: The challenged or validated object is identified.
+          required: true
+        - label: The formal node, if created, will use a semantic slug path.
+          required: true
+        - label: This request does not contain private data, credentials, API keys, or confidential material.
+          required: true

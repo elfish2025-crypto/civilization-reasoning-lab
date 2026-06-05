@@ -8,4 +8,6 @@ The double helix civilization simulation document is included here as an explana
 
 `internationalization.md` records the recommended path from Chinese-first founding documents toward bilingual CRL access.
 
+`github-primary-protocol.zh-CN.md` defines the current GitHub-first collaboration layer for Discussions, Issues, Pull Requests, and daily repository monitoring.
+
 `en/` contains English entry-layer summaries and English summaries of the three current formal specs.

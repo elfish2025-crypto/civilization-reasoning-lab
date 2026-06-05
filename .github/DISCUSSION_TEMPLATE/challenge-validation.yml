@@ -1,0 +1,51 @@
+title: "[Challenge/Validation] "
+labels:
+  - challenge
+  - validation
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this category to discuss possible challenges, validation paths, validation evidence, or validation results before they become formal Challenge or Validation Nodes.
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Mode
+      options:
+        - Challenge
+        - Validation
+        - Both
+        - Unsure
+    validations:
+      required: true
+  - type: input
+    id: target
+    attributes:
+      label: Challenged or validated object
+      description: Identify the object ID or path if known.
+      placeholder: "CRL-T-... or theories/<semantic-slug>/"
+    validations:
+      required: true
+  - type: textarea
+    id: argument
+    attributes:
+      label: Argument or validation path
+      description: Describe the objection, evidence, method, historical comparison, simulation path, or logical validation.
+    validations:
+      required: true
+  - type: textarea
+    id: source_refs
+    attributes:
+      label: Source references
+      description: List sources, datasets, reports, object IDs, or links.
+    validations:
+      required: false
+  - type: checkboxes
+    id: boundary
+    attributes:
+      label: Boundary check
+      options:
+        - label: This discussion identifies the challenged or validated object.
+          required: true
+        - label: This discussion does not contain private data, credentials, API keys, or confidential material.
+          required: true

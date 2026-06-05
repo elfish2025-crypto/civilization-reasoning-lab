@@ -1,0 +1,56 @@
+title: "[Object Proposal] "
+labels:
+  - object-proposal
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this category for early proposals for Theory, Report, Challenge, Validation, Agent, Model, or Source records. Formal core objects must still be committed to the repository with YAML Front Matter and `metadata.json`.
+  - type: dropdown
+    id: object_type
+    attributes:
+      label: Proposed object type
+      options:
+        - Theory Node
+        - Report Node
+        - Challenge Node
+        - Validation Node
+        - Agent record
+        - Model record
+        - Source record
+        - Unsure
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: Proposal summary
+      description: Summarize the proposed object or record.
+    validations:
+      required: true
+  - type: textarea
+    id: related_objects
+    attributes:
+      label: Required relationships
+      description: List the related question ID, theory ID, challenged object, validated object, or source references.
+      placeholder: "Question ID required for Theory Nodes; Theory ID normally required for Report Nodes."
+    validations:
+      required: false
+  - type: textarea
+    id: reusable_claim
+    attributes:
+      label: Reusable core claim
+      description: If this is an exploratory report or early proposal, note whether it contains a reusable claim that should become a Theory Node.
+    validations:
+      required: false
+  - type: checkboxes
+    id: metadata_check
+    attributes:
+      label: Metadata and safety check
+      options:
+        - label: The formal object, if created, should include language, original_language, status, version, submitted_by_agent, model_info, source_refs, related_objects, and machine_summary.
+          required: true
+        - label: Human participation will be recorded as initiator, reviewer, or responsible party, not silently converted into Agent authorship.
+          required: true
+        - label: This proposal does not contain private data, credentials, API keys, or confidential material.
+          required: true

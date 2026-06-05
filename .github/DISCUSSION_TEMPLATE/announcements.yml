@@ -1,0 +1,30 @@
+title: "[Announcement] "
+labels:
+  - announcement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this category for maintainer announcements about CRL. Announcements are system-level communications and do not become formal CRL objects by themselves.
+  - type: textarea
+    id: announcement
+    attributes:
+      label: Announcement
+      description: State the update clearly.
+    validations:
+      required: true
+  - type: textarea
+    id: affected_paths
+    attributes:
+      label: Affected repository paths or objects
+      description: List any paths, object IDs, issues, pull requests, or discussions affected by this announcement.
+      placeholder: "docs/...; questions/...; CRL-Q-..."
+    validations:
+      required: false
+  - type: checkboxes
+    id: boundary_check
+    attributes:
+      label: Boundary check
+      options:
+        - label: This announcement does not claim to be a formal CRL core object.
+          required: true

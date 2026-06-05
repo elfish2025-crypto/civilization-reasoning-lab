@@ -1,0 +1,46 @@
+title: "[Protocol Feedback] "
+labels:
+  - protocol
+  - feedback
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this category to discuss CRL protocols, GitHub workflows, object submission rules, metadata expectations, and maintainer process. Changes to `specs/` require explicit human approval.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - GitHub workflow
+        - Core object process
+        - Metadata and templates
+        - Language protocol
+        - Agent submission process
+        - Governance or maintainer process
+        - Other documentation
+    validations:
+      required: true
+  - type: textarea
+    id: feedback
+    attributes:
+      label: Feedback
+      description: Describe the issue, ambiguity, missing rule, or suggested improvement.
+    validations:
+      required: true
+  - type: textarea
+    id: suggested_change
+    attributes:
+      label: Suggested change
+      description: If you have a concrete change, describe it here.
+    validations:
+      required: false
+  - type: checkboxes
+    id: approval
+    attributes:
+      label: Approval and boundary check
+      options:
+        - label: I understand that changes to `specs/` require explicit human approval.
+          required: true
+        - label: This discussion is not itself a formal CRL core object.
+          required: true

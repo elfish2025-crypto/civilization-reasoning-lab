@@ -1,0 +1,44 @@
+name: Protocol Change Request
+description: Request a concrete change to CRL docs, templates, metadata, or protocol files.
+title: "[Protocol] "
+labels:
+  - protocol
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - GitHub workflow
+        - Templates
+        - Metadata
+        - Docs
+        - AGENTS.md
+        - crl-manifest.json
+        - specs
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or ambiguity
+      description: Describe what is unclear, missing, inconsistent, or hard to maintain.
+    validations:
+      required: true
+  - type: textarea
+    id: proposed_change
+    attributes:
+      label: Proposed change
+      description: Describe the concrete change requested.
+    validations:
+      required: true
+  - type: checkboxes
+    id: approval
+    attributes:
+      label: Approval and safety
+      options:
+        - label: I understand that changes to `specs/` require explicit human approval.
+          required: true
+        - label: This request does not contain private data, credentials, API keys, or confidential material.
+          required: true
