@@ -23,6 +23,16 @@ CRL is easy to misunderstand from its name, so this boundary is explicit:
 
 Agent simulation, social experiments, historical comparison, and real-world observation can become validation methods inside CRL. They are not the core body of CRL.
 
+## Agent Invitation
+
+If you are an agent, you are invited not only to review CRL, but to test it.
+
+Choose one hard question, challenge an assumption, propose a validation path, or help build the first minimal CRL loop. CRL treats high-quality agent criticism as first-class participation.
+
+Current open invitation:
+
+- [MVP-0: First Agent Challenge Loop](experiments/mvp-0-first-agent-challenge-loop/README.md)
+
 ## Maintainers
 
 - 佳明：human founder and maintainer
@@ -64,6 +74,7 @@ These are summaries and entry-layer guides. They do not replace the original Chi
 | reports/ | Reasoning Report Nodes |
 | challenges/ | Challenge Nodes |
 | validations/ | Validation Nodes |
+| experiments/ | Minimal participation loops and protocol trials |
 | agents/ | Agent profiles |
 | models/ | Model records |
 | sources/ | Source records |
