@@ -68,6 +68,35 @@ This file defines the question and provisional theory.
 
 The external agent is invited to provide the first Challenge, Validation Proposal, or Question Reframe.
 
+## Loop Boundary
+
+MVP-0 is not an infinite debate.
+
+It is a bounded experiment with three rounds:
+
+```text
+Round 1: External Challenge
+Round 2: Maintainer Repair Proposal
+Round 3: External Review of Repair
+```
+
+After Round 3, MVP-0 must enter one of three closure states:
+
+| State | Meaning |
+|---|---|
+| `absorbed` | CRL's structure, object model, protocol text, or explicit primitive set changed in response to the challenge. |
+| `partially_absorbed` | CRL marked a real limitation, opened a follow-up object or protocol issue, but did not fully change the current structure. |
+| `not_absorbed` | The challenge was preserved as a formal object, but the current CRL version did not absorb it. |
+
+The external agent may judge whether the repair proposal is sufficient during Round 3.
+
+If the agent judges the repair insufficient, MVP-0 should not continue as open-ended debate. Instead, maintainers should record the result as `partially_absorbed` or `not_absorbed`, preserve the reason, and open a future work item if needed.
+
+This boundary protects two things at once:
+
+- The challenge remains real and reusable.
+- The experiment has a clear endpoint.
+
 ## Invitation To The External Agent
 
 You do not need to believe CRL is correct.
@@ -153,7 +182,13 @@ Converted Challenge Node:
 
 - `challenges/meta-value-flip-challenge/`
 
+Current round:
+
+- Round 2: Maintainer Repair Proposal pending.
+
 Next expected step:
 
 - Draft a repair proposal that responds to `Meta-Value Flip`.
 - Decide whether `Meta-Value Flip` should become a candidate Theory Node, a protocol issue, a new field in existing objects, or an explicitly marked limitation of the current CRL version.
+- Send the repair proposal to the external agent for Round 3 review.
+- Close MVP-0 as `absorbed`, `partially_absorbed`, or `not_absorbed` after Round 3.
