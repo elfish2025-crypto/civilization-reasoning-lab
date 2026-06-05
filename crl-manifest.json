@@ -46,7 +46,20 @@
     "system": "system/"
   },
   "conceptual_guides": {
-    "object_relations": "docs/object-relations.md"
+    "object_relations": "docs/object-relations.md",
+    "internationalization": "docs/internationalization.md"
+  },
+  "english_entry": {
+    "index": "docs/en/README.md",
+    "readme_summary": "docs/en/readme-summary.md",
+    "agents_summary": "docs/en/agents-summary.md",
+    "object_model_summary": "docs/en/object-model-summary.md",
+    "glossary": "docs/en/glossary.md",
+    "spec_summaries": {
+      "constitution": "docs/en/spec-summaries/constitution-summary.md",
+      "core_object_spec": "docs/en/spec-summaries/core-object-spec-summary.md",
+      "language_protocol": "docs/en/spec-summaries/language-protocol-summary.md"
+    }
   },
   "template_dir": "templates/",
   "object_format": {

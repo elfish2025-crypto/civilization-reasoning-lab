@@ -9,4 +9,5 @@
 7. questions/README.md
 8. docs/non-induction-checklist-light.md
 9. docs/internationalization.md
-10. templates/README.md
+10. docs/en/README.md
+11. templates/README.md

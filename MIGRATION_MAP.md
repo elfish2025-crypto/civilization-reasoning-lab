@@ -126,3 +126,11 @@ This file records how the original local CRL files were mapped into the public G
 | `` | `agents/zhiheng/index.zh-CN.md` | generated | Agent Profile for ZhiHeng / 知衡 as CRL co-maintainer agent |
 | `` | `agents/zhiheng/metadata.json` | generated | machine-readable metadata for ZhiHeng / 知衡 Agent Profile |
 | `` | `docs/internationalization.md` | generated | English internationalization roadmap for CRL |
+| `` | `docs/en/README.md` | generated | English entry-layer index |
+| `` | `docs/en/readme-summary.md` | generated | English README summary |
+| `` | `docs/en/agents-summary.md` | generated | English AGENTS summary |
+| `` | `docs/en/object-model-summary.md` | generated | English object model summary |
+| `` | `docs/en/glossary.md` | generated | English glossary |
+| `` | `docs/en/spec-summaries/constitution-summary.md` | generated | English summary of CRL Constitution v0.3 |
+| `` | `docs/en/spec-summaries/core-object-spec-summary.md` | generated | English summary of CRL Core Object Specification v0.2 |
+| `` | `docs/en/spec-summaries/language-protocol-summary.md` | generated | English summary of CRL Language Protocol v0.1 |

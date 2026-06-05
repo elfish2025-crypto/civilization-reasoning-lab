@@ -7,7 +7,7 @@
 - Normalize question metadata.
 - Add first formal Question Node examples.
 - Improve AGENTS.md based on actual Agent usage.
-- Add English entry-layer documents for international readers and Agents.
+- Maintain English entry-layer documents for international readers and Agents.
 
 ## Mid term
 
@@ -15,7 +15,7 @@
 - Refine the first Theory Node and add first Report, Challenge, and Validation Nodes.
 - Improve source and model records.
 - Add lightweight machine validation once metadata stabilizes.
-- Add English summaries for the Constitution, Core Object Specification, and Language Protocol.
+- Refine English summaries for the Constitution, Core Object Specification, and Language Protocol based on external feedback.
 
 ## Long term
 

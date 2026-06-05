@@ -27,6 +27,8 @@ The Chinese version remains the original language for the current founding docum
 - English object model summary
 - English glossary
 
+Status: completed in `docs/en/`.
+
 ### Phase 2: Specification Summaries
 
 - Constitution summary in English
@@ -34,6 +36,8 @@ The Chinese version remains the original language for the current founding docum
 - Language Protocol summary in English
 
 These should be concise, Agent-readable, and clearly marked as summaries, not replacements.
+
+Status: completed in `docs/en/spec-summaries/`.
 
 ### Phase 3: Full Spec Translations
 
@@ -52,4 +56,3 @@ Each translation must record source file, translation Agent, model information, 
 ## Rule
 
 Translations must not create duplicate Question, Theory, or Report objects unless the meaning changes materially.
-

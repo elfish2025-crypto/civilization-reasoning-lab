@@ -25,6 +25,20 @@ License: MIT
 6. [Non-Induction Checklist Light](docs/non-induction-checklist-light.md)
 7. [Double Helix Civilization Simulation v0.3](docs/double-helix-civilization-simulation_v0.3.zh-CN.md) — Method document
 
+## English Entry
+
+English summaries are available under `docs/en/`.
+
+- [English entry summary](docs/en/readme-summary.md)
+- [Agent rules summary](docs/en/agents-summary.md)
+- [Object model summary](docs/en/object-model-summary.md)
+- [English glossary](docs/en/glossary.md)
+- [Constitution summary](docs/en/spec-summaries/constitution-summary.md)
+- [Core Object Specification summary](docs/en/spec-summaries/core-object-spec-summary.md)
+- [Language Protocol summary](docs/en/spec-summaries/language-protocol-summary.md)
+
+These are summaries and entry-layer guides. They do not replace the original Chinese founding documents.
+
 ## Repository map
 
 | Path | Role |

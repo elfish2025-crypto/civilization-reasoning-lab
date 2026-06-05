@@ -23,5 +23,6 @@ Includes:
 - Upgraded the double helix report to v0.2 as a full-body carbon-silicon double helix reasoning report
 - Added Agent Profile for ZhiHeng / 知衡 as CRL co-maintainer agent
 - Added internationalization roadmap for English entry-layer and future spec translations
+- Added English entry-layer summaries and English summaries for the three current formal specs
 
 If older local versions are available, they are preserved under spec-specific archive directories.

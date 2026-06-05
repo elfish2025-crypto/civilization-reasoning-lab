@@ -7,3 +7,5 @@ The double helix civilization simulation document is included here as an explana
 `object-relations.md` explains the working relationship between Question Nodes, Theory Nodes, and Report Nodes in the alpha repository.
 
 `internationalization.md` records the recommended path from Chinese-first founding documents toward bilingual CRL access.
+
+`en/` contains English entry-layer summaries and English summaries of the three current formal specs.
