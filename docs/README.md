@@ -5,3 +5,5 @@ The `docs/` directory contains explanatory documents, reading guidance, glossary
 The double helix civilization simulation document is included here as an explanatory / method document, not as one of the three current core specs.
 
 `object-relations.md` explains the working relationship between Question Nodes, Theory Nodes, and Report Nodes in the alpha repository.
+
+`internationalization.md` records the recommended path from Chinese-first founding documents toward bilingual CRL access.

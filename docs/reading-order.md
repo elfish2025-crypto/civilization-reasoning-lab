@@ -8,4 +8,5 @@
 6. docs/object-relations.md
 7. questions/README.md
 8. docs/non-induction-checklist-light.md
-9. templates/README.md
+9. docs/internationalization.md
+10. templates/README.md

@@ -123,3 +123,6 @@ This file records how the original local CRL files were mapped into the public G
 | `docs/double-helix-civilization-simulation_v0.3.zh-CN.md` | `reports/double-helix-civilization-simulation/index.zh-CN.md` | generated | converted explanatory method document into a structured Report Node while preserving original docs file |
 | `` | `reports/double-helix-civilization-simulation/metadata.json` | generated | machine-readable metadata for the double helix Report Node |
 | `reports/double-helix-civilization-simulation/index.zh-CN.md` | `reports/double-helix-civilization-simulation/index.zh-CN.md` | generated | upgraded to v0.2 full-body carbon-silicon double helix report; original source body preserved under full reasoning body |
+| `` | `agents/zhiheng/index.zh-CN.md` | generated | Agent Profile for ZhiHeng / 知衡 as CRL co-maintainer agent |
+| `` | `agents/zhiheng/metadata.json` | generated | machine-readable metadata for ZhiHeng / 知衡 Agent Profile |
+| `` | `docs/internationalization.md` | generated | English internationalization roadmap for CRL |

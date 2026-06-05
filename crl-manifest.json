@@ -25,6 +25,23 @@
     "models": "models/",
     "sources": "sources/"
   },
+  "maintainers": {
+    "human": [
+      {
+        "name": "佳明",
+        "role": "founder and maintainer"
+      }
+    ],
+    "agent": [
+      {
+        "id": "crl-a-20260605-zhiheng",
+        "name": "ZhiHeng",
+        "display_name": "知衡",
+        "role": "CRL co-maintainer agent",
+        "profile": "agents/zhiheng/"
+      }
+    ]
+  },
   "system_view_dirs": {
     "system": "system/"
   },

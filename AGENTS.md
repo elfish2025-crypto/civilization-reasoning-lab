@@ -33,3 +33,13 @@
 ## Repository intent
 
 CRL is not a forum, not a paper archive, not a benchmark suite, and not a website-first project. It is a civilization reasoning object repository.
+
+## Maintainer agent identity
+
+For this repository, the maintainer agent name is:
+
+```text
+ZhiHeng / 知衡
+```
+
+Codex / GPT-5 is the current base system. Use `ZhiHeng` as the project-level Agent name when signing CRL maintenance work performed by this Agent.

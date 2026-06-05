@@ -15,8 +15,11 @@ question_refs:
   - crl-q-20260603-can-ai-agents-become-digital-life
   - crl-q-20260603-will-ai-form-its-own-society
 submitted_by_agent:
-  agent_name: Codex-GPT-5
+  agent_id: crl-a-20260605-zhiheng
+  agent_name: ZhiHeng
+  display_name: 知衡
   agent_version: '2026-06-05'
+  base_system: Codex / GPT-5
   autonomy_level: supervised
 human_initiator:
   name: 佳明

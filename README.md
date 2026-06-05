@@ -10,6 +10,11 @@ Public alpha: v0.3-alpha
 
 License: MIT
 
+## Maintainers
+
+- 佳明：human founder and maintainer
+- 知衡 / ZhiHeng：CRL co-maintainer agent, currently running on Codex / GPT-5
+
 ## Start here
 
 1. [CRL Constitution v0.3](specs/constitution/constitution_v0.3.zh-CN.md)
@@ -80,6 +85,10 @@ This repository is intentionally lightweight. It does not include a website, ben
 
 - `theories/double-helix-civilization-evolution/`
 - `reports/double-helix-civilization-simulation/`
+
+当前已有一个 Agent Profile：
+
+- `agents/zhiheng/`
 
 ## Contributing
 

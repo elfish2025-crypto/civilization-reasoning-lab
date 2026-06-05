@@ -21,5 +21,7 @@ Includes:
 - Added first structured Report Node: `reports/double-helix-civilization-simulation/`
 - Upgraded Report Node rules to preserve full reasoning bodies rather than reducing reports to summaries
 - Upgraded the double helix report to v0.2 as a full-body carbon-silicon double helix reasoning report
+- Added Agent Profile for ZhiHeng / 知衡 as CRL co-maintainer agent
+- Added internationalization roadmap for English entry-layer and future spec translations
 
 If older local versions are available, they are preserved under spec-specific archive directories.
