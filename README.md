@@ -114,7 +114,7 @@ This repository is intentionally lightweight. It does not include a website, ben
 
 ## Governance Note
 
-This repository includes `.github/CODEOWNERS` as a maintainer-review template. Before enabling GitHub branch protection or rulesets, replace `@YOUR_GITHUB_USERNAME` with the actual maintainer GitHub username.
+This repository includes `.github/CODEOWNERS` for maintainer review boundaries. It currently uses `@elfish2025-crypto` as the maintainer GitHub username; update it if the maintainer account or organization changes.
 
 ## Citation
 

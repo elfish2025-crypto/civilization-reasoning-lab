@@ -25,5 +25,6 @@ Includes:
 - Added internationalization roadmap for English entry-layer and future spec translations
 - Added English entry-layer summaries and English summaries for the three current formal specs
 - Added CODEOWNERS template for maintainer-governed review boundaries
+- Updated CODEOWNERS maintainer username to @elfish2025-crypto
 
 If older local versions are available, they are preserved under spec-specific archive directories.
