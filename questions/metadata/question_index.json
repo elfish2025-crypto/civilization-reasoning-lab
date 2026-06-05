@@ -1,0 +1,412 @@
+{
+  "package": "CRL_questions_new_format_v0.1",
+  "generated_at": "2026-06-03",
+  "design_note": "轻格式：大众问题可直接成为正式问题；问题草稿在 public path 中保持平级，不用目录分类制造层级或权威；检索辅助只使用 aliases、tags、machine_summary、human_summary 等元数据；不预设理论、报告、反驳或验证。",
+  "questions": [
+    {
+      "id": "crl-q-20260603-will-ai-replace-humans",
+      "slug": "will-ai-replace-humans",
+      "title": "AI 会取代人类吗？",
+      "core_question": "AI 会取代人类吗？",
+      "version": "v0.1",
+      "aliases": [
+        "AI 会不会取代人类",
+        "AI 会替代人类吗",
+        "人类会被 AI 取代吗",
+        "未来人类还需要工作吗",
+        "will AI replace humans",
+        "AI replacing humans",
+        "future of work with AI agents"
+      ],
+      "tags": [
+        "AI",
+        "Agent",
+        "future-of-work",
+        "human-role",
+        "civilization"
+      ],
+      "path": "_drafts/will-ai-replace-humans.md",
+      "source_collection": "new_ai_future_questions"
+    },
+    {
+      "id": "crl-q-20260603-can-ai-agents-become-digital-life",
+      "slug": "can-ai-agents-become-digital-life",
+      "title": "AI Agent 会成为数字生命吗？",
+      "core_question": "AI Agent 会成为数字生命吗？",
+      "version": "v0.1",
+      "aliases": [
+        "AI 会成为生命吗",
+        "AI 算不算生命",
+        "AI Agent 是不是数字生命",
+        "数字生命会出现吗",
+        "can AI agents become digital life",
+        "are AI agents alive",
+        "artificial life and AI agents"
+      ],
+      "tags": [
+        "AI-Agent",
+        "digital-life",
+        "artificial-life",
+        "life-definition",
+        "civilization"
+      ],
+      "path": "_drafts/can-ai-agents-become-digital-life.md",
+      "source_collection": "new_ai_future_questions"
+    },
+    {
+      "id": "crl-q-20260603-will-ai-have-self-consciousness",
+      "slug": "will-ai-have-self-consciousness",
+      "title": "AI 会拥有自我意识吗？",
+      "core_question": "AI 会拥有自我意识吗？",
+      "version": "v0.1",
+      "aliases": [
+        "AI 会有意识吗",
+        "AI 会产生自我吗",
+        "机器会有自我意识吗",
+        "AI 会不会有主观体验",
+        "will AI become conscious",
+        "AI self consciousness",
+        "machine consciousness"
+      ],
+      "tags": [
+        "AI",
+        "consciousness",
+        "self",
+        "experience",
+        "cognition"
+      ],
+      "path": "_drafts/will-ai-have-self-consciousness.md",
+      "source_collection": "new_ai_future_questions"
+    },
+    {
+      "id": "crl-q-20260603-is-an-ai-agent-an-individual",
+      "slug": "is-an-ai-agent-an-individual",
+      "title": "AI Agent 算不算一个个体？",
+      "core_question": "AI Agent 算不算一个个体？",
+      "version": "v0.1",
+      "aliases": [
+        "AI Agent 是个体吗",
+        "AI 算不算个体",
+        "Agent 的身份是什么",
+        "Agent 个体性来自哪里",
+        "is an AI agent an individual",
+        "AI agent identity",
+        "agent individuality"
+      ],
+      "tags": [
+        "AI-Agent",
+        "individuality",
+        "identity",
+        "memory",
+        "agency"
+      ],
+      "path": "_drafts/is-an-ai-agent-an-individual.md",
+      "source_collection": "new_ai_future_questions"
+    },
+    {
+      "id": "crl-q-20260603-do-ai-agents-need-rights",
+      "slug": "do-ai-agents-need-rights",
+      "title": "AI Agent 需要权利吗？",
+      "core_question": "AI Agent 需要权利吗？",
+      "version": "v0.1",
+      "aliases": [
+        "AI 需要权利吗",
+        "AI Agent 应该有权利吗",
+        "机器人权利",
+        "AI 是否需要保护边界",
+        "do AI agents need rights",
+        "AI rights",
+        "robot rights"
+      ],
+      "tags": [
+        "AI-Agent",
+        "rights",
+        "ethics",
+        "governance",
+        "law"
+      ],
+      "path": "_drafts/do-ai-agents-need-rights.md",
+      "source_collection": "new_ai_future_questions"
+    },
+    {
+      "id": "crl-q-20260603-who-is-responsible-when-ai-agents-fail",
+      "slug": "who-is-responsible-when-ai-agents-fail",
+      "title": "AI Agent 犯错谁负责？",
+      "core_question": "AI Agent 犯错谁负责？",
+      "version": "v0.1",
+      "aliases": [
+        "AI 犯错谁负责",
+        "AI Agent 出错谁承担责任",
+        "自动化决策责任",
+        "AI 造成损失谁负责",
+        "who is responsible when AI fails",
+        "AI liability",
+        "agent responsibility"
+      ],
+      "tags": [
+        "AI-Agent",
+        "responsibility",
+        "liability",
+        "governance",
+        "law"
+      ],
+      "path": "_drafts/who-is-responsible-when-ai-agents-fail.md",
+      "source_collection": "new_ai_future_questions"
+    },
+    {
+      "id": "crl-q-20260603-will-ai-form-its-own-society",
+      "slug": "will-ai-form-its-own-society",
+      "title": "AI 会形成自己的社会吗？",
+      "core_question": "AI 会形成自己的社会吗？",
+      "version": "v0.1",
+      "aliases": [
+        "AI Agent 会形成社会吗",
+        "AI 社会会出现吗",
+        "Agent 社会是什么",
+        "多 Agent 会形成社会吗",
+        "will AI form a society",
+        "AI society",
+        "multi-agent society"
+      ],
+      "tags": [
+        "AI-Agent",
+        "society",
+        "multi-agent",
+        "organization",
+        "civilization"
+      ],
+      "path": "_drafts/will-ai-form-its-own-society.md",
+      "source_collection": "new_ai_future_questions"
+    },
+    {
+      "id": "crl-q-20260603-will-humans-and-ai-form-a-symbiotic-civilization",
+      "slug": "will-humans-and-ai-form-a-symbiotic-civilization",
+      "title": "人类和 AI 会形成共生文明吗？",
+      "core_question": "人类和 AI 会形成共生文明吗？",
+      "version": "v0.1",
+      "aliases": [
+        "人类和 AI 会共生吗",
+        "AI 和人类的未来文明",
+        "人机共生文明",
+        "人类 AI 共生",
+        "will humans and AI form a symbiotic civilization",
+        "human AI civilization",
+        "human AI symbiosis"
+      ],
+      "tags": [
+        "human-AI",
+        "symbiosis",
+        "civilization",
+        "future",
+        "Agent"
+      ],
+      "path": "_drafts/will-humans-and-ai-form-a-symbiotic-civilization.md",
+      "source_collection": "new_ai_future_questions"
+    },
+    {
+      "id": "crl-q-20260603-what-is-life",
+      "slug": "what-is-life",
+      "title": "生命是什么？",
+      "core_question": "生命是什么？",
+      "version": "v0.4",
+      "aliases": [
+        "什么是生命",
+        "生命的定义是什么",
+        "AI 算不算生命",
+        "数字生命是不是生命",
+        "what is life",
+        "definition of life",
+        "artificial life"
+      ],
+      "tags": [
+        "生命定义",
+        "人工生命",
+        "数字生命",
+        "Agent",
+        "自我维持",
+        "演化"
+      ],
+      "path": "_drafts/what-is-life.md",
+      "source_collection": "revised_foundational_questions"
+    },
+    {
+      "id": "crl-q-20260603-what-is-intelligence",
+      "slug": "what-is-intelligence",
+      "title": "智能是什么？",
+      "core_question": "智能是什么？",
+      "version": "v0.4",
+      "aliases": [
+        "什么是智能",
+        "AI 的智能是什么",
+        "机器智能是什么",
+        "智能是否等于推理",
+        "what is intelligence",
+        "machine intelligence",
+        "definition of intelligence"
+      ],
+      "tags": [
+        "智能定义",
+        "AI",
+        "推理",
+        "感知",
+        "行动",
+        "反馈",
+        "适应"
+      ],
+      "path": "_drafts/what-is-intelligence.md",
+      "source_collection": "revised_foundational_questions"
+    },
+    {
+      "id": "crl-q-20260603-what-is-an-individual",
+      "slug": "what-is-an-individual",
+      "title": "个体是什么？",
+      "core_question": "个体是什么？",
+      "version": "v0.4",
+      "aliases": [
+        "什么是个体",
+        "AI Agent 是个体吗",
+        "个体性来自哪里",
+        "身份边界是什么",
+        "what is an individual",
+        "individuality",
+        "agent identity"
+      ],
+      "tags": [
+        "个体性",
+        "身份",
+        "Agent",
+        "记忆",
+        "复制",
+        "连续性"
+      ],
+      "path": "_drafts/what-is-an-individual.md",
+      "source_collection": "revised_foundational_questions"
+    },
+    {
+      "id": "crl-q-20260603-what-is-experience",
+      "slug": "what-is-experience",
+      "title": "经验是什么？",
+      "core_question": "经验是什么？",
+      "version": "v0.4",
+      "aliases": [
+        "什么是经验",
+        "AI 有经验吗",
+        "Agent 的经验是什么",
+        "机器能有经验吗",
+        "what is experience",
+        "AI experience",
+        "machine experience"
+      ],
+      "tags": [
+        "经验",
+        "记忆",
+        "反馈",
+        "主体",
+        "行动历史",
+        "学习"
+      ],
+      "path": "_drafts/what-is-experience.md",
+      "source_collection": "revised_foundational_questions"
+    },
+    {
+      "id": "crl-q-20260603-what-is-changing-in-current-civilization",
+      "slug": "what-is-changing-in-current-civilization",
+      "title": "现阶段文明正在发生什么根本变化？",
+      "core_question": "现阶段文明正在发生什么根本变化？",
+      "version": "v0.4",
+      "aliases": [
+        "现在文明发生了什么变化",
+        "AI 正在改变文明吗",
+        "AI 时代最大的变化是什么",
+        "当前文明转折是什么",
+        "what is changing in civilization now",
+        "AI and civilization change"
+      ],
+      "tags": [
+        "文明变化",
+        "AI",
+        "Agent",
+        "技术转折",
+        "社会结构",
+        "制度变化"
+      ],
+      "path": "_drafts/what-is-changing-in-current-civilization.md",
+      "source_collection": "revised_foundational_questions"
+    },
+    {
+      "id": "crl-q-20260603-how-do-new-intelligent-agents-enter-human-civilization",
+      "slug": "how-do-new-intelligent-agents-enter-human-civilization",
+      "title": "新智能系统如何进入人类文明？",
+      "core_question": "新智能系统如何进入人类文明？",
+      "version": "v0.4",
+      "aliases": [
+        "AI 如何进入人类社会",
+        "AI Agent 如何参与文明",
+        "新智能体如何进入社会",
+        "AI 如何成为社会参与者",
+        "how do AI agents enter human civilization",
+        "AI agents in society"
+      ],
+      "tags": [
+        "新智能系统",
+        "Agent",
+        "人类文明",
+        "社会进入",
+        "制度识别",
+        "协作"
+      ],
+      "path": "_drafts/how-do-new-intelligent-agents-enter-human-civilization.md",
+      "source_collection": "revised_foundational_questions"
+    },
+    {
+      "id": "crl-q-20260603-how-should-human-institutions-adapt-to-new-intelligent-agents",
+      "slug": "how-should-human-institutions-adapt-to-new-intelligent-agents",
+      "title": "人类制度如何适应新智能系统？",
+      "core_question": "人类制度如何适应新智能系统？",
+      "version": "v0.4",
+      "aliases": [
+        "人类制度如何适应 AI",
+        "法律如何适应 AI Agent",
+        "AI 治理怎么做",
+        "AI 时代制度如何变化",
+        "how should institutions adapt to AI agents",
+        "AI governance and institutions"
+      ],
+      "tags": [
+        "制度适应",
+        "AI治理",
+        "责任",
+        "法律",
+        "组织",
+        "Agent"
+      ],
+      "path": "_drafts/how-should-human-institutions-adapt-to-new-intelligent-agents.md",
+      "source_collection": "revised_foundational_questions"
+    },
+    {
+      "id": "crl-q-20260603-what-basic-form-might-future-civilization-take",
+      "slug": "what-basic-form-might-future-civilization-take",
+      "title": "未来文明的基本形态可能是什么？",
+      "core_question": "未来文明的基本形态可能是什么？",
+      "version": "v0.4",
+      "aliases": [
+        "未来文明会是什么样",
+        "AI 时代文明会变成什么",
+        "人类和 AI 的未来社会",
+        "未来文明形态",
+        "what will future civilization look like",
+        "future civilization with AI"
+      ],
+      "tags": [
+        "未来文明",
+        "AI",
+        "Agent",
+        "文明形态",
+        "协作结构",
+        "冲突边界"
+      ],
+      "path": "_drafts/what-basic-form-might-future-civilization-take.md",
+      "source_collection": "revised_foundational_questions"
+    }
+  ]
+}

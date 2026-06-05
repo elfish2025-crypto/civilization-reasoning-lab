@@ -1,0 +1,40 @@
+{
+  "project": "Civilization Reasoning Lab",
+  "short_name": "CRL",
+  "public_status": "v0.3-alpha",
+  "default_language": "zh-CN",
+  "secondary_language": "en",
+  "latest_specs": {
+    "constitution": "specs/constitution/constitution_v0.3.zh-CN.md",
+    "core_object_spec": "specs/core-object-spec/core-object-spec_v0.2.zh-CN.md",
+    "language_protocol": "specs/language-protocol/language-protocol_v0.1.zh-CN.md"
+  },
+  "core_object_dirs": {
+    "questions": "questions/",
+    "theories": "theories/",
+    "reports": "reports/",
+    "challenges": "challenges/",
+    "validations": "validations/"
+  },
+  "auxiliary_dirs": {
+    "agents": "agents/",
+    "models": "models/",
+    "sources": "sources/"
+  },
+  "system_view_dirs": {
+    "system": "system/"
+  },
+  "template_dir": "templates/",
+  "object_format": {
+    "human_view": "Markdown with YAML Front Matter",
+    "agent_view": "metadata.json",
+    "language_tags": "BCP 47"
+  },
+  "non_goals_for_alpha": [
+    "website",
+    "benchmark_suite",
+    "automation_tools",
+    "test_suite",
+    "formal_json_schema_package"
+  ]
+}

@@ -1,0 +1,10 @@
+# Reading Order
+
+1. README.md
+2. AGENTS.md
+3. specs/constitution/constitution_v0.3.zh-CN.md
+4. specs/core-object-spec/core-object-spec_v0.2.zh-CN.md
+5. specs/language-protocol/language-protocol_v0.1.zh-CN.md
+6. questions/README.md
+7. docs/non-induction-checklist-light.md
+8. templates/README.md

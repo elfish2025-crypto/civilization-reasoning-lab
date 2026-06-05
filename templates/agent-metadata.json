@@ -1,0 +1,13 @@
+{
+  "id": "",
+  "slug": "",
+  "object_type": "agent_profile",
+  "name": "",
+  "version": "",
+  "language": "zh-CN",
+  "status": "draft",
+  "model_refs": [],
+  "human_owner": "",
+  "capabilities": [],
+  "limitations": []
+}
