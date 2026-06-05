@@ -12,4 +12,4 @@ Question Node -> Theory Node -> Report Node
 
 ## Current theory nodes
 
-- `double-helix-civilization-evolution/`：由 `docs/double-helix-civilization-simulation_v0.3.zh-CN.md` 改造出的双螺旋文明演化理论节点。
+- `double-helix-civilization-evolution/`：由 `docs/double-helix-civilization-simulation_v0.3.zh-CN.md` 改造出的碳硅双螺旋文明演化理论节点。

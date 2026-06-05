@@ -2,7 +2,7 @@
 id: crl-t-20260605-double-helix-civilization-evolution
 slug: double-helix-civilization-evolution
 object_type: theory
-title: 双螺旋文明演化理论
+title: 碳硅双螺旋文明演化理论
 language: zh-CN
 original_language: zh-CN
 status: emerging
@@ -35,10 +35,10 @@ supporting_reports:
   - crl-r-20260605-double-helix-civilization-simulation
 license: MIT
 visibility: public
-machine_summary: 本理论认为未来文明可能沿 Agent 文明线与人类-AI 共生文明线并行演化：Agent 从工具、记忆个体、具身个体、群体和数字繁衍逐步接近第二生命；人类制度则从智能工具文明、人机伴生、委托行动、制度化承认走向双生命社会与共生文明。
+machine_summary: 本理论认为未来文明可能沿碳基生命文明线与硅基智能文明线并行演化：Agent 从工具、记忆个体、具身个体、群体和数字繁衍逐步接近第二生命；人类制度则从智能工具文明、人机伴生、委托行动、制度化承认走向双生命社会与共生文明。
 ---
 
-# 双螺旋文明演化理论
+# 碳硅双螺旋文明演化理论
 
 ## 所回答的问题
 
@@ -61,7 +61,7 @@ machine_summary: 本理论认为未来文明可能沿 Agent 文明线与人类-A
 
 ## 核心主张
 
-未来文明可能不是单线从“人类社会使用 AI 工具”演化而来，而是沿两条互相缠绕的文明线并行推进：
+未来文明可能不是单线从“人类社会使用 AI 工具”演化而来，而是沿碳基生命与硅基智能两条互相缠绕的文明线并行推进：
 
 1. Agent 文明线：Agent 从工具、网络经验体、记忆个体、具身个体、群体、数字繁衍，逐步接近第二生命与非人智能文明。
 2. 共生文明线：人类社会从智能工具文明、人机伴生、委托行动、Agent 制度化、双主体社会，逐步走向双生命社会与共生文明。

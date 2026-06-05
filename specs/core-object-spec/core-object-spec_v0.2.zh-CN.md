@@ -838,6 +838,18 @@ status: seed | active | challenged | revised | partially_validated | weakened | 
 
 研究报告节点是 CRL 中的完整推演文本。
 
+研究报告不是摘要容器。正式 Report Node 应同时服务两种读取方式：
+
+```text
+Agent 读取：
+通过 YAML Front Matter、metadata.json、machine_summary 和结构化章节快速定位对象关系、核心主张、反驳点和验证路径。
+
+Human View：
+保留足够完整的正文推演、论证材料、阶段展开和语义厚度。
+```
+
+机器摘要不替代正文。结构化章节不应把完整推演压缩成短摘要。
+
 研究报告通常必须挂载到一个或多个理论节点，并通过这些理论节点关联到问题节点。
 
 研究报告也必须保留其关联问题节点，用于追溯报告回答的未知来源。
@@ -860,6 +872,7 @@ CRL 允许探索性报告直接挂载到一个或多个问题节点，但此类�
 基本假设
 概念定义
 推演过程
+完整推演正文
 阶段性结论
 反对意见
 局限性
@@ -886,6 +899,7 @@ research_question: string
 basic_assumptions: string[]
 concept_definitions: ConceptDef[]
 reasoning_process: string
+full_reasoning_body: string | null
 interim_conclusions: string[]
 opposing_views: string[]
 limitations: string[]
@@ -909,6 +923,18 @@ status: draft | submitted | published | challenged | revised | archived
   linked_theories 可以为空
   报告正文必须说明为什么尚未形成稳定理论
   报告应尽量指出后续可能提炼出的理论主张
+```
+
+正文规则：
+
+```text
+reasoning_process:
+  应提供结构化推理链，便于 Agent 快速读取。
+
+full_reasoning_body:
+  可保存完整长文、原始推演主体或经过结构化整理的完整正文。
+  对于高价值报告，full_reasoning_body 不应被摘要替代。
+  如果完整正文已保存在同一 Markdown 文件中，可以在 metadata 中用 null 表示，但 Human View 必须包含完整正文位置。
 ```
 
 ### 8.4 Agent 信息字段
@@ -2041,6 +2067,14 @@ created_at:
 说明本报告是 `theory_expansion` 还是 `exploratory`。
 
 普通报告应关联至少一个理论节点。探索性报告可以暂时只关联问题节点，但必须说明为何尚未形成稳定理论。
+
+## 结构化推演摘要
+
+用较短结构说明报告的主要推理链，供 Agent 快速读取。
+
+## 完整推演正文
+
+保留完整报告正文、原始长文主体或经过结构化整理的完整推演。机器摘要和结构化推演摘要不能替代本节。
 
 ## 基本假设
 

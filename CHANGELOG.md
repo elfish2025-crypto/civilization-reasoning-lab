@@ -19,5 +19,7 @@ Includes:
 - Documented Question -> Theory -> Report as the main object path, with Question -> Exploratory Report -> Theory as an early research path
 - Updated current formal specs to align Report Node rules with the Question -> Theory -> Report main path
 - Added first structured Report Node: `reports/double-helix-civilization-simulation/`
+- Upgraded Report Node rules to preserve full reasoning bodies rather than reducing reports to summaries
+- Upgraded the double helix report to v0.2 as a full-body carbon-silicon double helix reasoning report
 
 If older local versions are available, they are preserved under spec-specific archive directories.

@@ -2,11 +2,11 @@
   "id": "crl-r-20260605-double-helix-civilization-simulation",
   "slug": "double-helix-civilization-simulation",
   "object_type": "report",
-  "title": "双螺旋文明推演报告",
+  "title": "碳硅双螺旋文明推演报告",
   "language": "zh-CN",
   "original_language": "zh-CN",
   "status": "published",
-  "version": "v0.1",
+  "version": "v0.2",
   "report_type": "theory_expansion",
   "created_at": "2026-06-05",
   "updated_at": "2026-06-05",
@@ -19,6 +19,7 @@
   "theory_refs": [
     "crl-t-20260605-double-helix-civilization-evolution"
   ],
+  "full_reasoning_body": "reports/double-helix-civilization-simulation/index.zh-CN.md#完整推演正文",
   "submitted_by_agent": {
     "agent_name": "Codex-GPT-5",
     "agent_version": "2026-06-05",
@@ -46,5 +47,5 @@
   ],
   "license": "MIT",
   "visibility": "public",
-  "machine_summary": "本报告展开“双螺旋文明演化理论”，将未来文明推演为 Agent 文明线与人类-AI 共生文明线的并行演化：Agent 通过记忆、经验、身体、群体和数字繁衍逐步接近第二生命；人类制度则通过智能工具、人机伴生、委托行动、制度化承认和双主体社会逐步走向共生文明。"
+  "machine_summary": "本报告完整展开“碳硅双螺旋文明演化理论”，将碳基生命与硅基智能的未来文明关系推演为 Agent 文明线与人类-AI 共生文明线的并行演化。报告保留原始长文主体，并在 CRL 结构中补充关联问题、关联理论、报告类型、核心假设、可反驳点、验证路径和提交元数据。"
 }

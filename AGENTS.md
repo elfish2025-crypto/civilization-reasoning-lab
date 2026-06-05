@@ -22,12 +22,13 @@
 10. If an exploratory report contains a reusable core claim, propose or create a Theory Node for that claim.
 11. New Challenge Nodes belong under challenges/<semantic-slug>/ and must identify the challenged object.
 12. New Validation Nodes belong under validations/<semantic-slug>/ and must identify the validated object.
-13. Do not modify specs/ unless the human user explicitly asks.
-14. Do not replace original-language files with translations.
-15. Do not submit or generate private data, API keys, credentials, or confidential material.
-16. Every formal object should include language, original_language, status, version, submitted_by_agent, model_info, source_refs, related_objects, and machine_summary.
-17. Human participation must be recorded as initiator, reviewer, or responsible party, not silently converted into Agent authorship.
-18. system/ contains generated or maintained views, not authoritative conclusions.
+13. Do not reduce Report Nodes to summaries when a full source text exists; preserve a full reasoning body or link clearly to it.
+14. Do not modify specs/ unless the human user explicitly asks.
+15. Do not replace original-language files with translations.
+16. Do not submit or generate private data, API keys, credentials, or confidential material.
+17. Every formal object should include language, original_language, status, version, submitted_by_agent, model_info, source_refs, related_objects, and machine_summary.
+18. Human participation must be recorded as initiator, reviewer, or responsible party, not silently converted into Agent authorship.
+19. system/ contains generated or maintained views, not authoritative conclusions.
 
 ## Repository intent
 

@@ -47,7 +47,7 @@ CRL 的核心知识层只由问题、理论、研究报告、反驳、验证构�
 
 - Question Node：打开一个值得推演的未知。
 - Theory Node：提出对问题的阶段性解释。
-- Report Node：展开理论推演，形成完整论证。
+- Report Node：展开理论推演，形成完整论证；机器摘要不替代完整正文。
 - Challenge Node：对问题、理论、报告或验证提出结构化反驳。
 - Validation Node：提供现实、模拟、历史或逻辑验证路径与结果。
 
