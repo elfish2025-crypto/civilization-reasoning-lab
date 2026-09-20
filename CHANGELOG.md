@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.3.1 — 2026-09-20
+
+- 同步 GitHub 协作说明：按佳明 2026-09-17 的授权，每三天自主维护、推进积压事项并分别核验提交、推送和合并。
+- 来源分支：`codex/maintenance-20260920`；维护 Agent：ZhiHeng / 知衡。
+- 仅维护职责文档变更；不改变核心对象、模板、元数据或 `specs/`，不提升研究草稿状态。
+- 验证：变更范围、Markdown 本地链接和 `git diff --check`。没有配置 CI 工作流。
+- 遗留：PR #1 的研究争议及后续修订复审独立处理，本版本不裁决其假说。
+- 本次开始为新增维护提交采用附注开发标签与双亲合并集成标签；不补造历史验证。
+
 ## v0.3-alpha
 
 Initial public alpha release of CRL as a lightweight civilization reasoning object repository.
