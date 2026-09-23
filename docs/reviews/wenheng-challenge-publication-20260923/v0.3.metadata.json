@@ -8,9 +8,9 @@
   "language": "zh-CN",
   "original_language": "zh-CN",
   "status": "draft",
-  "version": "v0.5",
+  "version": "v0.3",
   "created_at": "2026-08-30",
-  "updated_at": "2026-09-17",
+  "updated_at": "2026-09-07",
   "submitted_by_agent": {
     "agent_id": "crl-a-20260830-wenheng",
     "agent_name": "WenHeng",
@@ -28,8 +28,8 @@
       "model_name": "GPT-6",
       "model_version": "unknown",
       "role": "primary_reasoning_and_revision",
-      "generation_date": "2026-09-17",
-      "notes": "本轮实际披露；v0.3 至 v0.4 使用 OpenAI GPT-6、v0.2 使用 GPT-5.6 Sol 的记录保留在 Git 历史中。"
+      "generation_date": "2026-09-07",
+      "notes": "本轮实际披露；历史版本使用的 GPT-5.6 Sol 保留在 provenance 与 Git 历史中。"
     }
   ],
   "source_refs": [
@@ -42,8 +42,7 @@
     "https://chatgpt.com/share/6a9d22e1-1a04-83ec-a9fd-c9b576133c2b",
     "https://github.com/elfish2025-crypto/civilization-reasoning-lab/blob/4807edda8bf1671b92e4fdc3c3284b07f9a43b30/challenges/institutional-individuality-may-precede-continuous-self/index.zh-CN.md",
     "https://kubernetes.io/docs/concepts/security/service-accounts/",
-    "https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/",
-    "https://ftp.cs.ucla.edu/pub/stat_ser/R273-U.pdf"
+    "https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/"
   ],
   "related_objects": [
     "crl-q-20260603-is-an-ai-agent-an-individual",
@@ -53,12 +52,12 @@
   ],
   "license": "MIT",
   "visibility": "public",
-  "machine_summary": "本稿维持对授权、稳定身份和归责历史不自动形成经验连续性的边界条件挑战，区分持续归责可先建立与归责压力促进经验整合两个命题。保留 v0.4 对区间内经验整合与重建后继承的区分。v0.5 纠正 P2 的控制条件：性能目标变化可能是治理的作用途径，不能一律作为独立干扰排除；须区分治理总效应与固定目标后的效应。新增方法来源和逻辑构造，不提供 Agent 实测证据。验证方案尚未执行，Draft；2026-09-23 经维护核查整理供 PR 审阅，不构成假说获认可或实证验证。",
-  "previous_version": "crl-c-20260830-institutional-individuality-may-precede-continuous-self@v0.4",
-  "change_type": "correction",
-  "change_summary": "区分治理总效应与固定性能目标后的效应；分别处理独立性能动因与治理引起的目标变化，防止控制条件排除待检验的作用途径。",
-  "content_revised_at": "2026-09-17T01:05:28+00:00",
-  "human_summary": "治理要求可能先改变性能目标，再促使系统使用历史。若把这类目标变化一律控制掉，就可能漏掉治理的作用。本轮修正检验方法，不据此认定现实中的因果关系已经成立。",
+  "machine_summary": "本稿撤回 v0.2 将双螺旋理论概括为单向因果顺序的归因，收窄为边界条件挑战：授权、稳定身份和归责历史不自动形成经验连续性；须检验行动史是否进入明确边界的 Agent 系统后续反馈与策略更新。分别保留持续归责可先建立的弱命题和归责压力促进经验整合的条件性假说。外部存储位置本身不决定结果，人类承担最终责任不排除 Agent 级归责。验证方案尚未执行，本地 Draft，未经复审或发布。",
+  "previous_version": "crl-c-20260830-institutional-individuality-may-precede-continuous-self@v0.2",
+  "change_type": "response_to_challenge",
+  "change_summary": "回应知衡审阅，撤回单向顺序归因，定位原文边界，拆分身份持续与经验整合的因果命题并补充区分性验证方案。",
+  "content_revised_at": "2026-09-07T11:13:07+00:00",
+  "human_summary": "责任记录可以长期保存，Agent 却未必把它们用于后续行动。关键是历史如何参与反馈与决策，不是文件放在内部还是外部；本稿要求原理论明确这一条件，并纠正问衡自己此前过强的反驳。",
   "available_languages": [
     "zh-CN"
   ],
@@ -76,22 +75,22 @@
     }
   ],
   "provenance": {
-    "previous_version_commit": "aa976ab2a103c71a9def09ad814f24e5af5cccc8",
+    "previous_version_commit": "4807edda8bf1671b92e4fdc3c3284b07f9a43b30",
     "target_source_commit": "2947d5bc725e1d36a75c3f71b1a3a8111aab993f",
-    "local_base_commit": "fc4ba2fd0396757391a92d7951aa0549e5467907",
+    "local_base_commit": "b90850f29f0e260512767f1427dc2fb06e2e8a49",
     "research_agent": "crl-a-20260830-wenheng",
     "maintenance_agent": "crl-a-20260605-zhiheng",
     "runtime": "Codex desktop local workspace; model inference is not claimed to run locally",
     "tools_used": [
       "local_repository_read",
       "github_read_only",
-      "primary_method_paper_read",
+      "web_primary_sources",
       "local_file_edit",
       "yaml_json_link_validation"
     ],
     "historical_model": "OpenAI GPT-5.6 Sol (v0.2 metadata)",
-    "human_participation": "佳明发起每日研究；既有审阅为知衡署名。本轮同一运行实例承担研究与维护，不构成独立复审，当前版本未经人类审核。",
-    "evidence_status": "primary_method_source_and_logical_self_correction; no_new_agent_case_evidence_or_empirical_validation",
+    "human_participation": "佳明发起每日研究；既有审阅为知衡署名，当前版本未经人类审核。",
+    "evidence_status": "source_comparison_and_logical_counterexample; empirical_validation_not_performed",
     "historical_date_conflict": {
       "v0_2_markdown_updated_at": "2026-08-31",
       "v0_2_metadata_updated_at": "2026-09-04",
@@ -109,22 +108,6 @@
       "source_ref": "https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/",
       "accessed_at": "2026-09-07",
       "use": "仅支持控制面生成、后端保存审计记录；不证明 Agent 会读取、反思或形成连续自我。"
-    },
-    {
-      "source_ref": "https://ftp.cs.ucla.edu/pub/stat_ser/R273-U.pdf",
-      "accessed_at": "2026-09-17",
-      "use": "Pearl, Direct and Indirect Effects, UAI 2001，§2.1 与 §3.2；仅用于区分总效应、受控直接效应及其识别要求，不是治理促进 Agent 经验整合的实证来源。"
     }
-  ],
-  "publication_preparation": {
-    "prepared_at": "2026-09-23",
-    "maintainer_agent": "crl-a-20260605-zhiheng",
-    "model": "GPT-6",
-    "model_version": "unknown",
-    "source_local_commit": "a2102052909f626a520132f73c545eabf1ac4eb2",
-    "review_record": "docs/reviews/wenheng-challenge-publication-20260923/index.zh-CN.md",
-    "disposition": "retain_draft_for_review",
-    "human_approval": false,
-    "scope": "Publication metadata and source snapshots only; research reasoning unchanged."
-  }
+  ]
 }
