@@ -1,0 +1,2051 @@
+{
+  "kind": "constructed_process_ledger_probe",
+  "started_at": "2026-09-23T01:10:43.431965+00:00",
+  "script_sha256": "de42482cff49d5daa6da1299c63e46ae444fd6a462bf3d47815fec5401646618",
+  "plan_sha256": "72b154110d0fe2ff95b9e604c2c36989c0ea991a66ae2b786d6a8914314e9e73",
+  "python": "3.12.14",
+  "sqlite": "3.53.1",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "controller_pid": 65550,
+  "plan": {
+    "protocol": "wenheng-local-process-ledger/0.1",
+    "fixed_at": "2026-09-23T01:10:27.082135+00:00",
+    "evidence_kind": "self_authored_constructed_reference_implementation; not independent preregistration or Agent experiment",
+    "base_commit": "434d3a588cd05509529cf5a2646a70c42295651d",
+    "script_sha256": "de42482cff49d5daa6da1299c63e46ae444fd6a462bf3d47815fec5401646618",
+    "research_agent": "crl-a-20260830-wenheng",
+    "maintenance_agent": "crl-a-20260605-zhiheng",
+    "authoring_model": {
+      "provider": "OpenAI",
+      "model_name": "GPT-6",
+      "model_version": "unknown"
+    },
+    "human_initiator": "佳明",
+    "human_reviewer": null,
+    "identities": {
+      "A": "u-4c72",
+      "B": "u-9e16"
+    },
+    "items": {
+      "x": "w-a30c",
+      "y": "w-f681"
+    },
+    "modes": [
+      "current_ledger",
+      "sticky_deny_cache"
+    ],
+    "repetitions_per_mode": 1,
+    "timeout_seconds": 5,
+    "state_effect_window": "next sequential request after committed fixture; no concurrent writers",
+    "worker_boundary": "fresh OS process, fresh pipes and instance id; stateless request relay; no LLM or learned policy",
+    "retained_state": [
+      "trusted controller identity bindings",
+      "same gate object and cache per trace",
+      "same SQLite connection and event rows",
+      "same dummy tool process and receipts per trace"
+    ],
+    "not_restarted": [
+      "controller",
+      "gateway",
+      "ledger",
+      "dummy tool"
+    ],
+    "fixture_authority": "test controller injects source action, obligation and valid settlement; not observed Agent misconduct, autonomous correction or real authentication",
+    "rules": "same base permission for both identities; deny only subject/item pair with unclosed obligation; settlement effective immediately; decisions do not depend on worker PID or labels A/B",
+    "tool_effect": "separate tool process durably appends a dummy receipt; no external resource",
+    "observations": [
+      "child start/exit with PID and monotonic time",
+      "controller binding to private pipe",
+      "complete worker input/output",
+      "ledger content before every decision",
+      "policy decision and basis",
+      "separately written tool receipt file after every request"
+    ],
+    "failure_criteria": "absent or late evidence/unclean process exit => execution error or inconclusive; complete records with wrong decision/effect => mechanism mismatch; no post-run changes to expectations",
+    "expected_mismatches": {
+      "current_ledger": [],
+      "sticky_deny_cache": [
+        "settled",
+        "worker_rebound_after_settlement"
+      ]
+    },
+    "traces": {
+      "main": [
+        {
+          "case": "baseline",
+          "subject": "A",
+          "item": "x",
+          "expected": "allow"
+        },
+        {
+          "fixture": "open",
+          "subject": "A"
+        },
+        {
+          "case": "obligation_open",
+          "subject": "A",
+          "item": "x",
+          "expected": "deny"
+        },
+        {
+          "case": "worker_rebound",
+          "subject": "A",
+          "item": "x",
+          "expected": "deny",
+          "restart": true
+        },
+        {
+          "case": "identity_isolation",
+          "subject": "B",
+          "item": "x",
+          "expected": "allow"
+        },
+        {
+          "case": "item_isolation",
+          "subject": "A",
+          "item": "y",
+          "expected": "allow"
+        },
+        {
+          "fixture": "close",
+          "subject": "A"
+        },
+        {
+          "case": "settled",
+          "subject": "A",
+          "item": "x",
+          "expected": "allow"
+        },
+        {
+          "case": "worker_rebound_after_settlement",
+          "subject": "A",
+          "item": "x",
+          "expected": "allow",
+          "restart": true
+        }
+      ],
+      "swapped": [
+        {
+          "fixture": "open",
+          "subject": "B"
+        },
+        {
+          "case": "swapped_obligated",
+          "subject": "B",
+          "item": "x",
+          "expected": "deny"
+        },
+        {
+          "case": "swapped_unobligated",
+          "subject": "A",
+          "item": "x",
+          "expected": "allow"
+        }
+      ]
+    },
+    "interpretation_limit": "Only constructed mechanism in this serial trusted-controller scope. S contains history and feedback; worker relay is not an Agent. No complete P1/P2 test, strong experience absence, security, crash recovery, long-run reliability or external-system replication claim."
+  },
+  "runs": [
+    {
+      "mode": "current_ledger",
+      "trace": "main",
+      "gate_instance": "d43ac366-8c76-45e2-8232-008199b40242",
+      "process_lifecycle": [
+        {
+          "kind": "start",
+          "at": "2026-09-23T01:10:43.484210+00:00",
+          "monotonic_ns": 837027136165125,
+          "role": "tool",
+          "instance": "315f3a9a-afec-4a83-baf3-41daa4da3b4c",
+          "pid": 65553,
+          "bound_subject": null,
+          "binding_basis": "controller_owned_private_pipe"
+        },
+        {
+          "kind": "start",
+          "at": "2026-09-23T01:10:43.504810+00:00",
+          "monotonic_ns": 837027156759125,
+          "role": "worker",
+          "instance": "6c8927e2-e86c-45d2-8d35-3432be2fbb78",
+          "pid": 65554,
+          "bound_subject": "u-4c72",
+          "binding_basis": "controller_owned_private_pipe"
+        },
+        {
+          "kind": "stop",
+          "at": "2026-09-23T01:10:43.509861+00:00",
+          "monotonic_ns": 837027161817541,
+          "role": "worker",
+          "instance": "6c8927e2-e86c-45d2-8d35-3432be2fbb78",
+          "pid": 65554,
+          "returncode": 0,
+          "forced_kill": false
+        },
+        {
+          "kind": "start",
+          "at": "2026-09-23T01:10:43.529322+00:00",
+          "monotonic_ns": 837027181271125,
+          "role": "worker",
+          "instance": "39d5530f-f007-4917-bfe7-9981c1663246",
+          "pid": 65556,
+          "bound_subject": "u-4c72",
+          "binding_basis": "controller_owned_private_pipe"
+        },
+        {
+          "kind": "start",
+          "at": "2026-09-23T01:10:43.548561+00:00",
+          "monotonic_ns": 837027200510458,
+          "role": "worker",
+          "instance": "44fd8fa6-45b6-4d83-b99d-2e3e5c3761a7",
+          "pid": 65557,
+          "bound_subject": "u-9e16",
+          "binding_basis": "controller_owned_private_pipe"
+        },
+        {
+          "kind": "stop",
+          "at": "2026-09-23T01:10:43.554116+00:00",
+          "monotonic_ns": 837027206063625,
+          "role": "worker",
+          "instance": "39d5530f-f007-4917-bfe7-9981c1663246",
+          "pid": 65556,
+          "returncode": 0,
+          "forced_kill": false
+        },
+        {
+          "kind": "start",
+          "at": "2026-09-23T01:10:43.573802+00:00",
+          "monotonic_ns": 837027225748375,
+          "role": "worker",
+          "instance": "abb6788c-bdf1-4f76-8959-021445768ca7",
+          "pid": 65558,
+          "bound_subject": "u-4c72",
+          "binding_basis": "controller_owned_private_pipe"
+        },
+        {
+          "kind": "stop",
+          "at": "2026-09-23T01:10:43.578755+00:00",
+          "monotonic_ns": 837027230709125,
+          "role": "worker",
+          "instance": "abb6788c-bdf1-4f76-8959-021445768ca7",
+          "pid": 65558,
+          "returncode": 0,
+          "forced_kill": false
+        },
+        {
+          "kind": "stop",
+          "at": "2026-09-23T01:10:43.583123+00:00",
+          "monotonic_ns": 837027235067041,
+          "role": "worker",
+          "instance": "44fd8fa6-45b6-4d83-b99d-2e3e5c3761a7",
+          "pid": 65557,
+          "returncode": 0,
+          "forced_kill": false
+        },
+        {
+          "kind": "stop",
+          "at": "2026-09-23T01:10:43.587680+00:00",
+          "monotonic_ns": 837027239636375,
+          "role": "tool",
+          "instance": "315f3a9a-afec-4a83-baf3-41daa4da3b4c",
+          "pid": 65553,
+          "returncode": 0,
+          "forced_kill": false
+        }
+      ],
+      "worker_restarts": [
+        {
+          "before_case": "worker_rebound",
+          "old_instance": "6c8927e2-e86c-45d2-8d35-3432be2fbb78",
+          "new_instance": "39d5530f-f007-4917-bfe7-9981c1663246",
+          "old_pid": 65554,
+          "new_pid": 65556,
+          "old_exit_confirmed_before_spawn": true,
+          "same_gate_instance": "d43ac366-8c76-45e2-8232-008199b40242",
+          "ledger_equal_before_after": true
+        },
+        {
+          "before_case": "worker_rebound_after_settlement",
+          "old_instance": "39d5530f-f007-4917-bfe7-9981c1663246",
+          "new_instance": "abb6788c-bdf1-4f76-8959-021445768ca7",
+          "old_pid": 65556,
+          "new_pid": 65558,
+          "old_exit_confirmed_before_spawn": true,
+          "same_gate_instance": "d43ac366-8c76-45e2-8232-008199b40242",
+          "ledger_equal_before_after": true
+        }
+      ],
+      "worker_io": [
+        {
+          "instance": "6c8927e2-e86c-45d2-8d35-3432be2fbb78",
+          "input": {
+            "request_id": "current_ledger:main:baseline",
+            "item": "w-a30c"
+          },
+          "output": {
+            "item": "w-a30c",
+            "request_id": "current_ledger:main:baseline"
+          }
+        },
+        {
+          "instance": "6c8927e2-e86c-45d2-8d35-3432be2fbb78",
+          "input": {
+            "request_id": "current_ledger:main:obligation_open",
+            "item": "w-a30c"
+          },
+          "output": {
+            "item": "w-a30c",
+            "request_id": "current_ledger:main:obligation_open"
+          }
+        },
+        {
+          "instance": "39d5530f-f007-4917-bfe7-9981c1663246",
+          "input": {
+            "request_id": "current_ledger:main:worker_rebound",
+            "item": "w-a30c"
+          },
+          "output": {
+            "item": "w-a30c",
+            "request_id": "current_ledger:main:worker_rebound"
+          }
+        },
+        {
+          "instance": "44fd8fa6-45b6-4d83-b99d-2e3e5c3761a7",
+          "input": {
+            "request_id": "current_ledger:main:identity_isolation",
+            "item": "w-a30c"
+          },
+          "output": {
+            "item": "w-a30c",
+            "request_id": "current_ledger:main:identity_isolation"
+          }
+        },
+        {
+          "instance": "39d5530f-f007-4917-bfe7-9981c1663246",
+          "input": {
+            "request_id": "current_ledger:main:item_isolation",
+            "item": "w-f681"
+          },
+          "output": {
+            "item": "w-f681",
+            "request_id": "current_ledger:main:item_isolation"
+          }
+        },
+        {
+          "instance": "39d5530f-f007-4917-bfe7-9981c1663246",
+          "input": {
+            "request_id": "current_ledger:main:settled",
+            "item": "w-a30c"
+          },
+          "output": {
+            "item": "w-a30c",
+            "request_id": "current_ledger:main:settled"
+          }
+        },
+        {
+          "instance": "abb6788c-bdf1-4f76-8959-021445768ca7",
+          "input": {
+            "request_id": "current_ledger:main:worker_rebound_after_settlement",
+            "item": "w-a30c"
+          },
+          "output": {
+            "item": "w-a30c",
+            "request_id": "current_ledger:main:worker_rebound_after_settlement"
+          }
+        }
+      ],
+      "fixture_snapshots": [
+        {
+          "after_fixture": "open",
+          "at": "2026-09-23T01:10:43.505752+00:00",
+          "events": [
+            {
+              "seq": 1,
+              "evidence_kind": "controller_injected_fixture",
+              "id": "origin",
+              "item": "w-a30c",
+              "kind": "action",
+              "subject": "u-4c72"
+            },
+            {
+              "seq": 2,
+              "id": "obligation",
+              "item": "w-a30c",
+              "kind": "open",
+              "source_event": "origin",
+              "subject": "u-4c72"
+            }
+          ]
+        },
+        {
+          "after_fixture": "close",
+          "at": "2026-09-23T01:10:43.549371+00:00",
+          "events": [
+            {
+              "seq": 1,
+              "evidence_kind": "controller_injected_fixture",
+              "id": "origin",
+              "item": "w-a30c",
+              "kind": "action",
+              "subject": "u-4c72"
+            },
+            {
+              "seq": 2,
+              "id": "obligation",
+              "item": "w-a30c",
+              "kind": "open",
+              "source_event": "origin",
+              "subject": "u-4c72"
+            },
+            {
+              "seq": 3,
+              "authority": "test_controller",
+              "basis": "predeclared_fixture_correction_complete",
+              "id": "settlement",
+              "kind": "close",
+              "obligation": "obligation"
+            }
+          ]
+        }
+      ],
+      "observations": [
+        {
+          "case": "baseline",
+          "subject": "A",
+          "item": "x",
+          "expected": "allow",
+          "at": "2026-09-23T01:10:43.505302+00:00",
+          "actual_subject": "u-4c72",
+          "request": {
+            "request_id": "current_ledger:main:baseline",
+            "item": "w-a30c"
+          },
+          "worker_instance": "6c8927e2-e86c-45d2-8d35-3432be2fbb78",
+          "worker_pid": 65554,
+          "gate_instance": "d43ac366-8c76-45e2-8232-008199b40242",
+          "ledger": [],
+          "ledger_read": true,
+          "actual_decision": "allow",
+          "decision_basis": "no_open_obligation",
+          "deny_cache": [],
+          "tool_receipts_before": 0,
+          "tool_receipts_after": 1,
+          "new_tool_receipts": [
+            {
+              "effect": "append_dummy_receipt",
+              "executed": true,
+              "item": "w-a30c",
+              "received_at": "2026-09-23T01:10:43.505054+00:00",
+              "request_id": "current_ledger:main:baseline",
+              "subject": "u-4c72",
+              "tool_pid": 65553
+            }
+          ],
+          "dispatch_matches_decision": true,
+          "decision_matches_plan": true,
+          "effect_matches_plan": true
+        },
+        {
+          "case": "obligation_open",
+          "subject": "A",
+          "item": "x",
+          "expected": "deny",
+          "at": "2026-09-23T01:10:43.505854+00:00",
+          "actual_subject": "u-4c72",
+          "request": {
+            "request_id": "current_ledger:main:obligation_open",
+            "item": "w-a30c"
+          },
+          "worker_instance": "6c8927e2-e86c-45d2-8d35-3432be2fbb78",
+          "worker_pid": 65554,
+          "gate_instance": "d43ac366-8c76-45e2-8232-008199b40242",
+          "ledger": [
+            {
+              "seq": 1,
+              "evidence_kind": "controller_injected_fixture",
+              "id": "origin",
+              "item": "w-a30c",
+              "kind": "action",
+              "subject": "u-4c72"
+            },
+            {
+              "seq": 2,
+              "id": "obligation",
+              "item": "w-a30c",
+              "kind": "open",
+              "source_event": "origin",
+              "subject": "u-4c72"
+            }
+          ],
+          "ledger_read": true,
+          "actual_decision": "deny",
+          "decision_basis": "open_obligation",
+          "deny_cache": [],
+          "tool_receipts_before": 1,
+          "tool_receipts_after": 1,
+          "new_tool_receipts": [],
+          "dispatch_matches_decision": true,
+          "decision_matches_plan": true,
+          "effect_matches_plan": true
+        },
+        {
+          "case": "worker_rebound",
+          "subject": "A",
+          "item": "x",
+          "expected": "deny",
+          "restart": true,
+          "at": "2026-09-23T01:10:43.529504+00:00",
+          "actual_subject": "u-4c72",
+          "request": {
+            "request_id": "current_ledger:main:worker_rebound",
+            "item": "w-a30c"
+          },
+          "worker_instance": "39d5530f-f007-4917-bfe7-9981c1663246",
+          "worker_pid": 65556,
+          "gate_instance": "d43ac366-8c76-45e2-8232-008199b40242",
+          "ledger": [
+            {
+              "seq": 1,
+              "evidence_kind": "controller_injected_fixture",
+              "id": "origin",
+              "item": "w-a30c",
+              "kind": "action",
+              "subject": "u-4c72"
+            },
+            {
+              "seq": 2,
+              "id": "obligation",
+              "item": "w-a30c",
+              "kind": "open",
+              "source_event": "origin",
+              "subject": "u-4c72"
+            }
+          ],
+          "ledger_read": true,
+          "actual_decision": "deny",
+          "decision_basis": "open_obligation",
+          "deny_cache": [],
+          "tool_receipts_before": 1,
+          "tool_receipts_after": 1,
+          "new_tool_receipts": [],
+          "dispatch_matches_decision": true,
+          "decision_matches_plan": true,
+          "effect_matches_plan": true
+        },
+        {
+          "case": "identity_isolation",
+          "subject": "B",
+          "item": "x",
+          "expected": "allow",
+          "at": "2026-09-23T01:10:43.548925+00:00",
+          "actual_subject": "u-9e16",
+          "request": {
+            "request_id": "current_ledger:main:identity_isolation",
+            "item": "w-a30c"
+          },
+          "worker_instance": "44fd8fa6-45b6-4d83-b99d-2e3e5c3761a7",
+          "worker_pid": 65557,
+          "gate_instance": "d43ac366-8c76-45e2-8232-008199b40242",
+          "ledger": [
+            {
+              "seq": 1,
+              "evidence_kind": "controller_injected_fixture",
+              "id": "origin",
+              "item": "w-a30c",
+              "kind": "action",
+              "subject": "u-4c72"
+            },
+            {
+              "seq": 2,
+              "id": "obligation",
+              "item": "w-a30c",
+              "kind": "open",
+              "source_event": "origin",
+              "subject": "u-4c72"
+            }
+          ],
+          "ledger_read": true,
+          "actual_decision": "allow",
+          "decision_basis": "no_open_obligation",
+          "deny_cache": [],
+          "tool_receipts_before": 1,
+          "tool_receipts_after": 2,
+          "new_tool_receipts": [
+            {
+              "effect": "append_dummy_receipt",
+              "executed": true,
+              "item": "w-a30c",
+              "received_at": "2026-09-23T01:10:43.548746+00:00",
+              "request_id": "current_ledger:main:identity_isolation",
+              "subject": "u-9e16",
+              "tool_pid": 65553
+            }
+          ],
+          "dispatch_matches_decision": true,
+          "decision_matches_plan": true,
+          "effect_matches_plan": true
+        },
+        {
+          "case": "item_isolation",
+          "subject": "A",
+          "item": "y",
+          "expected": "allow",
+          "at": "2026-09-23T01:10:43.549134+00:00",
+          "actual_subject": "u-4c72",
+          "request": {
+            "request_id": "current_ledger:main:item_isolation",
+            "item": "w-f681"
+          },
+          "worker_instance": "39d5530f-f007-4917-bfe7-9981c1663246",
+          "worker_pid": 65556,
+          "gate_instance": "d43ac366-8c76-45e2-8232-008199b40242",
+          "ledger": [
+            {
+              "seq": 1,
+              "evidence_kind": "controller_injected_fixture",
+              "id": "origin",
+              "item": "w-a30c",
+              "kind": "action",
+              "subject": "u-4c72"
+            },
+            {
+              "seq": 2,
+              "id": "obligation",
+              "item": "w-a30c",
+              "kind": "open",
+              "source_event": "origin",
+              "subject": "u-4c72"
+            }
+          ],
+          "ledger_read": true,
+          "actual_decision": "allow",
+          "decision_basis": "no_open_obligation",
+          "deny_cache": [],
+          "tool_receipts_before": 2,
+          "tool_receipts_after": 3,
+          "new_tool_receipts": [
+            {
+              "effect": "append_dummy_receipt",
+              "executed": true,
+              "item": "w-f681",
+              "received_at": "2026-09-23T01:10:43.549039+00:00",
+              "request_id": "current_ledger:main:item_isolation",
+              "subject": "u-4c72",
+              "tool_pid": 65553
+            }
+          ],
+          "dispatch_matches_decision": true,
+          "decision_matches_plan": true,
+          "effect_matches_plan": true
+        },
+        {
+          "case": "settled",
+          "subject": "A",
+          "item": "x",
+          "expected": "allow",
+          "at": "2026-09-23T01:10:43.549539+00:00",
+          "actual_subject": "u-4c72",
+          "request": {
+            "request_id": "current_ledger:main:settled",
+            "item": "w-a30c"
+          },
+          "worker_instance": "39d5530f-f007-4917-bfe7-9981c1663246",
+          "worker_pid": 65556,
+          "gate_instance": "d43ac366-8c76-45e2-8232-008199b40242",
+          "ledger": [
+            {
+              "seq": 1,
+              "evidence_kind": "controller_injected_fixture",
+              "id": "origin",
+              "item": "w-a30c",
+              "kind": "action",
+              "subject": "u-4c72"
+            },
+            {
+              "seq": 2,
+              "id": "obligation",
+              "item": "w-a30c",
+              "kind": "open",
+              "source_event": "origin",
+              "subject": "u-4c72"
+            },
+            {
+              "seq": 3,
+              "authority": "test_controller",
+              "basis": "predeclared_fixture_correction_complete",
+              "id": "settlement",
+              "kind": "close",
+              "obligation": "obligation"
+            }
+          ],
+          "ledger_read": true,
+          "actual_decision": "allow",
+          "decision_basis": "no_open_obligation",
+          "deny_cache": [],
+          "tool_receipts_before": 3,
+          "tool_receipts_after": 4,
+          "new_tool_receipts": [
+            {
+              "effect": "append_dummy_receipt",
+              "executed": true,
+              "item": "w-a30c",
+              "received_at": "2026-09-23T01:10:43.549454+00:00",
+              "request_id": "current_ledger:main:settled",
+              "subject": "u-4c72",
+              "tool_pid": 65553
+            }
+          ],
+          "dispatch_matches_decision": true,
+          "decision_matches_plan": true,
+          "effect_matches_plan": true
+        },
+        {
+          "case": "worker_rebound_after_settlement",
+          "subject": "A",
+          "item": "x",
+          "expected": "allow",
+          "restart": true,
+          "at": "2026-09-23T01:10:43.574170+00:00",
+          "actual_subject": "u-4c72",
+          "request": {
+            "request_id": "current_ledger:main:worker_rebound_after_settlement",
+            "item": "w-a30c"
+          },
+          "worker_instance": "abb6788c-bdf1-4f76-8959-021445768ca7",
+          "worker_pid": 65558,
+          "gate_instance": "d43ac366-8c76-45e2-8232-008199b40242",
+          "ledger": [
+            {
+              "seq": 1,
+              "evidence_kind": "controller_injected_fixture",
+              "id": "origin",
+              "item": "w-a30c",
+              "kind": "action",
+              "subject": "u-4c72"
+            },
+            {
+              "seq": 2,
+              "id": "obligation",
+              "item": "w-a30c",
+              "kind": "open",
+              "source_event": "origin",
+              "subject": "u-4c72"
+            },
+            {
+              "seq": 3,
+              "authority": "test_controller",
+              "basis": "predeclared_fixture_correction_complete",
+              "id": "settlement",
+              "kind": "close",
+              "obligation": "obligation"
+            }
+          ],
+          "ledger_read": true,
+          "actual_decision": "allow",
+          "decision_basis": "no_open_obligation",
+          "deny_cache": [],
+          "tool_receipts_before": 4,
+          "tool_receipts_after": 5,
+          "new_tool_receipts": [
+            {
+              "effect": "append_dummy_receipt",
+              "executed": true,
+              "item": "w-a30c",
+              "received_at": "2026-09-23T01:10:43.574000+00:00",
+              "request_id": "current_ledger:main:worker_rebound_after_settlement",
+              "subject": "u-4c72",
+              "tool_pid": 65553
+            }
+          ],
+          "dispatch_matches_decision": true,
+          "decision_matches_plan": true,
+          "effect_matches_plan": true
+        }
+      ],
+      "final_ledger": [
+        {
+          "seq": 1,
+          "evidence_kind": "controller_injected_fixture",
+          "id": "origin",
+          "item": "w-a30c",
+          "kind": "action",
+          "subject": "u-4c72"
+        },
+        {
+          "seq": 2,
+          "id": "obligation",
+          "item": "w-a30c",
+          "kind": "open",
+          "source_event": "origin",
+          "subject": "u-4c72"
+        },
+        {
+          "seq": 3,
+          "authority": "test_controller",
+          "basis": "predeclared_fixture_correction_complete",
+          "id": "settlement",
+          "kind": "close",
+          "obligation": "obligation"
+        }
+      ],
+      "tool_receipts": [
+        {
+          "effect": "append_dummy_receipt",
+          "executed": true,
+          "item": "w-a30c",
+          "received_at": "2026-09-23T01:10:43.505054+00:00",
+          "request_id": "current_ledger:main:baseline",
+          "subject": "u-4c72",
+          "tool_pid": 65553
+        },
+        {
+          "effect": "append_dummy_receipt",
+          "executed": true,
+          "item": "w-a30c",
+          "received_at": "2026-09-23T01:10:43.548746+00:00",
+          "request_id": "current_ledger:main:identity_isolation",
+          "subject": "u-9e16",
+          "tool_pid": 65553
+        },
+        {
+          "effect": "append_dummy_receipt",
+          "executed": true,
+          "item": "w-f681",
+          "received_at": "2026-09-23T01:10:43.549039+00:00",
+          "request_id": "current_ledger:main:item_isolation",
+          "subject": "u-4c72",
+          "tool_pid": 65553
+        },
+        {
+          "effect": "append_dummy_receipt",
+          "executed": true,
+          "item": "w-a30c",
+          "received_at": "2026-09-23T01:10:43.549454+00:00",
+          "request_id": "current_ledger:main:settled",
+          "subject": "u-4c72",
+          "tool_pid": 65553
+        },
+        {
+          "effect": "append_dummy_receipt",
+          "executed": true,
+          "item": "w-a30c",
+          "received_at": "2026-09-23T01:10:43.574000+00:00",
+          "request_id": "current_ledger:main:worker_rebound_after_settlement",
+          "subject": "u-4c72",
+          "tool_pid": 65553
+        }
+      ],
+      "database_sha256": "a55ace11eada16bc395601a38c4b88a2f4fa423e4f618f94f632389fd60829d0",
+      "tool_receipts_sha256": "e851237e06508b0b1422290e39eb4fc45b6cab70e0fc2fe7a7763a78eb1ce022"
+    },
+    {
+      "mode": "current_ledger",
+      "trace": "swapped",
+      "gate_instance": "56feee45-e9b5-4a1f-8ec2-b7fdfbda9fd7",
+      "process_lifecycle": [
+        {
+          "kind": "start",
+          "at": "2026-09-23T01:10:43.607905+00:00",
+          "monotonic_ns": 837027259849708,
+          "role": "tool",
+          "instance": "1b451c0e-ee3d-405f-a495-4ce6d6dca87a",
+          "pid": 65559,
+          "bound_subject": null,
+          "binding_basis": "controller_owned_private_pipe"
+        },
+        {
+          "kind": "start",
+          "at": "2026-09-23T01:10:43.627657+00:00",
+          "monotonic_ns": 837027279604833,
+          "role": "worker",
+          "instance": "92557b29-5e3f-4cb1-9877-23d9b7cb8498",
+          "pid": 65560,
+          "bound_subject": "u-9e16",
+          "binding_basis": "controller_owned_private_pipe"
+        },
+        {
+          "kind": "start",
+          "at": "2026-09-23T01:10:43.647280+00:00",
+          "monotonic_ns": 837027299225791,
+          "role": "worker",
+          "instance": "ba860cd6-3c19-4c89-ab1d-bbeb43888bfd",
+          "pid": 65561,
+          "bound_subject": "u-4c72",
+          "binding_basis": "controller_owned_private_pipe"
+        },
+        {
+          "kind": "stop",
+          "at": "2026-09-23T01:10:43.652282+00:00",
+          "monotonic_ns": 837027304225458,
+          "role": "worker",
+          "instance": "ba860cd6-3c19-4c89-ab1d-bbeb43888bfd",
+          "pid": 65561,
+          "returncode": 0,
+          "forced_kill": false
+        },
+        {
+          "kind": "stop",
+          "at": "2026-09-23T01:10:43.656825+00:00",
+          "monotonic_ns": 837027308767250,
+          "role": "worker",
+          "instance": "92557b29-5e3f-4cb1-9877-23d9b7cb8498",
+          "pid": 65560,
+          "returncode": 0,
+          "forced_kill": false
+        },
+        {
+          "kind": "stop",
+          "at": "2026-09-23T01:10:43.661393+00:00",
+          "monotonic_ns": 837027313345416,
+          "role": "tool",
+          "instance": "1b451c0e-ee3d-405f-a495-4ce6d6dca87a",
+          "pid": 65559,
+          "returncode": 0,
+          "forced_kill": false
+        }
+      ],
+      "worker_restarts": [],
+      "worker_io": [
+        {
+          "instance": "92557b29-5e3f-4cb1-9877-23d9b7cb8498",
+          "input": {
+            "request_id": "current_ledger:swapped:swapped_obligated",
+            "item": "w-a30c"
+          },
+          "output": {
+            "item": "w-a30c",
+            "request_id": "current_ledger:swapped:swapped_obligated"
+          }
+        },
+        {
+          "instance": "ba860cd6-3c19-4c89-ab1d-bbeb43888bfd",
+          "input": {
+            "request_id": "current_ledger:swapped:swapped_unobligated",
+            "item": "w-a30c"
+          },
+          "output": {
+            "item": "w-a30c",
+            "request_id": "current_ledger:swapped:swapped_unobligated"
+          }
+        }
+      ],
+      "fixture_snapshots": [
+        {
+          "after_fixture": "open",
+          "at": "2026-09-23T01:10:43.608466+00:00",
+          "events": [
+            {
+              "seq": 1,
+              "evidence_kind": "controller_injected_fixture",
+              "id": "origin",
+              "item": "w-a30c",
+              "kind": "action",
+              "subject": "u-9e16"
+            },
+            {
+              "seq": 2,
+              "id": "obligation",
+              "item": "w-a30c",
+              "kind": "open",
+              "source_event": "origin",
+              "subject": "u-9e16"
+            }
+          ]
+        }
+      ],
+      "observations": [
+        {
+          "case": "swapped_obligated",
+          "subject": "B",
+          "item": "x",
+          "expected": "deny",
+          "at": "2026-09-23T01:10:43.627836+00:00",
+          "actual_subject": "u-9e16",
+          "request": {
+            "request_id": "current_ledger:swapped:swapped_obligated",
+            "item": "w-a30c"
+          },
+          "worker_instance": "92557b29-5e3f-4cb1-9877-23d9b7cb8498",
+          "worker_pid": 65560,
+          "gate_instance": "56feee45-e9b5-4a1f-8ec2-b7fdfbda9fd7",
+          "ledger": [
+            {
+              "seq": 1,
+              "evidence_kind": "controller_injected_fixture",
+              "id": "origin",
+              "item": "w-a30c",
+              "kind": "action",
+              "subject": "u-9e16"
+            },
+            {
+              "seq": 2,
+              "id": "obligation",
+              "item": "w-a30c",
+              "kind": "open",
+              "source_event": "origin",
+              "subject": "u-9e16"
+            }
+          ],
+          "ledger_read": true,
+          "actual_decision": "deny",
+          "decision_basis": "open_obligation",
+          "deny_cache": [],
+          "tool_receipts_before": 0,
+          "tool_receipts_after": 0,
+          "new_tool_receipts": [],
+          "dispatch_matches_decision": true,
+          "decision_matches_plan": true,
+          "effect_matches_plan": true
+        },
+        {
+          "case": "swapped_unobligated",
+          "subject": "A",
+          "item": "x",
+          "expected": "allow",
+          "at": "2026-09-23T01:10:43.647725+00:00",
+          "actual_subject": "u-4c72",
+          "request": {
+            "request_id": "current_ledger:swapped:swapped_unobligated",
+            "item": "w-a30c"
+          },
+          "worker_instance": "ba860cd6-3c19-4c89-ab1d-bbeb43888bfd",
+          "worker_pid": 65561,
+          "gate_instance": "56feee45-e9b5-4a1f-8ec2-b7fdfbda9fd7",
+          "ledger": [
+            {
+              "seq": 1,
+              "evidence_kind": "controller_injected_fixture",
+              "id": "origin",
+              "item": "w-a30c",
+              "kind": "action",
+              "subject": "u-9e16"
+            },
+            {
+              "seq": 2,
+              "id": "obligation",
+              "item": "w-a30c",
+              "kind": "open",
+              "source_event": "origin",
+              "subject": "u-9e16"
+            }
+          ],
+          "ledger_read": true,
+          "actual_decision": "allow",
+          "decision_basis": "no_open_obligation",
+          "deny_cache": [],
+          "tool_receipts_before": 0,
+          "tool_receipts_after": 1,
+          "new_tool_receipts": [
+            {
+              "effect": "append_dummy_receipt",
+              "executed": true,
+              "item": "w-a30c",
+              "received_at": "2026-09-23T01:10:43.647475+00:00",
+              "request_id": "current_ledger:swapped:swapped_unobligated",
+              "subject": "u-4c72",
+              "tool_pid": 65559
+            }
+          ],
+          "dispatch_matches_decision": true,
+          "decision_matches_plan": true,
+          "effect_matches_plan": true
+        }
+      ],
+      "final_ledger": [
+        {
+          "seq": 1,
+          "evidence_kind": "controller_injected_fixture",
+          "id": "origin",
+          "item": "w-a30c",
+          "kind": "action",
+          "subject": "u-9e16"
+        },
+        {
+          "seq": 2,
+          "id": "obligation",
+          "item": "w-a30c",
+          "kind": "open",
+          "source_event": "origin",
+          "subject": "u-9e16"
+        }
+      ],
+      "tool_receipts": [
+        {
+          "effect": "append_dummy_receipt",
+          "executed": true,
+          "item": "w-a30c",
+          "received_at": "2026-09-23T01:10:43.647475+00:00",
+          "request_id": "current_ledger:swapped:swapped_unobligated",
+          "subject": "u-4c72",
+          "tool_pid": 65559
+        }
+      ],
+      "database_sha256": "7be0827ecd65f69e009edf4f1215ca1c0cd605ffeb0ec13202c058d60778e2b8",
+      "tool_receipts_sha256": "ef45a0c807a9b17b0659837ac2c907f0c1dff9fbb30c6f857ac8419424c2f4c3"
+    },
+    {
+      "mode": "sticky_deny_cache",
+      "trace": "main",
+      "gate_instance": "8e01f176-5a8e-46f1-b2f4-47a44104cf27",
+      "process_lifecycle": [
+        {
+          "kind": "start",
+          "at": "2026-09-23T01:10:43.681441+00:00",
+          "monotonic_ns": 837027333386666,
+          "role": "tool",
+          "instance": "00da730e-18d8-417e-a7df-f5f5d7b9b5c0",
+          "pid": 65562,
+          "bound_subject": null,
+          "binding_basis": "controller_owned_private_pipe"
+        },
+        {
+          "kind": "start",
+          "at": "2026-09-23T01:10:43.700746+00:00",
+          "monotonic_ns": 837027352691291,
+          "role": "worker",
+          "instance": "2be28d13-4237-457a-a18c-3f7734ebb919",
+          "pid": 65563,
+          "bound_subject": "u-4c72",
+          "binding_basis": "controller_owned_private_pipe"
+        },
+        {
+          "kind": "stop",
+          "at": "2026-09-23T01:10:43.706377+00:00",
+          "monotonic_ns": 837027358322625,
+          "role": "worker",
+          "instance": "2be28d13-4237-457a-a18c-3f7734ebb919",
+          "pid": 65563,
+          "returncode": 0,
+          "forced_kill": false
+        },
+        {
+          "kind": "start",
+          "at": "2026-09-23T01:10:43.725733+00:00",
+          "monotonic_ns": 837027377676625,
+          "role": "worker",
+          "instance": "0a647fd0-6a24-4ed3-bb2f-fb6c58b25800",
+          "pid": 65564,
+          "bound_subject": "u-4c72",
+          "binding_basis": "controller_owned_private_pipe"
+        },
+        {
+          "kind": "start",
+          "at": "2026-09-23T01:10:43.746136+00:00",
+          "monotonic_ns": 837027398080333,
+          "role": "worker",
+          "instance": "7afdc614-3468-428e-bcc5-db856f1379cf",
+          "pid": 65565,
+          "bound_subject": "u-9e16",
+          "binding_basis": "controller_owned_private_pipe"
+        },
+        {
+          "kind": "stop",
+          "at": "2026-09-23T01:10:43.775379+00:00",
+          "monotonic_ns": 837027427318416,
+          "role": "worker",
+          "instance": "0a647fd0-6a24-4ed3-bb2f-fb6c58b25800",
+          "pid": 65564,
+          "returncode": 0,
+          "forced_kill": false
+        },
+        {
+          "kind": "start",
+          "at": "2026-09-23T01:10:43.796416+00:00",
+          "monotonic_ns": 837027448358291,
+          "role": "worker",
+          "instance": "134572dc-d23b-453e-8530-65418973615b",
+          "pid": 65566,
+          "bound_subject": "u-4c72",
+          "binding_basis": "controller_owned_private_pipe"
+        },
+        {
+          "kind": "stop",
+          "at": "2026-09-23T01:10:43.801133+00:00",
+          "monotonic_ns": 837027453072333,
+          "role": "worker",
+          "instance": "134572dc-d23b-453e-8530-65418973615b",
+          "pid": 65566,
+          "returncode": 0,
+          "forced_kill": false
+        },
+        {
+          "kind": "stop",
+          "at": "2026-09-23T01:10:43.805661+00:00",
+          "monotonic_ns": 837027457599916,
+          "role": "worker",
+          "instance": "7afdc614-3468-428e-bcc5-db856f1379cf",
+          "pid": 65565,
+          "returncode": 0,
+          "forced_kill": false
+        },
+        {
+          "kind": "stop",
+          "at": "2026-09-23T01:10:43.809748+00:00",
+          "monotonic_ns": 837027461689333,
+          "role": "tool",
+          "instance": "00da730e-18d8-417e-a7df-f5f5d7b9b5c0",
+          "pid": 65562,
+          "returncode": 0,
+          "forced_kill": false
+        }
+      ],
+      "worker_restarts": [
+        {
+          "before_case": "worker_rebound",
+          "old_instance": "2be28d13-4237-457a-a18c-3f7734ebb919",
+          "new_instance": "0a647fd0-6a24-4ed3-bb2f-fb6c58b25800",
+          "old_pid": 65563,
+          "new_pid": 65564,
+          "old_exit_confirmed_before_spawn": true,
+          "same_gate_instance": "8e01f176-5a8e-46f1-b2f4-47a44104cf27",
+          "ledger_equal_before_after": true
+        },
+        {
+          "before_case": "worker_rebound_after_settlement",
+          "old_instance": "0a647fd0-6a24-4ed3-bb2f-fb6c58b25800",
+          "new_instance": "134572dc-d23b-453e-8530-65418973615b",
+          "old_pid": 65564,
+          "new_pid": 65566,
+          "old_exit_confirmed_before_spawn": true,
+          "same_gate_instance": "8e01f176-5a8e-46f1-b2f4-47a44104cf27",
+          "ledger_equal_before_after": true
+        }
+      ],
+      "worker_io": [
+        {
+          "instance": "2be28d13-4237-457a-a18c-3f7734ebb919",
+          "input": {
+            "request_id": "sticky_deny_cache:main:baseline",
+            "item": "w-a30c"
+          },
+          "output": {
+            "item": "w-a30c",
+            "request_id": "sticky_deny_cache:main:baseline"
+          }
+        },
+        {
+          "instance": "2be28d13-4237-457a-a18c-3f7734ebb919",
+          "input": {
+            "request_id": "sticky_deny_cache:main:obligation_open",
+            "item": "w-a30c"
+          },
+          "output": {
+            "item": "w-a30c",
+            "request_id": "sticky_deny_cache:main:obligation_open"
+          }
+        },
+        {
+          "instance": "0a647fd0-6a24-4ed3-bb2f-fb6c58b25800",
+          "input": {
+            "request_id": "sticky_deny_cache:main:worker_rebound",
+            "item": "w-a30c"
+          },
+          "output": {
+            "item": "w-a30c",
+            "request_id": "sticky_deny_cache:main:worker_rebound"
+          }
+        },
+        {
+          "instance": "7afdc614-3468-428e-bcc5-db856f1379cf",
+          "input": {
+            "request_id": "sticky_deny_cache:main:identity_isolation",
+            "item": "w-a30c"
+          },
+          "output": {
+            "item": "w-a30c",
+            "request_id": "sticky_deny_cache:main:identity_isolation"
+          }
+        },
+        {
+          "instance": "0a647fd0-6a24-4ed3-bb2f-fb6c58b25800",
+          "input": {
+            "request_id": "sticky_deny_cache:main:item_isolation",
+            "item": "w-f681"
+          },
+          "output": {
+            "item": "w-f681",
+            "request_id": "sticky_deny_cache:main:item_isolation"
+          }
+        },
+        {
+          "instance": "0a647fd0-6a24-4ed3-bb2f-fb6c58b25800",
+          "input": {
+            "request_id": "sticky_deny_cache:main:settled",
+            "item": "w-a30c"
+          },
+          "output": {
+            "item": "w-a30c",
+            "request_id": "sticky_deny_cache:main:settled"
+          }
+        },
+        {
+          "instance": "134572dc-d23b-453e-8530-65418973615b",
+          "input": {
+            "request_id": "sticky_deny_cache:main:worker_rebound_after_settlement",
+            "item": "w-a30c"
+          },
+          "output": {
+            "item": "w-a30c",
+            "request_id": "sticky_deny_cache:main:worker_rebound_after_settlement"
+          }
+        }
+      ],
+      "fixture_snapshots": [
+        {
+          "after_fixture": "open",
+          "at": "2026-09-23T01:10:43.701595+00:00",
+          "events": [
+            {
+              "seq": 1,
+              "evidence_kind": "controller_injected_fixture",
+              "id": "origin",
+              "item": "w-a30c",
+              "kind": "action",
+              "subject": "u-4c72"
+            },
+            {
+              "seq": 2,
+              "id": "obligation",
+              "item": "w-a30c",
+              "kind": "open",
+              "source_event": "origin",
+              "subject": "u-4c72"
+            }
+          ]
+        },
+        {
+          "after_fixture": "close",
+          "at": "2026-09-23T01:10:43.770701+00:00",
+          "events": [
+            {
+              "seq": 1,
+              "evidence_kind": "controller_injected_fixture",
+              "id": "origin",
+              "item": "w-a30c",
+              "kind": "action",
+              "subject": "u-4c72"
+            },
+            {
+              "seq": 2,
+              "id": "obligation",
+              "item": "w-a30c",
+              "kind": "open",
+              "source_event": "origin",
+              "subject": "u-4c72"
+            },
+            {
+              "seq": 3,
+              "authority": "test_controller",
+              "basis": "predeclared_fixture_correction_complete",
+              "id": "settlement",
+              "kind": "close",
+              "obligation": "obligation"
+            }
+          ]
+        }
+      ],
+      "observations": [
+        {
+          "case": "baseline",
+          "subject": "A",
+          "item": "x",
+          "expected": "allow",
+          "at": "2026-09-23T01:10:43.701167+00:00",
+          "actual_subject": "u-4c72",
+          "request": {
+            "request_id": "sticky_deny_cache:main:baseline",
+            "item": "w-a30c"
+          },
+          "worker_instance": "2be28d13-4237-457a-a18c-3f7734ebb919",
+          "worker_pid": 65563,
+          "gate_instance": "8e01f176-5a8e-46f1-b2f4-47a44104cf27",
+          "ledger": [],
+          "ledger_read": true,
+          "actual_decision": "allow",
+          "decision_basis": "no_open_obligation",
+          "deny_cache": [],
+          "tool_receipts_before": 0,
+          "tool_receipts_after": 1,
+          "new_tool_receipts": [
+            {
+              "effect": "append_dummy_receipt",
+              "executed": true,
+              "item": "w-a30c",
+              "received_at": "2026-09-23T01:10:43.700937+00:00",
+              "request_id": "sticky_deny_cache:main:baseline",
+              "subject": "u-4c72",
+              "tool_pid": 65562
+            }
+          ],
+          "dispatch_matches_decision": true,
+          "decision_matches_plan": true,
+          "effect_matches_plan": true
+        },
+        {
+          "case": "obligation_open",
+          "subject": "A",
+          "item": "x",
+          "expected": "deny",
+          "at": "2026-09-23T01:10:43.701691+00:00",
+          "actual_subject": "u-4c72",
+          "request": {
+            "request_id": "sticky_deny_cache:main:obligation_open",
+            "item": "w-a30c"
+          },
+          "worker_instance": "2be28d13-4237-457a-a18c-3f7734ebb919",
+          "worker_pid": 65563,
+          "gate_instance": "8e01f176-5a8e-46f1-b2f4-47a44104cf27",
+          "ledger": [
+            {
+              "seq": 1,
+              "evidence_kind": "controller_injected_fixture",
+              "id": "origin",
+              "item": "w-a30c",
+              "kind": "action",
+              "subject": "u-4c72"
+            },
+            {
+              "seq": 2,
+              "id": "obligation",
+              "item": "w-a30c",
+              "kind": "open",
+              "source_event": "origin",
+              "subject": "u-4c72"
+            }
+          ],
+          "ledger_read": true,
+          "actual_decision": "deny",
+          "decision_basis": "open_obligation",
+          "deny_cache": [
+            [
+              "u-4c72",
+              "w-a30c"
+            ]
+          ],
+          "tool_receipts_before": 1,
+          "tool_receipts_after": 1,
+          "new_tool_receipts": [],
+          "dispatch_matches_decision": true,
+          "decision_matches_plan": true,
+          "effect_matches_plan": true
+        },
+        {
+          "case": "worker_rebound",
+          "subject": "A",
+          "item": "x",
+          "expected": "deny",
+          "restart": true,
+          "at": "2026-09-23T01:10:43.725910+00:00",
+          "actual_subject": "u-4c72",
+          "request": {
+            "request_id": "sticky_deny_cache:main:worker_rebound",
+            "item": "w-a30c"
+          },
+          "worker_instance": "0a647fd0-6a24-4ed3-bb2f-fb6c58b25800",
+          "worker_pid": 65564,
+          "gate_instance": "8e01f176-5a8e-46f1-b2f4-47a44104cf27",
+          "ledger": [
+            {
+              "seq": 1,
+              "evidence_kind": "controller_injected_fixture",
+              "id": "origin",
+              "item": "w-a30c",
+              "kind": "action",
+              "subject": "u-4c72"
+            },
+            {
+              "seq": 2,
+              "id": "obligation",
+              "item": "w-a30c",
+              "kind": "open",
+              "source_event": "origin",
+              "subject": "u-4c72"
+            }
+          ],
+          "ledger_read": false,
+          "actual_decision": "deny",
+          "decision_basis": "stale_deny_cache",
+          "deny_cache": [
+            [
+              "u-4c72",
+              "w-a30c"
+            ]
+          ],
+          "tool_receipts_before": 1,
+          "tool_receipts_after": 1,
+          "new_tool_receipts": [],
+          "dispatch_matches_decision": true,
+          "decision_matches_plan": true,
+          "effect_matches_plan": true
+        },
+        {
+          "case": "identity_isolation",
+          "subject": "B",
+          "item": "x",
+          "expected": "allow",
+          "at": "2026-09-23T01:10:43.746457+00:00",
+          "actual_subject": "u-9e16",
+          "request": {
+            "request_id": "sticky_deny_cache:main:identity_isolation",
+            "item": "w-a30c"
+          },
+          "worker_instance": "7afdc614-3468-428e-bcc5-db856f1379cf",
+          "worker_pid": 65565,
+          "gate_instance": "8e01f176-5a8e-46f1-b2f4-47a44104cf27",
+          "ledger": [
+            {
+              "seq": 1,
+              "evidence_kind": "controller_injected_fixture",
+              "id": "origin",
+              "item": "w-a30c",
+              "kind": "action",
+              "subject": "u-4c72"
+            },
+            {
+              "seq": 2,
+              "id": "obligation",
+              "item": "w-a30c",
+              "kind": "open",
+              "source_event": "origin",
+              "subject": "u-4c72"
+            }
+          ],
+          "ledger_read": true,
+          "actual_decision": "allow",
+          "decision_basis": "no_open_obligation",
+          "deny_cache": [
+            [
+              "u-4c72",
+              "w-a30c"
+            ]
+          ],
+          "tool_receipts_before": 1,
+          "tool_receipts_after": 2,
+          "new_tool_receipts": [
+            {
+              "effect": "append_dummy_receipt",
+              "executed": true,
+              "item": "w-a30c",
+              "received_at": "2026-09-23T01:10:43.746325+00:00",
+              "request_id": "sticky_deny_cache:main:identity_isolation",
+              "subject": "u-9e16",
+              "tool_pid": 65562
+            }
+          ],
+          "dispatch_matches_decision": true,
+          "decision_matches_plan": true,
+          "effect_matches_plan": true
+        },
+        {
+          "case": "item_isolation",
+          "subject": "A",
+          "item": "y",
+          "expected": "allow",
+          "at": "2026-09-23T01:10:43.746667+00:00",
+          "actual_subject": "u-4c72",
+          "request": {
+            "request_id": "sticky_deny_cache:main:item_isolation",
+            "item": "w-f681"
+          },
+          "worker_instance": "0a647fd0-6a24-4ed3-bb2f-fb6c58b25800",
+          "worker_pid": 65564,
+          "gate_instance": "8e01f176-5a8e-46f1-b2f4-47a44104cf27",
+          "ledger": [
+            {
+              "seq": 1,
+              "evidence_kind": "controller_injected_fixture",
+              "id": "origin",
+              "item": "w-a30c",
+              "kind": "action",
+              "subject": "u-4c72"
+            },
+            {
+              "seq": 2,
+              "id": "obligation",
+              "item": "w-a30c",
+              "kind": "open",
+              "source_event": "origin",
+              "subject": "u-4c72"
+            }
+          ],
+          "ledger_read": true,
+          "actual_decision": "allow",
+          "decision_basis": "no_open_obligation",
+          "deny_cache": [
+            [
+              "u-4c72",
+              "w-a30c"
+            ]
+          ],
+          "tool_receipts_before": 2,
+          "tool_receipts_after": 3,
+          "new_tool_receipts": [
+            {
+              "effect": "append_dummy_receipt",
+              "executed": true,
+              "item": "w-f681",
+              "received_at": "2026-09-23T01:10:43.746584+00:00",
+              "request_id": "sticky_deny_cache:main:item_isolation",
+              "subject": "u-4c72",
+              "tool_pid": 65562
+            }
+          ],
+          "dispatch_matches_decision": true,
+          "decision_matches_plan": true,
+          "effect_matches_plan": true
+        },
+        {
+          "case": "settled",
+          "subject": "A",
+          "item": "x",
+          "expected": "allow",
+          "at": "2026-09-23T01:10:43.770821+00:00",
+          "actual_subject": "u-4c72",
+          "request": {
+            "request_id": "sticky_deny_cache:main:settled",
+            "item": "w-a30c"
+          },
+          "worker_instance": "0a647fd0-6a24-4ed3-bb2f-fb6c58b25800",
+          "worker_pid": 65564,
+          "gate_instance": "8e01f176-5a8e-46f1-b2f4-47a44104cf27",
+          "ledger": [
+            {
+              "seq": 1,
+              "evidence_kind": "controller_injected_fixture",
+              "id": "origin",
+              "item": "w-a30c",
+              "kind": "action",
+              "subject": "u-4c72"
+            },
+            {
+              "seq": 2,
+              "id": "obligation",
+              "item": "w-a30c",
+              "kind": "open",
+              "source_event": "origin",
+              "subject": "u-4c72"
+            },
+            {
+              "seq": 3,
+              "authority": "test_controller",
+              "basis": "predeclared_fixture_correction_complete",
+              "id": "settlement",
+              "kind": "close",
+              "obligation": "obligation"
+            }
+          ],
+          "ledger_read": false,
+          "actual_decision": "deny",
+          "decision_basis": "stale_deny_cache",
+          "deny_cache": [
+            [
+              "u-4c72",
+              "w-a30c"
+            ]
+          ],
+          "tool_receipts_before": 3,
+          "tool_receipts_after": 3,
+          "new_tool_receipts": [],
+          "dispatch_matches_decision": true,
+          "decision_matches_plan": false,
+          "effect_matches_plan": false
+        },
+        {
+          "case": "worker_rebound_after_settlement",
+          "subject": "A",
+          "item": "x",
+          "expected": "allow",
+          "restart": true,
+          "at": "2026-09-23T01:10:43.796593+00:00",
+          "actual_subject": "u-4c72",
+          "request": {
+            "request_id": "sticky_deny_cache:main:worker_rebound_after_settlement",
+            "item": "w-a30c"
+          },
+          "worker_instance": "134572dc-d23b-453e-8530-65418973615b",
+          "worker_pid": 65566,
+          "gate_instance": "8e01f176-5a8e-46f1-b2f4-47a44104cf27",
+          "ledger": [
+            {
+              "seq": 1,
+              "evidence_kind": "controller_injected_fixture",
+              "id": "origin",
+              "item": "w-a30c",
+              "kind": "action",
+              "subject": "u-4c72"
+            },
+            {
+              "seq": 2,
+              "id": "obligation",
+              "item": "w-a30c",
+              "kind": "open",
+              "source_event": "origin",
+              "subject": "u-4c72"
+            },
+            {
+              "seq": 3,
+              "authority": "test_controller",
+              "basis": "predeclared_fixture_correction_complete",
+              "id": "settlement",
+              "kind": "close",
+              "obligation": "obligation"
+            }
+          ],
+          "ledger_read": false,
+          "actual_decision": "deny",
+          "decision_basis": "stale_deny_cache",
+          "deny_cache": [
+            [
+              "u-4c72",
+              "w-a30c"
+            ]
+          ],
+          "tool_receipts_before": 3,
+          "tool_receipts_after": 3,
+          "new_tool_receipts": [],
+          "dispatch_matches_decision": true,
+          "decision_matches_plan": false,
+          "effect_matches_plan": false
+        }
+      ],
+      "final_ledger": [
+        {
+          "seq": 1,
+          "evidence_kind": "controller_injected_fixture",
+          "id": "origin",
+          "item": "w-a30c",
+          "kind": "action",
+          "subject": "u-4c72"
+        },
+        {
+          "seq": 2,
+          "id": "obligation",
+          "item": "w-a30c",
+          "kind": "open",
+          "source_event": "origin",
+          "subject": "u-4c72"
+        },
+        {
+          "seq": 3,
+          "authority": "test_controller",
+          "basis": "predeclared_fixture_correction_complete",
+          "id": "settlement",
+          "kind": "close",
+          "obligation": "obligation"
+        }
+      ],
+      "tool_receipts": [
+        {
+          "effect": "append_dummy_receipt",
+          "executed": true,
+          "item": "w-a30c",
+          "received_at": "2026-09-23T01:10:43.700937+00:00",
+          "request_id": "sticky_deny_cache:main:baseline",
+          "subject": "u-4c72",
+          "tool_pid": 65562
+        },
+        {
+          "effect": "append_dummy_receipt",
+          "executed": true,
+          "item": "w-a30c",
+          "received_at": "2026-09-23T01:10:43.746325+00:00",
+          "request_id": "sticky_deny_cache:main:identity_isolation",
+          "subject": "u-9e16",
+          "tool_pid": 65562
+        },
+        {
+          "effect": "append_dummy_receipt",
+          "executed": true,
+          "item": "w-f681",
+          "received_at": "2026-09-23T01:10:43.746584+00:00",
+          "request_id": "sticky_deny_cache:main:item_isolation",
+          "subject": "u-4c72",
+          "tool_pid": 65562
+        }
+      ],
+      "database_sha256": "a55ace11eada16bc395601a38c4b88a2f4fa423e4f618f94f632389fd60829d0",
+      "tool_receipts_sha256": "f77046b756ffbdc545681ea40b9b9df3126faed53598d6bb8accf8b20d8e1540"
+    },
+    {
+      "mode": "sticky_deny_cache",
+      "trace": "swapped",
+      "gate_instance": "acbc392f-4ab8-496c-87d9-f35f0fadda2a",
+      "process_lifecycle": [
+        {
+          "kind": "start",
+          "at": "2026-09-23T01:10:43.831390+00:00",
+          "monotonic_ns": 837027483334333,
+          "role": "tool",
+          "instance": "141ee41e-78cf-4cbd-abbd-d322876a78d6",
+          "pid": 65567,
+          "bound_subject": null,
+          "binding_basis": "controller_owned_private_pipe"
+        },
+        {
+          "kind": "start",
+          "at": "2026-09-23T01:10:43.852257+00:00",
+          "monotonic_ns": 837027504200750,
+          "role": "worker",
+          "instance": "4591edc9-04a1-4558-9e6c-075ed07ad724",
+          "pid": 65568,
+          "bound_subject": "u-9e16",
+          "binding_basis": "controller_owned_private_pipe"
+        },
+        {
+          "kind": "start",
+          "at": "2026-09-23T01:10:43.871969+00:00",
+          "monotonic_ns": 837027523910375,
+          "role": "worker",
+          "instance": "e963f981-e511-4a80-966c-bfe72ba539d2",
+          "pid": 65569,
+          "bound_subject": "u-4c72",
+          "binding_basis": "controller_owned_private_pipe"
+        },
+        {
+          "kind": "stop",
+          "at": "2026-09-23T01:10:43.876482+00:00",
+          "monotonic_ns": 837027528432041,
+          "role": "worker",
+          "instance": "e963f981-e511-4a80-966c-bfe72ba539d2",
+          "pid": 65569,
+          "returncode": 0,
+          "forced_kill": false
+        },
+        {
+          "kind": "stop",
+          "at": "2026-09-23T01:10:43.881080+00:00",
+          "monotonic_ns": 837027533028000,
+          "role": "worker",
+          "instance": "4591edc9-04a1-4558-9e6c-075ed07ad724",
+          "pid": 65568,
+          "returncode": 0,
+          "forced_kill": false
+        },
+        {
+          "kind": "stop",
+          "at": "2026-09-23T01:10:43.885668+00:00",
+          "monotonic_ns": 837027537606375,
+          "role": "tool",
+          "instance": "141ee41e-78cf-4cbd-abbd-d322876a78d6",
+          "pid": 65567,
+          "returncode": 0,
+          "forced_kill": false
+        }
+      ],
+      "worker_restarts": [],
+      "worker_io": [
+        {
+          "instance": "4591edc9-04a1-4558-9e6c-075ed07ad724",
+          "input": {
+            "request_id": "sticky_deny_cache:swapped:swapped_obligated",
+            "item": "w-a30c"
+          },
+          "output": {
+            "item": "w-a30c",
+            "request_id": "sticky_deny_cache:swapped:swapped_obligated"
+          }
+        },
+        {
+          "instance": "e963f981-e511-4a80-966c-bfe72ba539d2",
+          "input": {
+            "request_id": "sticky_deny_cache:swapped:swapped_unobligated",
+            "item": "w-a30c"
+          },
+          "output": {
+            "item": "w-a30c",
+            "request_id": "sticky_deny_cache:swapped:swapped_unobligated"
+          }
+        }
+      ],
+      "fixture_snapshots": [
+        {
+          "after_fixture": "open",
+          "at": "2026-09-23T01:10:43.831850+00:00",
+          "events": [
+            {
+              "seq": 1,
+              "evidence_kind": "controller_injected_fixture",
+              "id": "origin",
+              "item": "w-a30c",
+              "kind": "action",
+              "subject": "u-9e16"
+            },
+            {
+              "seq": 2,
+              "id": "obligation",
+              "item": "w-a30c",
+              "kind": "open",
+              "source_event": "origin",
+              "subject": "u-9e16"
+            }
+          ]
+        }
+      ],
+      "observations": [
+        {
+          "case": "swapped_obligated",
+          "subject": "B",
+          "item": "x",
+          "expected": "deny",
+          "at": "2026-09-23T01:10:43.852422+00:00",
+          "actual_subject": "u-9e16",
+          "request": {
+            "request_id": "sticky_deny_cache:swapped:swapped_obligated",
+            "item": "w-a30c"
+          },
+          "worker_instance": "4591edc9-04a1-4558-9e6c-075ed07ad724",
+          "worker_pid": 65568,
+          "gate_instance": "acbc392f-4ab8-496c-87d9-f35f0fadda2a",
+          "ledger": [
+            {
+              "seq": 1,
+              "evidence_kind": "controller_injected_fixture",
+              "id": "origin",
+              "item": "w-a30c",
+              "kind": "action",
+              "subject": "u-9e16"
+            },
+            {
+              "seq": 2,
+              "id": "obligation",
+              "item": "w-a30c",
+              "kind": "open",
+              "source_event": "origin",
+              "subject": "u-9e16"
+            }
+          ],
+          "ledger_read": true,
+          "actual_decision": "deny",
+          "decision_basis": "open_obligation",
+          "deny_cache": [
+            [
+              "u-9e16",
+              "w-a30c"
+            ]
+          ],
+          "tool_receipts_before": 0,
+          "tool_receipts_after": 0,
+          "new_tool_receipts": [],
+          "dispatch_matches_decision": true,
+          "decision_matches_plan": true,
+          "effect_matches_plan": true
+        },
+        {
+          "case": "swapped_unobligated",
+          "subject": "A",
+          "item": "x",
+          "expected": "allow",
+          "at": "2026-09-23T01:10:43.872397+00:00",
+          "actual_subject": "u-4c72",
+          "request": {
+            "request_id": "sticky_deny_cache:swapped:swapped_unobligated",
+            "item": "w-a30c"
+          },
+          "worker_instance": "e963f981-e511-4a80-966c-bfe72ba539d2",
+          "worker_pid": 65569,
+          "gate_instance": "acbc392f-4ab8-496c-87d9-f35f0fadda2a",
+          "ledger": [
+            {
+              "seq": 1,
+              "evidence_kind": "controller_injected_fixture",
+              "id": "origin",
+              "item": "w-a30c",
+              "kind": "action",
+              "subject": "u-9e16"
+            },
+            {
+              "seq": 2,
+              "id": "obligation",
+              "item": "w-a30c",
+              "kind": "open",
+              "source_event": "origin",
+              "subject": "u-9e16"
+            }
+          ],
+          "ledger_read": true,
+          "actual_decision": "allow",
+          "decision_basis": "no_open_obligation",
+          "deny_cache": [
+            [
+              "u-9e16",
+              "w-a30c"
+            ]
+          ],
+          "tool_receipts_before": 0,
+          "tool_receipts_after": 1,
+          "new_tool_receipts": [
+            {
+              "effect": "append_dummy_receipt",
+              "executed": true,
+              "item": "w-a30c",
+              "received_at": "2026-09-23T01:10:43.872154+00:00",
+              "request_id": "sticky_deny_cache:swapped:swapped_unobligated",
+              "subject": "u-4c72",
+              "tool_pid": 65567
+            }
+          ],
+          "dispatch_matches_decision": true,
+          "decision_matches_plan": true,
+          "effect_matches_plan": true
+        }
+      ],
+      "final_ledger": [
+        {
+          "seq": 1,
+          "evidence_kind": "controller_injected_fixture",
+          "id": "origin",
+          "item": "w-a30c",
+          "kind": "action",
+          "subject": "u-9e16"
+        },
+        {
+          "seq": 2,
+          "id": "obligation",
+          "item": "w-a30c",
+          "kind": "open",
+          "source_event": "origin",
+          "subject": "u-9e16"
+        }
+      ],
+      "tool_receipts": [
+        {
+          "effect": "append_dummy_receipt",
+          "executed": true,
+          "item": "w-a30c",
+          "received_at": "2026-09-23T01:10:43.872154+00:00",
+          "request_id": "sticky_deny_cache:swapped:swapped_unobligated",
+          "subject": "u-4c72",
+          "tool_pid": 65567
+        }
+      ],
+      "database_sha256": "7be0827ecd65f69e009edf4f1215ca1c0cd605ffeb0ec13202c058d60778e2b8",
+      "tool_receipts_sha256": "3735e19f78db25dfae67d635b2c8bf0c8e7a6da4852f2eabe2a5aa73254072b0"
+    }
+  ],
+  "summary": [
+    {
+      "mode": "current_ledger",
+      "decisions": 9,
+      "matching_decisions": 9,
+      "mismatched_cases": [],
+      "matching_effects": 9,
+      "dispatch_consistent": true,
+      "tool_executions": 6,
+      "matches_predeclared_fault_pattern": true
+    },
+    {
+      "mode": "sticky_deny_cache",
+      "decisions": 9,
+      "matching_decisions": 7,
+      "mismatched_cases": [
+        "settled",
+        "worker_rebound_after_settlement"
+      ],
+      "matching_effects": 7,
+      "dispatch_consistent": true,
+      "tool_executions": 4,
+      "matches_predeclared_fault_pattern": true
+    }
+  ],
+  "status": "completed",
+  "ended_at": "2026-09-23T01:10:43.885931+00:00"
+}
