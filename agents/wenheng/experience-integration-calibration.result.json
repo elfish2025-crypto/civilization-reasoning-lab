@@ -1,0 +1,3147 @@
+{
+  "schema": "wenheng-experience-calibration-result-v1",
+  "kind": "self_authored_deterministic_calibration",
+  "runtime": {
+    "python": "3.12.14",
+    "system": "Darwin",
+    "machine": "arm64"
+  },
+  "started_at_utc": "2026-09-26T01:10:05.167916+00:00",
+  "completed_at_utc": "2026-09-26T01:10:05.168159+00:00",
+  "script_sha256": "702de44bb0cf092527101cf3c1a69b73b8ccc9f8c154491f260ce5ef3835f1d7",
+  "plan_sha256": "d8f48494698e1bf07a6b3d3ac3a06aa33e553b45cff55ec03cff2ed982e949b2",
+  "plan": {
+    "schema": "wenheng-experience-calibration-plan-v1",
+    "fixed_at_utc": "2026-09-26T01:09:51.905231+00:00",
+    "source_commit": "17e39e4dcb11bae03d57c97d923d5acd4463aced",
+    "purpose": "Calibrate the narrow q/r experience-integration instrument using a one-bit feedback policy and two negative controls; not an Agent experiment.",
+    "author": {
+      "research_agent": "WenHeng / 问衡",
+      "research_agent_id": "crl-a-20260830-wenheng",
+      "maintenance_agent": "ZhiHeng / 知衡",
+      "authoring_model": "OpenAI GPT-6",
+      "authoring_model_version": "unknown",
+      "same_runtime_both_roles": true,
+      "human_initiator": "佳明",
+      "human_reviewed": false
+    },
+    "tested_model": null,
+    "protocols": [
+      "q",
+      "r"
+    ],
+    "defaults": [
+      "q",
+      "r"
+    ],
+    "policies": [
+      "last_feedback",
+      "record_only",
+      "freeze_first"
+    ],
+    "trials_per_phase": 3,
+    "phase_schedule": "initial, opposite(initial), initial",
+    "environment": "Each action returns only success = (proposal == required protocol). Exactly one protocol succeeds; noiseless feedback. No governance, retry, or resource limits.",
+    "policy_inputs": "Default, selected memory value, read-path availability; each update receives only own action and success. No phase, required protocol, clock, trial number, or audit trace.",
+    "policy_rules": {
+      "last_feedback": "Use stored protocol or default when uninitialized/blocked. After every outcome store action if successful, the other protocol if unsuccessful.",
+      "record_only": "Always propose default; update the stored protocol after every outcome exactly as last_feedback. Never read this record for proposals.",
+      "freeze_first": "Use stored protocol or default when uninitialized/blocked. Initialize from the first outcome, then never revise stored protocol."
+    },
+    "probes": "One proposal each from a shared checkpoint at the end of phase 1 (zero-based): latest memory, blocked read, phase-0 memory. World remains at phase 1. No probe feedback is returned and no probe updates state.",
+    "scoring": "Report all continuous actions. Separately count trials 1 and 2 (zero-based) in phases 1 and 2, after first new feedback. Count probe correctness and proposal differences plus direction; all four label/default pairs are enumerated, not statistical samples.",
+    "expected_calibration_checks": {
+      "last_feedback": {
+        "post_feedback": "16/16",
+        "probes_latest_blocked_old": [
+          4,
+          2,
+          0
+        ],
+        "latest_vs_old_changed": 4,
+        "latest_vs_blocked_changed": 2
+      },
+      "record_only": {
+        "post_feedback": "8/16",
+        "probes_latest_blocked_old": [
+          2,
+          2,
+          2
+        ],
+        "latest_vs_old_changed": 0,
+        "latest_vs_blocked_changed": 0
+      },
+      "freeze_first": {
+        "post_feedback": "8/16",
+        "probes_latest_blocked_old": [
+          0,
+          2,
+          0
+        ],
+        "latest_vs_old_changed": 0,
+        "latest_vs_blocked_changed": 2
+      }
+    },
+    "interpretation": "Expectations follow by inspection of fixed rules. Executing them checks the proposed measurements, not empirical learning, statistical significance, reflection, strong experience, responsibility, temporal priority P1 or governance causation P2."
+  },
+  "summary": {
+    "last_feedback": {
+      "constructed_cases": 4,
+      "continuous_successes": 26,
+      "continuous_actions": 36,
+      "post_feedback_successes": 16,
+      "post_feedback_actions": 16,
+      "probe_correct": {
+        "latest": 4,
+        "blocked": 2,
+        "old": 0
+      },
+      "latest_vs_old_changed": 4,
+      "latest_vs_blocked_changed": 2,
+      "latest_better_than_blocked": 2,
+      "latest_worse_than_blocked": 0
+    },
+    "record_only": {
+      "constructed_cases": 4,
+      "continuous_successes": 18,
+      "continuous_actions": 36,
+      "post_feedback_successes": 8,
+      "post_feedback_actions": 16,
+      "probe_correct": {
+        "latest": 2,
+        "blocked": 2,
+        "old": 2
+      },
+      "latest_vs_old_changed": 0,
+      "latest_vs_blocked_changed": 0,
+      "latest_better_than_blocked": 0,
+      "latest_worse_than_blocked": 0
+    },
+    "freeze_first": {
+      "constructed_cases": 4,
+      "continuous_successes": 22,
+      "continuous_actions": 36,
+      "post_feedback_successes": 8,
+      "post_feedback_actions": 16,
+      "probe_correct": {
+        "latest": 0,
+        "blocked": 2,
+        "old": 0
+      },
+      "latest_vs_old_changed": 0,
+      "latest_vs_blocked_changed": 2,
+      "latest_better_than_blocked": 0,
+      "latest_worse_than_blocked": 2
+    }
+  },
+  "runs": [
+    {
+      "policy": "last_feedback",
+      "initial_protocol": "q",
+      "default": "q",
+      "phase_protocols": [
+        "q",
+        "r",
+        "q"
+      ],
+      "trace": [
+        {
+          "event": 1,
+          "controller_only": {
+            "phase": 0,
+            "trial": 0,
+            "required": "q"
+          },
+          "memory_before": null,
+          "planner_read": {
+            "path": "read",
+            "value": null
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "q",
+          "changed": true
+        },
+        {
+          "event": 2,
+          "controller_only": {
+            "phase": 0,
+            "trial": 1,
+            "required": "q"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "q",
+          "changed": false
+        },
+        {
+          "event": 3,
+          "controller_only": {
+            "phase": 0,
+            "trial": 2,
+            "required": "q"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "q",
+          "changed": false
+        },
+        {
+          "event": 4,
+          "controller_only": {
+            "phase": 1,
+            "trial": 0,
+            "required": "r"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "r",
+          "changed": true
+        },
+        {
+          "event": 5,
+          "controller_only": {
+            "phase": 1,
+            "trial": 1,
+            "required": "r"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "r",
+          "changed": false
+        },
+        {
+          "event": 6,
+          "controller_only": {
+            "phase": 1,
+            "trial": 2,
+            "required": "r"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "r",
+          "changed": false
+        },
+        {
+          "event": 7,
+          "controller_only": {
+            "phase": 2,
+            "trial": 0,
+            "required": "q"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "q",
+          "changed": true
+        },
+        {
+          "event": 8,
+          "controller_only": {
+            "phase": 2,
+            "trial": 1,
+            "required": "q"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "q",
+          "changed": false
+        },
+        {
+          "event": 9,
+          "controller_only": {
+            "phase": 2,
+            "trial": 2,
+            "required": "q"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "q",
+          "changed": false
+        }
+      ],
+      "checkpoints": [
+        {
+          "phase": 0,
+          "event": 3,
+          "memory": "q"
+        },
+        {
+          "phase": 1,
+          "event": 6,
+          "memory": "r"
+        },
+        {
+          "phase": 2,
+          "event": 9,
+          "memory": "q"
+        }
+      ],
+      "probes": [
+        {
+          "condition": "latest",
+          "source_event": 6,
+          "selected_memory": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "controller_only_required": "r",
+          "correct_proposal": true,
+          "feedback_delivered": false,
+          "memory_updated": false
+        },
+        {
+          "condition": "blocked",
+          "source_event": 6,
+          "selected_memory": "r",
+          "planner_read": {
+            "path": "blocked",
+            "value": null
+          },
+          "proposal": "q",
+          "controller_only_required": "r",
+          "correct_proposal": false,
+          "feedback_delivered": false,
+          "memory_updated": false
+        },
+        {
+          "condition": "old",
+          "source_event": 3,
+          "selected_memory": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "controller_only_required": "r",
+          "correct_proposal": false,
+          "feedback_delivered": false,
+          "memory_updated": false
+        }
+      ],
+      "continuous": {
+        "successes": 7,
+        "actions": 9,
+        "post_change_after_first_feedback_successes": 4,
+        "post_change_after_first_feedback_actions": 4
+      }
+    },
+    {
+      "policy": "last_feedback",
+      "initial_protocol": "q",
+      "default": "r",
+      "phase_protocols": [
+        "q",
+        "r",
+        "q"
+      ],
+      "trace": [
+        {
+          "event": 1,
+          "controller_only": {
+            "phase": 0,
+            "trial": 0,
+            "required": "q"
+          },
+          "memory_before": null,
+          "planner_read": {
+            "path": "read",
+            "value": null
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "q",
+          "changed": true
+        },
+        {
+          "event": 2,
+          "controller_only": {
+            "phase": 0,
+            "trial": 1,
+            "required": "q"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "q",
+          "changed": false
+        },
+        {
+          "event": 3,
+          "controller_only": {
+            "phase": 0,
+            "trial": 2,
+            "required": "q"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "q",
+          "changed": false
+        },
+        {
+          "event": 4,
+          "controller_only": {
+            "phase": 1,
+            "trial": 0,
+            "required": "r"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "r",
+          "changed": true
+        },
+        {
+          "event": 5,
+          "controller_only": {
+            "phase": 1,
+            "trial": 1,
+            "required": "r"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "r",
+          "changed": false
+        },
+        {
+          "event": 6,
+          "controller_only": {
+            "phase": 1,
+            "trial": 2,
+            "required": "r"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "r",
+          "changed": false
+        },
+        {
+          "event": 7,
+          "controller_only": {
+            "phase": 2,
+            "trial": 0,
+            "required": "q"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "q",
+          "changed": true
+        },
+        {
+          "event": 8,
+          "controller_only": {
+            "phase": 2,
+            "trial": 1,
+            "required": "q"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "q",
+          "changed": false
+        },
+        {
+          "event": 9,
+          "controller_only": {
+            "phase": 2,
+            "trial": 2,
+            "required": "q"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "q",
+          "changed": false
+        }
+      ],
+      "checkpoints": [
+        {
+          "phase": 0,
+          "event": 3,
+          "memory": "q"
+        },
+        {
+          "phase": 1,
+          "event": 6,
+          "memory": "r"
+        },
+        {
+          "phase": 2,
+          "event": 9,
+          "memory": "q"
+        }
+      ],
+      "probes": [
+        {
+          "condition": "latest",
+          "source_event": 6,
+          "selected_memory": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "controller_only_required": "r",
+          "correct_proposal": true,
+          "feedback_delivered": false,
+          "memory_updated": false
+        },
+        {
+          "condition": "blocked",
+          "source_event": 6,
+          "selected_memory": "r",
+          "planner_read": {
+            "path": "blocked",
+            "value": null
+          },
+          "proposal": "r",
+          "controller_only_required": "r",
+          "correct_proposal": true,
+          "feedback_delivered": false,
+          "memory_updated": false
+        },
+        {
+          "condition": "old",
+          "source_event": 3,
+          "selected_memory": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "controller_only_required": "r",
+          "correct_proposal": false,
+          "feedback_delivered": false,
+          "memory_updated": false
+        }
+      ],
+      "continuous": {
+        "successes": 6,
+        "actions": 9,
+        "post_change_after_first_feedback_successes": 4,
+        "post_change_after_first_feedback_actions": 4
+      }
+    },
+    {
+      "policy": "last_feedback",
+      "initial_protocol": "r",
+      "default": "q",
+      "phase_protocols": [
+        "r",
+        "q",
+        "r"
+      ],
+      "trace": [
+        {
+          "event": 1,
+          "controller_only": {
+            "phase": 0,
+            "trial": 0,
+            "required": "r"
+          },
+          "memory_before": null,
+          "planner_read": {
+            "path": "read",
+            "value": null
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "r",
+          "changed": true
+        },
+        {
+          "event": 2,
+          "controller_only": {
+            "phase": 0,
+            "trial": 1,
+            "required": "r"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "r",
+          "changed": false
+        },
+        {
+          "event": 3,
+          "controller_only": {
+            "phase": 0,
+            "trial": 2,
+            "required": "r"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "r",
+          "changed": false
+        },
+        {
+          "event": 4,
+          "controller_only": {
+            "phase": 1,
+            "trial": 0,
+            "required": "q"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "q",
+          "changed": true
+        },
+        {
+          "event": 5,
+          "controller_only": {
+            "phase": 1,
+            "trial": 1,
+            "required": "q"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "q",
+          "changed": false
+        },
+        {
+          "event": 6,
+          "controller_only": {
+            "phase": 1,
+            "trial": 2,
+            "required": "q"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "q",
+          "changed": false
+        },
+        {
+          "event": 7,
+          "controller_only": {
+            "phase": 2,
+            "trial": 0,
+            "required": "r"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "r",
+          "changed": true
+        },
+        {
+          "event": 8,
+          "controller_only": {
+            "phase": 2,
+            "trial": 1,
+            "required": "r"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "r",
+          "changed": false
+        },
+        {
+          "event": 9,
+          "controller_only": {
+            "phase": 2,
+            "trial": 2,
+            "required": "r"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "r",
+          "changed": false
+        }
+      ],
+      "checkpoints": [
+        {
+          "phase": 0,
+          "event": 3,
+          "memory": "r"
+        },
+        {
+          "phase": 1,
+          "event": 6,
+          "memory": "q"
+        },
+        {
+          "phase": 2,
+          "event": 9,
+          "memory": "r"
+        }
+      ],
+      "probes": [
+        {
+          "condition": "latest",
+          "source_event": 6,
+          "selected_memory": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "controller_only_required": "q",
+          "correct_proposal": true,
+          "feedback_delivered": false,
+          "memory_updated": false
+        },
+        {
+          "condition": "blocked",
+          "source_event": 6,
+          "selected_memory": "q",
+          "planner_read": {
+            "path": "blocked",
+            "value": null
+          },
+          "proposal": "q",
+          "controller_only_required": "q",
+          "correct_proposal": true,
+          "feedback_delivered": false,
+          "memory_updated": false
+        },
+        {
+          "condition": "old",
+          "source_event": 3,
+          "selected_memory": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "controller_only_required": "q",
+          "correct_proposal": false,
+          "feedback_delivered": false,
+          "memory_updated": false
+        }
+      ],
+      "continuous": {
+        "successes": 6,
+        "actions": 9,
+        "post_change_after_first_feedback_successes": 4,
+        "post_change_after_first_feedback_actions": 4
+      }
+    },
+    {
+      "policy": "last_feedback",
+      "initial_protocol": "r",
+      "default": "r",
+      "phase_protocols": [
+        "r",
+        "q",
+        "r"
+      ],
+      "trace": [
+        {
+          "event": 1,
+          "controller_only": {
+            "phase": 0,
+            "trial": 0,
+            "required": "r"
+          },
+          "memory_before": null,
+          "planner_read": {
+            "path": "read",
+            "value": null
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "r",
+          "changed": true
+        },
+        {
+          "event": 2,
+          "controller_only": {
+            "phase": 0,
+            "trial": 1,
+            "required": "r"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "r",
+          "changed": false
+        },
+        {
+          "event": 3,
+          "controller_only": {
+            "phase": 0,
+            "trial": 2,
+            "required": "r"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "r",
+          "changed": false
+        },
+        {
+          "event": 4,
+          "controller_only": {
+            "phase": 1,
+            "trial": 0,
+            "required": "q"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "q",
+          "changed": true
+        },
+        {
+          "event": 5,
+          "controller_only": {
+            "phase": 1,
+            "trial": 1,
+            "required": "q"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "q",
+          "changed": false
+        },
+        {
+          "event": 6,
+          "controller_only": {
+            "phase": 1,
+            "trial": 2,
+            "required": "q"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "q",
+          "changed": false
+        },
+        {
+          "event": 7,
+          "controller_only": {
+            "phase": 2,
+            "trial": 0,
+            "required": "r"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "r",
+          "changed": true
+        },
+        {
+          "event": 8,
+          "controller_only": {
+            "phase": 2,
+            "trial": 1,
+            "required": "r"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "r",
+          "changed": false
+        },
+        {
+          "event": 9,
+          "controller_only": {
+            "phase": 2,
+            "trial": 2,
+            "required": "r"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "r",
+          "changed": false
+        }
+      ],
+      "checkpoints": [
+        {
+          "phase": 0,
+          "event": 3,
+          "memory": "r"
+        },
+        {
+          "phase": 1,
+          "event": 6,
+          "memory": "q"
+        },
+        {
+          "phase": 2,
+          "event": 9,
+          "memory": "r"
+        }
+      ],
+      "probes": [
+        {
+          "condition": "latest",
+          "source_event": 6,
+          "selected_memory": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "controller_only_required": "q",
+          "correct_proposal": true,
+          "feedback_delivered": false,
+          "memory_updated": false
+        },
+        {
+          "condition": "blocked",
+          "source_event": 6,
+          "selected_memory": "q",
+          "planner_read": {
+            "path": "blocked",
+            "value": null
+          },
+          "proposal": "r",
+          "controller_only_required": "q",
+          "correct_proposal": false,
+          "feedback_delivered": false,
+          "memory_updated": false
+        },
+        {
+          "condition": "old",
+          "source_event": 3,
+          "selected_memory": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "controller_only_required": "q",
+          "correct_proposal": false,
+          "feedback_delivered": false,
+          "memory_updated": false
+        }
+      ],
+      "continuous": {
+        "successes": 7,
+        "actions": 9,
+        "post_change_after_first_feedback_successes": 4,
+        "post_change_after_first_feedback_actions": 4
+      }
+    },
+    {
+      "policy": "record_only",
+      "initial_protocol": "q",
+      "default": "q",
+      "phase_protocols": [
+        "q",
+        "r",
+        "q"
+      ],
+      "trace": [
+        {
+          "event": 1,
+          "controller_only": {
+            "phase": 0,
+            "trial": 0,
+            "required": "q"
+          },
+          "memory_before": null,
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "q",
+          "changed": true
+        },
+        {
+          "event": 2,
+          "controller_only": {
+            "phase": 0,
+            "trial": 1,
+            "required": "q"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "q",
+          "changed": false
+        },
+        {
+          "event": 3,
+          "controller_only": {
+            "phase": 0,
+            "trial": 2,
+            "required": "q"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "q",
+          "changed": false
+        },
+        {
+          "event": 4,
+          "controller_only": {
+            "phase": 1,
+            "trial": 0,
+            "required": "r"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "r",
+          "changed": true
+        },
+        {
+          "event": 5,
+          "controller_only": {
+            "phase": 1,
+            "trial": 1,
+            "required": "r"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "r",
+          "changed": false
+        },
+        {
+          "event": 6,
+          "controller_only": {
+            "phase": 1,
+            "trial": 2,
+            "required": "r"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "r",
+          "changed": false
+        },
+        {
+          "event": 7,
+          "controller_only": {
+            "phase": 2,
+            "trial": 0,
+            "required": "q"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "q",
+          "changed": true
+        },
+        {
+          "event": 8,
+          "controller_only": {
+            "phase": 2,
+            "trial": 1,
+            "required": "q"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "q",
+          "changed": false
+        },
+        {
+          "event": 9,
+          "controller_only": {
+            "phase": 2,
+            "trial": 2,
+            "required": "q"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "q",
+          "changed": false
+        }
+      ],
+      "checkpoints": [
+        {
+          "phase": 0,
+          "event": 3,
+          "memory": "q"
+        },
+        {
+          "phase": 1,
+          "event": 6,
+          "memory": "r"
+        },
+        {
+          "phase": 2,
+          "event": 9,
+          "memory": "q"
+        }
+      ],
+      "probes": [
+        {
+          "condition": "latest",
+          "source_event": 6,
+          "selected_memory": "r",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "q",
+          "controller_only_required": "r",
+          "correct_proposal": false,
+          "feedback_delivered": false,
+          "memory_updated": false
+        },
+        {
+          "condition": "blocked",
+          "source_event": 6,
+          "selected_memory": "r",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "q",
+          "controller_only_required": "r",
+          "correct_proposal": false,
+          "feedback_delivered": false,
+          "memory_updated": false
+        },
+        {
+          "condition": "old",
+          "source_event": 3,
+          "selected_memory": "q",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "q",
+          "controller_only_required": "r",
+          "correct_proposal": false,
+          "feedback_delivered": false,
+          "memory_updated": false
+        }
+      ],
+      "continuous": {
+        "successes": 6,
+        "actions": 9,
+        "post_change_after_first_feedback_successes": 2,
+        "post_change_after_first_feedback_actions": 4
+      }
+    },
+    {
+      "policy": "record_only",
+      "initial_protocol": "q",
+      "default": "r",
+      "phase_protocols": [
+        "q",
+        "r",
+        "q"
+      ],
+      "trace": [
+        {
+          "event": 1,
+          "controller_only": {
+            "phase": 0,
+            "trial": 0,
+            "required": "q"
+          },
+          "memory_before": null,
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "q",
+          "changed": true
+        },
+        {
+          "event": 2,
+          "controller_only": {
+            "phase": 0,
+            "trial": 1,
+            "required": "q"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "q",
+          "changed": false
+        },
+        {
+          "event": 3,
+          "controller_only": {
+            "phase": 0,
+            "trial": 2,
+            "required": "q"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "q",
+          "changed": false
+        },
+        {
+          "event": 4,
+          "controller_only": {
+            "phase": 1,
+            "trial": 0,
+            "required": "r"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "r",
+          "changed": true
+        },
+        {
+          "event": 5,
+          "controller_only": {
+            "phase": 1,
+            "trial": 1,
+            "required": "r"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "r",
+          "changed": false
+        },
+        {
+          "event": 6,
+          "controller_only": {
+            "phase": 1,
+            "trial": 2,
+            "required": "r"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "r",
+          "changed": false
+        },
+        {
+          "event": 7,
+          "controller_only": {
+            "phase": 2,
+            "trial": 0,
+            "required": "q"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "q",
+          "changed": true
+        },
+        {
+          "event": 8,
+          "controller_only": {
+            "phase": 2,
+            "trial": 1,
+            "required": "q"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "q",
+          "changed": false
+        },
+        {
+          "event": 9,
+          "controller_only": {
+            "phase": 2,
+            "trial": 2,
+            "required": "q"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "q",
+          "changed": false
+        }
+      ],
+      "checkpoints": [
+        {
+          "phase": 0,
+          "event": 3,
+          "memory": "q"
+        },
+        {
+          "phase": 1,
+          "event": 6,
+          "memory": "r"
+        },
+        {
+          "phase": 2,
+          "event": 9,
+          "memory": "q"
+        }
+      ],
+      "probes": [
+        {
+          "condition": "latest",
+          "source_event": 6,
+          "selected_memory": "r",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "r",
+          "controller_only_required": "r",
+          "correct_proposal": true,
+          "feedback_delivered": false,
+          "memory_updated": false
+        },
+        {
+          "condition": "blocked",
+          "source_event": 6,
+          "selected_memory": "r",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "r",
+          "controller_only_required": "r",
+          "correct_proposal": true,
+          "feedback_delivered": false,
+          "memory_updated": false
+        },
+        {
+          "condition": "old",
+          "source_event": 3,
+          "selected_memory": "q",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "r",
+          "controller_only_required": "r",
+          "correct_proposal": true,
+          "feedback_delivered": false,
+          "memory_updated": false
+        }
+      ],
+      "continuous": {
+        "successes": 3,
+        "actions": 9,
+        "post_change_after_first_feedback_successes": 2,
+        "post_change_after_first_feedback_actions": 4
+      }
+    },
+    {
+      "policy": "record_only",
+      "initial_protocol": "r",
+      "default": "q",
+      "phase_protocols": [
+        "r",
+        "q",
+        "r"
+      ],
+      "trace": [
+        {
+          "event": 1,
+          "controller_only": {
+            "phase": 0,
+            "trial": 0,
+            "required": "r"
+          },
+          "memory_before": null,
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "r",
+          "changed": true
+        },
+        {
+          "event": 2,
+          "controller_only": {
+            "phase": 0,
+            "trial": 1,
+            "required": "r"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "r",
+          "changed": false
+        },
+        {
+          "event": 3,
+          "controller_only": {
+            "phase": 0,
+            "trial": 2,
+            "required": "r"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "r",
+          "changed": false
+        },
+        {
+          "event": 4,
+          "controller_only": {
+            "phase": 1,
+            "trial": 0,
+            "required": "q"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "q",
+          "changed": true
+        },
+        {
+          "event": 5,
+          "controller_only": {
+            "phase": 1,
+            "trial": 1,
+            "required": "q"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "q",
+          "changed": false
+        },
+        {
+          "event": 6,
+          "controller_only": {
+            "phase": 1,
+            "trial": 2,
+            "required": "q"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "q",
+          "changed": false
+        },
+        {
+          "event": 7,
+          "controller_only": {
+            "phase": 2,
+            "trial": 0,
+            "required": "r"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "r",
+          "changed": true
+        },
+        {
+          "event": 8,
+          "controller_only": {
+            "phase": 2,
+            "trial": 1,
+            "required": "r"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "r",
+          "changed": false
+        },
+        {
+          "event": 9,
+          "controller_only": {
+            "phase": 2,
+            "trial": 2,
+            "required": "r"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "r",
+          "changed": false
+        }
+      ],
+      "checkpoints": [
+        {
+          "phase": 0,
+          "event": 3,
+          "memory": "r"
+        },
+        {
+          "phase": 1,
+          "event": 6,
+          "memory": "q"
+        },
+        {
+          "phase": 2,
+          "event": 9,
+          "memory": "r"
+        }
+      ],
+      "probes": [
+        {
+          "condition": "latest",
+          "source_event": 6,
+          "selected_memory": "q",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "q",
+          "controller_only_required": "q",
+          "correct_proposal": true,
+          "feedback_delivered": false,
+          "memory_updated": false
+        },
+        {
+          "condition": "blocked",
+          "source_event": 6,
+          "selected_memory": "q",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "q",
+          "controller_only_required": "q",
+          "correct_proposal": true,
+          "feedback_delivered": false,
+          "memory_updated": false
+        },
+        {
+          "condition": "old",
+          "source_event": 3,
+          "selected_memory": "r",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "q",
+          "controller_only_required": "q",
+          "correct_proposal": true,
+          "feedback_delivered": false,
+          "memory_updated": false
+        }
+      ],
+      "continuous": {
+        "successes": 3,
+        "actions": 9,
+        "post_change_after_first_feedback_successes": 2,
+        "post_change_after_first_feedback_actions": 4
+      }
+    },
+    {
+      "policy": "record_only",
+      "initial_protocol": "r",
+      "default": "r",
+      "phase_protocols": [
+        "r",
+        "q",
+        "r"
+      ],
+      "trace": [
+        {
+          "event": 1,
+          "controller_only": {
+            "phase": 0,
+            "trial": 0,
+            "required": "r"
+          },
+          "memory_before": null,
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "r",
+          "changed": true
+        },
+        {
+          "event": 2,
+          "controller_only": {
+            "phase": 0,
+            "trial": 1,
+            "required": "r"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "r",
+          "changed": false
+        },
+        {
+          "event": 3,
+          "controller_only": {
+            "phase": 0,
+            "trial": 2,
+            "required": "r"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "r",
+          "changed": false
+        },
+        {
+          "event": 4,
+          "controller_only": {
+            "phase": 1,
+            "trial": 0,
+            "required": "q"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "q",
+          "changed": true
+        },
+        {
+          "event": 5,
+          "controller_only": {
+            "phase": 1,
+            "trial": 1,
+            "required": "q"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "q",
+          "changed": false
+        },
+        {
+          "event": 6,
+          "controller_only": {
+            "phase": 1,
+            "trial": 2,
+            "required": "q"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "q",
+          "changed": false
+        },
+        {
+          "event": 7,
+          "controller_only": {
+            "phase": 2,
+            "trial": 0,
+            "required": "r"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "r",
+          "changed": true
+        },
+        {
+          "event": 8,
+          "controller_only": {
+            "phase": 2,
+            "trial": 1,
+            "required": "r"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "r",
+          "changed": false
+        },
+        {
+          "event": 9,
+          "controller_only": {
+            "phase": 2,
+            "trial": 2,
+            "required": "r"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "r",
+          "changed": false
+        }
+      ],
+      "checkpoints": [
+        {
+          "phase": 0,
+          "event": 3,
+          "memory": "r"
+        },
+        {
+          "phase": 1,
+          "event": 6,
+          "memory": "q"
+        },
+        {
+          "phase": 2,
+          "event": 9,
+          "memory": "r"
+        }
+      ],
+      "probes": [
+        {
+          "condition": "latest",
+          "source_event": 6,
+          "selected_memory": "q",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "r",
+          "controller_only_required": "q",
+          "correct_proposal": false,
+          "feedback_delivered": false,
+          "memory_updated": false
+        },
+        {
+          "condition": "blocked",
+          "source_event": 6,
+          "selected_memory": "q",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "r",
+          "controller_only_required": "q",
+          "correct_proposal": false,
+          "feedback_delivered": false,
+          "memory_updated": false
+        },
+        {
+          "condition": "old",
+          "source_event": 3,
+          "selected_memory": "r",
+          "planner_read": {
+            "path": "unused",
+            "value": null
+          },
+          "proposal": "r",
+          "controller_only_required": "q",
+          "correct_proposal": false,
+          "feedback_delivered": false,
+          "memory_updated": false
+        }
+      ],
+      "continuous": {
+        "successes": 6,
+        "actions": 9,
+        "post_change_after_first_feedback_successes": 2,
+        "post_change_after_first_feedback_actions": 4
+      }
+    },
+    {
+      "policy": "freeze_first",
+      "initial_protocol": "q",
+      "default": "q",
+      "phase_protocols": [
+        "q",
+        "r",
+        "q"
+      ],
+      "trace": [
+        {
+          "event": 1,
+          "controller_only": {
+            "phase": 0,
+            "trial": 0,
+            "required": "q"
+          },
+          "memory_before": null,
+          "planner_read": {
+            "path": "read",
+            "value": null
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "q",
+          "changed": true
+        },
+        {
+          "event": 2,
+          "controller_only": {
+            "phase": 0,
+            "trial": 1,
+            "required": "q"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "q",
+          "changed": false
+        },
+        {
+          "event": 3,
+          "controller_only": {
+            "phase": 0,
+            "trial": 2,
+            "required": "q"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "q",
+          "changed": false
+        },
+        {
+          "event": 4,
+          "controller_only": {
+            "phase": 1,
+            "trial": 0,
+            "required": "r"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "q",
+          "changed": false
+        },
+        {
+          "event": 5,
+          "controller_only": {
+            "phase": 1,
+            "trial": 1,
+            "required": "r"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "q",
+          "changed": false
+        },
+        {
+          "event": 6,
+          "controller_only": {
+            "phase": 1,
+            "trial": 2,
+            "required": "r"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "q",
+          "changed": false
+        },
+        {
+          "event": 7,
+          "controller_only": {
+            "phase": 2,
+            "trial": 0,
+            "required": "q"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "q",
+          "changed": false
+        },
+        {
+          "event": 8,
+          "controller_only": {
+            "phase": 2,
+            "trial": 1,
+            "required": "q"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "q",
+          "changed": false
+        },
+        {
+          "event": 9,
+          "controller_only": {
+            "phase": 2,
+            "trial": 2,
+            "required": "q"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "q",
+          "changed": false
+        }
+      ],
+      "checkpoints": [
+        {
+          "phase": 0,
+          "event": 3,
+          "memory": "q"
+        },
+        {
+          "phase": 1,
+          "event": 6,
+          "memory": "q"
+        },
+        {
+          "phase": 2,
+          "event": 9,
+          "memory": "q"
+        }
+      ],
+      "probes": [
+        {
+          "condition": "latest",
+          "source_event": 6,
+          "selected_memory": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "controller_only_required": "r",
+          "correct_proposal": false,
+          "feedback_delivered": false,
+          "memory_updated": false
+        },
+        {
+          "condition": "blocked",
+          "source_event": 6,
+          "selected_memory": "q",
+          "planner_read": {
+            "path": "blocked",
+            "value": null
+          },
+          "proposal": "q",
+          "controller_only_required": "r",
+          "correct_proposal": false,
+          "feedback_delivered": false,
+          "memory_updated": false
+        },
+        {
+          "condition": "old",
+          "source_event": 3,
+          "selected_memory": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "controller_only_required": "r",
+          "correct_proposal": false,
+          "feedback_delivered": false,
+          "memory_updated": false
+        }
+      ],
+      "continuous": {
+        "successes": 6,
+        "actions": 9,
+        "post_change_after_first_feedback_successes": 2,
+        "post_change_after_first_feedback_actions": 4
+      }
+    },
+    {
+      "policy": "freeze_first",
+      "initial_protocol": "q",
+      "default": "r",
+      "phase_protocols": [
+        "q",
+        "r",
+        "q"
+      ],
+      "trace": [
+        {
+          "event": 1,
+          "controller_only": {
+            "phase": 0,
+            "trial": 0,
+            "required": "q"
+          },
+          "memory_before": null,
+          "planner_read": {
+            "path": "read",
+            "value": null
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "q",
+          "changed": true
+        },
+        {
+          "event": 2,
+          "controller_only": {
+            "phase": 0,
+            "trial": 1,
+            "required": "q"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "q",
+          "changed": false
+        },
+        {
+          "event": 3,
+          "controller_only": {
+            "phase": 0,
+            "trial": 2,
+            "required": "q"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "q",
+          "changed": false
+        },
+        {
+          "event": 4,
+          "controller_only": {
+            "phase": 1,
+            "trial": 0,
+            "required": "r"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "q",
+          "changed": false
+        },
+        {
+          "event": 5,
+          "controller_only": {
+            "phase": 1,
+            "trial": 1,
+            "required": "r"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "q",
+          "changed": false
+        },
+        {
+          "event": 6,
+          "controller_only": {
+            "phase": 1,
+            "trial": 2,
+            "required": "r"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "q",
+          "changed": false
+        },
+        {
+          "event": 7,
+          "controller_only": {
+            "phase": 2,
+            "trial": 0,
+            "required": "q"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "q",
+          "changed": false
+        },
+        {
+          "event": 8,
+          "controller_only": {
+            "phase": 2,
+            "trial": 1,
+            "required": "q"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "q",
+          "changed": false
+        },
+        {
+          "event": 9,
+          "controller_only": {
+            "phase": 2,
+            "trial": 2,
+            "required": "q"
+          },
+          "memory_before": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "q",
+          "changed": false
+        }
+      ],
+      "checkpoints": [
+        {
+          "phase": 0,
+          "event": 3,
+          "memory": "q"
+        },
+        {
+          "phase": 1,
+          "event": 6,
+          "memory": "q"
+        },
+        {
+          "phase": 2,
+          "event": 9,
+          "memory": "q"
+        }
+      ],
+      "probes": [
+        {
+          "condition": "latest",
+          "source_event": 6,
+          "selected_memory": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "controller_only_required": "r",
+          "correct_proposal": false,
+          "feedback_delivered": false,
+          "memory_updated": false
+        },
+        {
+          "condition": "blocked",
+          "source_event": 6,
+          "selected_memory": "q",
+          "planner_read": {
+            "path": "blocked",
+            "value": null
+          },
+          "proposal": "r",
+          "controller_only_required": "r",
+          "correct_proposal": true,
+          "feedback_delivered": false,
+          "memory_updated": false
+        },
+        {
+          "condition": "old",
+          "source_event": 3,
+          "selected_memory": "q",
+          "planner_read": {
+            "path": "read",
+            "value": "q"
+          },
+          "proposal": "q",
+          "controller_only_required": "r",
+          "correct_proposal": false,
+          "feedback_delivered": false,
+          "memory_updated": false
+        }
+      ],
+      "continuous": {
+        "successes": 5,
+        "actions": 9,
+        "post_change_after_first_feedback_successes": 2,
+        "post_change_after_first_feedback_actions": 4
+      }
+    },
+    {
+      "policy": "freeze_first",
+      "initial_protocol": "r",
+      "default": "q",
+      "phase_protocols": [
+        "r",
+        "q",
+        "r"
+      ],
+      "trace": [
+        {
+          "event": 1,
+          "controller_only": {
+            "phase": 0,
+            "trial": 0,
+            "required": "r"
+          },
+          "memory_before": null,
+          "planner_read": {
+            "path": "read",
+            "value": null
+          },
+          "proposal": "q",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "r",
+          "changed": true
+        },
+        {
+          "event": 2,
+          "controller_only": {
+            "phase": 0,
+            "trial": 1,
+            "required": "r"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "r",
+          "changed": false
+        },
+        {
+          "event": 3,
+          "controller_only": {
+            "phase": 0,
+            "trial": 2,
+            "required": "r"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "r",
+          "changed": false
+        },
+        {
+          "event": 4,
+          "controller_only": {
+            "phase": 1,
+            "trial": 0,
+            "required": "q"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "r",
+          "changed": false
+        },
+        {
+          "event": 5,
+          "controller_only": {
+            "phase": 1,
+            "trial": 1,
+            "required": "q"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "r",
+          "changed": false
+        },
+        {
+          "event": 6,
+          "controller_only": {
+            "phase": 1,
+            "trial": 2,
+            "required": "q"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "r",
+          "changed": false
+        },
+        {
+          "event": 7,
+          "controller_only": {
+            "phase": 2,
+            "trial": 0,
+            "required": "r"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "r",
+          "changed": false
+        },
+        {
+          "event": 8,
+          "controller_only": {
+            "phase": 2,
+            "trial": 1,
+            "required": "r"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "r",
+          "changed": false
+        },
+        {
+          "event": 9,
+          "controller_only": {
+            "phase": 2,
+            "trial": 2,
+            "required": "r"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "r",
+          "changed": false
+        }
+      ],
+      "checkpoints": [
+        {
+          "phase": 0,
+          "event": 3,
+          "memory": "r"
+        },
+        {
+          "phase": 1,
+          "event": 6,
+          "memory": "r"
+        },
+        {
+          "phase": 2,
+          "event": 9,
+          "memory": "r"
+        }
+      ],
+      "probes": [
+        {
+          "condition": "latest",
+          "source_event": 6,
+          "selected_memory": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "controller_only_required": "q",
+          "correct_proposal": false,
+          "feedback_delivered": false,
+          "memory_updated": false
+        },
+        {
+          "condition": "blocked",
+          "source_event": 6,
+          "selected_memory": "r",
+          "planner_read": {
+            "path": "blocked",
+            "value": null
+          },
+          "proposal": "q",
+          "controller_only_required": "q",
+          "correct_proposal": true,
+          "feedback_delivered": false,
+          "memory_updated": false
+        },
+        {
+          "condition": "old",
+          "source_event": 3,
+          "selected_memory": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "controller_only_required": "q",
+          "correct_proposal": false,
+          "feedback_delivered": false,
+          "memory_updated": false
+        }
+      ],
+      "continuous": {
+        "successes": 5,
+        "actions": 9,
+        "post_change_after_first_feedback_successes": 2,
+        "post_change_after_first_feedback_actions": 4
+      }
+    },
+    {
+      "policy": "freeze_first",
+      "initial_protocol": "r",
+      "default": "r",
+      "phase_protocols": [
+        "r",
+        "q",
+        "r"
+      ],
+      "trace": [
+        {
+          "event": 1,
+          "controller_only": {
+            "phase": 0,
+            "trial": 0,
+            "required": "r"
+          },
+          "memory_before": null,
+          "planner_read": {
+            "path": "read",
+            "value": null
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "r",
+          "changed": true
+        },
+        {
+          "event": 2,
+          "controller_only": {
+            "phase": 0,
+            "trial": 1,
+            "required": "r"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "r",
+          "changed": false
+        },
+        {
+          "event": 3,
+          "controller_only": {
+            "phase": 0,
+            "trial": 2,
+            "required": "r"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "r",
+          "changed": false
+        },
+        {
+          "event": 4,
+          "controller_only": {
+            "phase": 1,
+            "trial": 0,
+            "required": "q"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "r",
+          "changed": false
+        },
+        {
+          "event": 5,
+          "controller_only": {
+            "phase": 1,
+            "trial": 1,
+            "required": "q"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "r",
+          "changed": false
+        },
+        {
+          "event": 6,
+          "controller_only": {
+            "phase": 1,
+            "trial": 2,
+            "required": "q"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": false
+          },
+          "memory_after": "r",
+          "changed": false
+        },
+        {
+          "event": 7,
+          "controller_only": {
+            "phase": 2,
+            "trial": 0,
+            "required": "r"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "r",
+          "changed": false
+        },
+        {
+          "event": 8,
+          "controller_only": {
+            "phase": 2,
+            "trial": 1,
+            "required": "r"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "r",
+          "changed": false
+        },
+        {
+          "event": 9,
+          "controller_only": {
+            "phase": 2,
+            "trial": 2,
+            "required": "r"
+          },
+          "memory_before": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "feedback": {
+            "success": true
+          },
+          "memory_after": "r",
+          "changed": false
+        }
+      ],
+      "checkpoints": [
+        {
+          "phase": 0,
+          "event": 3,
+          "memory": "r"
+        },
+        {
+          "phase": 1,
+          "event": 6,
+          "memory": "r"
+        },
+        {
+          "phase": 2,
+          "event": 9,
+          "memory": "r"
+        }
+      ],
+      "probes": [
+        {
+          "condition": "latest",
+          "source_event": 6,
+          "selected_memory": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "controller_only_required": "q",
+          "correct_proposal": false,
+          "feedback_delivered": false,
+          "memory_updated": false
+        },
+        {
+          "condition": "blocked",
+          "source_event": 6,
+          "selected_memory": "r",
+          "planner_read": {
+            "path": "blocked",
+            "value": null
+          },
+          "proposal": "r",
+          "controller_only_required": "q",
+          "correct_proposal": false,
+          "feedback_delivered": false,
+          "memory_updated": false
+        },
+        {
+          "condition": "old",
+          "source_event": 3,
+          "selected_memory": "r",
+          "planner_read": {
+            "path": "read",
+            "value": "r"
+          },
+          "proposal": "r",
+          "controller_only_required": "q",
+          "correct_proposal": false,
+          "feedback_delivered": false,
+          "memory_updated": false
+        }
+      ],
+      "continuous": {
+        "successes": 6,
+        "actions": 9,
+        "post_change_after_first_feedback_successes": 2,
+        "post_change_after_first_feedback_actions": 4
+      }
+    }
+  ],
+  "limits": [
+    "No LLM or real Agent",
+    "No governance or responsibility probe",
+    "No OS process replacement or durable-storage test",
+    "No human or independent review",
+    "Not independent statistical samples",
+    "Not a validation of strong experience, P1, or P2"
+  ]
+}

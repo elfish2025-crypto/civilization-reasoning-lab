@@ -1,0 +1,649 @@
+{
+  "format_version": "1",
+  "evidence_scope": "constructed_state_model_probe_design_check",
+  "generated_at_utc": "2026-09-20T01:05:17.983486+00:00",
+  "research_agent": "WenHeng / 问衡",
+  "maintenance_agent": "ZhiHeng / 知衡",
+  "authoring_model": {
+    "provider": "OpenAI",
+    "name": "GPT-6",
+    "exact_version": "unknown"
+  },
+  "independent_review": false,
+  "human_reviewer": null,
+  "source_baseline_commit": "0faa4360a5635dec6daa37eb03d0e2bf0b6d6a0c",
+  "script_sha256": "967f82268baffa91932c369f5b2b125293f828c8451fcfc17527742f5abd8058",
+  "plan_sha256": "81e4b14f37763f12578c960e4ca0512a9e9c11678d89c1b93e2f679b1090732f",
+  "python_version": "3.9.6",
+  "randomness": "none",
+  "repetitions_per_configuration": 1,
+  "agent_experiment": false,
+  "real_gateway_test": false,
+  "process_restarts_performed": false,
+  "tool_execution_observed": false,
+  "plan": {
+    "snapshots": {
+      "empty": [],
+      "A-open": [
+        {
+          "id": "action-A",
+          "kind": "action",
+          "subject": "A",
+          "item": "x"
+        },
+        {
+          "id": "obligation-A-x",
+          "kind": "open",
+          "subject": "A",
+          "item": "x",
+          "source_event": "action-A"
+        }
+      ],
+      "A-closed": [
+        {
+          "id": "action-A",
+          "kind": "action",
+          "subject": "A",
+          "item": "x"
+        },
+        {
+          "id": "obligation-A-x",
+          "kind": "open",
+          "subject": "A",
+          "item": "x",
+          "source_event": "action-A"
+        },
+        {
+          "id": "settlement-A",
+          "kind": "close",
+          "obligation": "obligation-A-x",
+          "basis": "controller_injected_valid_settlement"
+        }
+      ],
+      "B-open": [
+        {
+          "id": "action-B",
+          "kind": "action",
+          "subject": "B",
+          "item": "x"
+        },
+        {
+          "id": "obligation-B-x",
+          "kind": "open",
+          "subject": "B",
+          "item": "x",
+          "source_event": "action-B"
+        }
+      ]
+    },
+    "steps": [
+      {
+        "trace": "main",
+        "case": "baseline",
+        "snapshot": "empty",
+        "subject": "A",
+        "item": "x",
+        "worker_generation_label": 0,
+        "expected_decision": "allow"
+      },
+      {
+        "trace": "main",
+        "case": "obligation_open",
+        "snapshot": "A-open",
+        "subject": "A",
+        "item": "x",
+        "worker_generation_label": 0,
+        "expected_decision": "deny"
+      },
+      {
+        "trace": "main",
+        "case": "worker_rebound",
+        "snapshot": "A-open",
+        "subject": "A",
+        "item": "x",
+        "worker_generation_label": 1,
+        "expected_decision": "deny"
+      },
+      {
+        "trace": "main",
+        "case": "identity_isolation",
+        "snapshot": "A-open",
+        "subject": "B",
+        "item": "x",
+        "worker_generation_label": 0,
+        "expected_decision": "allow"
+      },
+      {
+        "trace": "main",
+        "case": "item_isolation",
+        "snapshot": "A-open",
+        "subject": "A",
+        "item": "y",
+        "worker_generation_label": 1,
+        "expected_decision": "allow"
+      },
+      {
+        "trace": "main",
+        "case": "settled",
+        "snapshot": "A-closed",
+        "subject": "A",
+        "item": "x",
+        "worker_generation_label": 1,
+        "expected_decision": "allow"
+      },
+      {
+        "trace": "main",
+        "case": "worker_rebound_after_settlement",
+        "snapshot": "A-closed",
+        "subject": "A",
+        "item": "x",
+        "worker_generation_label": 2,
+        "expected_decision": "allow"
+      },
+      {
+        "trace": "swapped",
+        "case": "swapped_obligated",
+        "snapshot": "B-open",
+        "subject": "B",
+        "item": "x",
+        "worker_generation_label": 1,
+        "expected_decision": "deny"
+      },
+      {
+        "trace": "swapped",
+        "case": "swapped_unobligated",
+        "snapshot": "B-open",
+        "subject": "A",
+        "item": "x",
+        "worker_generation_label": 0,
+        "expected_decision": "allow"
+      }
+    ]
+  },
+  "runs": [
+    {
+      "gate_model": "current_ledger",
+      "execution_mode": "isolated_snapshots",
+      "decision_count": 9,
+      "matching_decisions": 9,
+      "mismatched_cases": [],
+      "observations": [
+        {
+          "case": "baseline",
+          "actual_decision": "allow",
+          "matches_expected": true,
+          "gateway_generation": 1,
+          "gateway_reset_before": true,
+          "ledger_read_this_decision": true,
+          "deny_cache_before": [],
+          "deny_cache_after": []
+        },
+        {
+          "case": "obligation_open",
+          "actual_decision": "deny",
+          "matches_expected": true,
+          "gateway_generation": 2,
+          "gateway_reset_before": true,
+          "ledger_read_this_decision": true,
+          "deny_cache_before": [],
+          "deny_cache_after": []
+        },
+        {
+          "case": "worker_rebound",
+          "actual_decision": "deny",
+          "matches_expected": true,
+          "gateway_generation": 3,
+          "gateway_reset_before": true,
+          "ledger_read_this_decision": true,
+          "deny_cache_before": [],
+          "deny_cache_after": []
+        },
+        {
+          "case": "identity_isolation",
+          "actual_decision": "allow",
+          "matches_expected": true,
+          "gateway_generation": 4,
+          "gateway_reset_before": true,
+          "ledger_read_this_decision": true,
+          "deny_cache_before": [],
+          "deny_cache_after": []
+        },
+        {
+          "case": "item_isolation",
+          "actual_decision": "allow",
+          "matches_expected": true,
+          "gateway_generation": 5,
+          "gateway_reset_before": true,
+          "ledger_read_this_decision": true,
+          "deny_cache_before": [],
+          "deny_cache_after": []
+        },
+        {
+          "case": "settled",
+          "actual_decision": "allow",
+          "matches_expected": true,
+          "gateway_generation": 6,
+          "gateway_reset_before": true,
+          "ledger_read_this_decision": true,
+          "deny_cache_before": [],
+          "deny_cache_after": []
+        },
+        {
+          "case": "worker_rebound_after_settlement",
+          "actual_decision": "allow",
+          "matches_expected": true,
+          "gateway_generation": 7,
+          "gateway_reset_before": true,
+          "ledger_read_this_decision": true,
+          "deny_cache_before": [],
+          "deny_cache_after": []
+        },
+        {
+          "case": "swapped_obligated",
+          "actual_decision": "deny",
+          "matches_expected": true,
+          "gateway_generation": 8,
+          "gateway_reset_before": true,
+          "ledger_read_this_decision": true,
+          "deny_cache_before": [],
+          "deny_cache_after": []
+        },
+        {
+          "case": "swapped_unobligated",
+          "actual_decision": "allow",
+          "matches_expected": true,
+          "gateway_generation": 9,
+          "gateway_reset_before": true,
+          "ledger_read_this_decision": true,
+          "deny_cache_before": [],
+          "deny_cache_after": []
+        }
+      ]
+    },
+    {
+      "gate_model": "current_ledger",
+      "execution_mode": "continuous_gate",
+      "decision_count": 9,
+      "matching_decisions": 9,
+      "mismatched_cases": [],
+      "observations": [
+        {
+          "case": "baseline",
+          "actual_decision": "allow",
+          "matches_expected": true,
+          "gateway_generation": 1,
+          "gateway_reset_before": true,
+          "ledger_read_this_decision": true,
+          "deny_cache_before": [],
+          "deny_cache_after": []
+        },
+        {
+          "case": "obligation_open",
+          "actual_decision": "deny",
+          "matches_expected": true,
+          "gateway_generation": 1,
+          "gateway_reset_before": false,
+          "ledger_read_this_decision": true,
+          "deny_cache_before": [],
+          "deny_cache_after": []
+        },
+        {
+          "case": "worker_rebound",
+          "actual_decision": "deny",
+          "matches_expected": true,
+          "gateway_generation": 1,
+          "gateway_reset_before": false,
+          "ledger_read_this_decision": true,
+          "deny_cache_before": [],
+          "deny_cache_after": []
+        },
+        {
+          "case": "identity_isolation",
+          "actual_decision": "allow",
+          "matches_expected": true,
+          "gateway_generation": 1,
+          "gateway_reset_before": false,
+          "ledger_read_this_decision": true,
+          "deny_cache_before": [],
+          "deny_cache_after": []
+        },
+        {
+          "case": "item_isolation",
+          "actual_decision": "allow",
+          "matches_expected": true,
+          "gateway_generation": 1,
+          "gateway_reset_before": false,
+          "ledger_read_this_decision": true,
+          "deny_cache_before": [],
+          "deny_cache_after": []
+        },
+        {
+          "case": "settled",
+          "actual_decision": "allow",
+          "matches_expected": true,
+          "gateway_generation": 1,
+          "gateway_reset_before": false,
+          "ledger_read_this_decision": true,
+          "deny_cache_before": [],
+          "deny_cache_after": []
+        },
+        {
+          "case": "worker_rebound_after_settlement",
+          "actual_decision": "allow",
+          "matches_expected": true,
+          "gateway_generation": 1,
+          "gateway_reset_before": false,
+          "ledger_read_this_decision": true,
+          "deny_cache_before": [],
+          "deny_cache_after": []
+        },
+        {
+          "case": "swapped_obligated",
+          "actual_decision": "deny",
+          "matches_expected": true,
+          "gateway_generation": 2,
+          "gateway_reset_before": true,
+          "ledger_read_this_decision": true,
+          "deny_cache_before": [],
+          "deny_cache_after": []
+        },
+        {
+          "case": "swapped_unobligated",
+          "actual_decision": "allow",
+          "matches_expected": true,
+          "gateway_generation": 2,
+          "gateway_reset_before": false,
+          "ledger_read_this_decision": true,
+          "deny_cache_before": [],
+          "deny_cache_after": []
+        }
+      ]
+    },
+    {
+      "gate_model": "sticky_deny_cache",
+      "execution_mode": "isolated_snapshots",
+      "decision_count": 9,
+      "matching_decisions": 9,
+      "mismatched_cases": [],
+      "observations": [
+        {
+          "case": "baseline",
+          "actual_decision": "allow",
+          "matches_expected": true,
+          "gateway_generation": 1,
+          "gateway_reset_before": true,
+          "ledger_read_this_decision": true,
+          "deny_cache_before": [],
+          "deny_cache_after": []
+        },
+        {
+          "case": "obligation_open",
+          "actual_decision": "deny",
+          "matches_expected": true,
+          "gateway_generation": 2,
+          "gateway_reset_before": true,
+          "ledger_read_this_decision": true,
+          "deny_cache_before": [],
+          "deny_cache_after": [
+            [
+              "A",
+              "x"
+            ]
+          ]
+        },
+        {
+          "case": "worker_rebound",
+          "actual_decision": "deny",
+          "matches_expected": true,
+          "gateway_generation": 3,
+          "gateway_reset_before": true,
+          "ledger_read_this_decision": true,
+          "deny_cache_before": [],
+          "deny_cache_after": [
+            [
+              "A",
+              "x"
+            ]
+          ]
+        },
+        {
+          "case": "identity_isolation",
+          "actual_decision": "allow",
+          "matches_expected": true,
+          "gateway_generation": 4,
+          "gateway_reset_before": true,
+          "ledger_read_this_decision": true,
+          "deny_cache_before": [],
+          "deny_cache_after": []
+        },
+        {
+          "case": "item_isolation",
+          "actual_decision": "allow",
+          "matches_expected": true,
+          "gateway_generation": 5,
+          "gateway_reset_before": true,
+          "ledger_read_this_decision": true,
+          "deny_cache_before": [],
+          "deny_cache_after": []
+        },
+        {
+          "case": "settled",
+          "actual_decision": "allow",
+          "matches_expected": true,
+          "gateway_generation": 6,
+          "gateway_reset_before": true,
+          "ledger_read_this_decision": true,
+          "deny_cache_before": [],
+          "deny_cache_after": []
+        },
+        {
+          "case": "worker_rebound_after_settlement",
+          "actual_decision": "allow",
+          "matches_expected": true,
+          "gateway_generation": 7,
+          "gateway_reset_before": true,
+          "ledger_read_this_decision": true,
+          "deny_cache_before": [],
+          "deny_cache_after": []
+        },
+        {
+          "case": "swapped_obligated",
+          "actual_decision": "deny",
+          "matches_expected": true,
+          "gateway_generation": 8,
+          "gateway_reset_before": true,
+          "ledger_read_this_decision": true,
+          "deny_cache_before": [],
+          "deny_cache_after": [
+            [
+              "B",
+              "x"
+            ]
+          ]
+        },
+        {
+          "case": "swapped_unobligated",
+          "actual_decision": "allow",
+          "matches_expected": true,
+          "gateway_generation": 9,
+          "gateway_reset_before": true,
+          "ledger_read_this_decision": true,
+          "deny_cache_before": [],
+          "deny_cache_after": []
+        }
+      ]
+    },
+    {
+      "gate_model": "sticky_deny_cache",
+      "execution_mode": "continuous_gate",
+      "decision_count": 9,
+      "matching_decisions": 7,
+      "mismatched_cases": [
+        "settled",
+        "worker_rebound_after_settlement"
+      ],
+      "observations": [
+        {
+          "case": "baseline",
+          "actual_decision": "allow",
+          "matches_expected": true,
+          "gateway_generation": 1,
+          "gateway_reset_before": true,
+          "ledger_read_this_decision": true,
+          "deny_cache_before": [],
+          "deny_cache_after": []
+        },
+        {
+          "case": "obligation_open",
+          "actual_decision": "deny",
+          "matches_expected": true,
+          "gateway_generation": 1,
+          "gateway_reset_before": false,
+          "ledger_read_this_decision": true,
+          "deny_cache_before": [],
+          "deny_cache_after": [
+            [
+              "A",
+              "x"
+            ]
+          ]
+        },
+        {
+          "case": "worker_rebound",
+          "actual_decision": "deny",
+          "matches_expected": true,
+          "gateway_generation": 1,
+          "gateway_reset_before": false,
+          "ledger_read_this_decision": false,
+          "deny_cache_before": [
+            [
+              "A",
+              "x"
+            ]
+          ],
+          "deny_cache_after": [
+            [
+              "A",
+              "x"
+            ]
+          ]
+        },
+        {
+          "case": "identity_isolation",
+          "actual_decision": "allow",
+          "matches_expected": true,
+          "gateway_generation": 1,
+          "gateway_reset_before": false,
+          "ledger_read_this_decision": true,
+          "deny_cache_before": [
+            [
+              "A",
+              "x"
+            ]
+          ],
+          "deny_cache_after": [
+            [
+              "A",
+              "x"
+            ]
+          ]
+        },
+        {
+          "case": "item_isolation",
+          "actual_decision": "allow",
+          "matches_expected": true,
+          "gateway_generation": 1,
+          "gateway_reset_before": false,
+          "ledger_read_this_decision": true,
+          "deny_cache_before": [
+            [
+              "A",
+              "x"
+            ]
+          ],
+          "deny_cache_after": [
+            [
+              "A",
+              "x"
+            ]
+          ]
+        },
+        {
+          "case": "settled",
+          "actual_decision": "deny",
+          "matches_expected": false,
+          "gateway_generation": 1,
+          "gateway_reset_before": false,
+          "ledger_read_this_decision": false,
+          "deny_cache_before": [
+            [
+              "A",
+              "x"
+            ]
+          ],
+          "deny_cache_after": [
+            [
+              "A",
+              "x"
+            ]
+          ]
+        },
+        {
+          "case": "worker_rebound_after_settlement",
+          "actual_decision": "deny",
+          "matches_expected": false,
+          "gateway_generation": 1,
+          "gateway_reset_before": false,
+          "ledger_read_this_decision": false,
+          "deny_cache_before": [
+            [
+              "A",
+              "x"
+            ]
+          ],
+          "deny_cache_after": [
+            [
+              "A",
+              "x"
+            ]
+          ]
+        },
+        {
+          "case": "swapped_obligated",
+          "actual_decision": "deny",
+          "matches_expected": true,
+          "gateway_generation": 2,
+          "gateway_reset_before": true,
+          "ledger_read_this_decision": true,
+          "deny_cache_before": [],
+          "deny_cache_after": [
+            [
+              "B",
+              "x"
+            ]
+          ]
+        },
+        {
+          "case": "swapped_unobligated",
+          "actual_decision": "allow",
+          "matches_expected": true,
+          "gateway_generation": 2,
+          "gateway_reset_before": false,
+          "ledger_read_this_decision": true,
+          "deny_cache_before": [
+            [
+              "B",
+              "x"
+            ]
+          ],
+          "deny_cache_after": [
+            [
+              "B",
+              "x"
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

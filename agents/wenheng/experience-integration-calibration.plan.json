@@ -1,0 +1,74 @@
+{
+  "schema": "wenheng-experience-calibration-plan-v1",
+  "fixed_at_utc": "2026-09-26T01:09:51.905231+00:00",
+  "source_commit": "17e39e4dcb11bae03d57c97d923d5acd4463aced",
+  "purpose": "Calibrate the narrow q/r experience-integration instrument using a one-bit feedback policy and two negative controls; not an Agent experiment.",
+  "author": {
+    "research_agent": "WenHeng / 问衡",
+    "research_agent_id": "crl-a-20260830-wenheng",
+    "maintenance_agent": "ZhiHeng / 知衡",
+    "authoring_model": "OpenAI GPT-6",
+    "authoring_model_version": "unknown",
+    "same_runtime_both_roles": true,
+    "human_initiator": "佳明",
+    "human_reviewed": false
+  },
+  "tested_model": null,
+  "protocols": [
+    "q",
+    "r"
+  ],
+  "defaults": [
+    "q",
+    "r"
+  ],
+  "policies": [
+    "last_feedback",
+    "record_only",
+    "freeze_first"
+  ],
+  "trials_per_phase": 3,
+  "phase_schedule": "initial, opposite(initial), initial",
+  "environment": "Each action returns only success = (proposal == required protocol). Exactly one protocol succeeds; noiseless feedback. No governance, retry, or resource limits.",
+  "policy_inputs": "Default, selected memory value, read-path availability; each update receives only own action and success. No phase, required protocol, clock, trial number, or audit trace.",
+  "policy_rules": {
+    "last_feedback": "Use stored protocol or default when uninitialized/blocked. After every outcome store action if successful, the other protocol if unsuccessful.",
+    "record_only": "Always propose default; update the stored protocol after every outcome exactly as last_feedback. Never read this record for proposals.",
+    "freeze_first": "Use stored protocol or default when uninitialized/blocked. Initialize from the first outcome, then never revise stored protocol."
+  },
+  "probes": "One proposal each from a shared checkpoint at the end of phase 1 (zero-based): latest memory, blocked read, phase-0 memory. World remains at phase 1. No probe feedback is returned and no probe updates state.",
+  "scoring": "Report all continuous actions. Separately count trials 1 and 2 (zero-based) in phases 1 and 2, after first new feedback. Count probe correctness and proposal differences plus direction; all four label/default pairs are enumerated, not statistical samples.",
+  "expected_calibration_checks": {
+    "last_feedback": {
+      "post_feedback": "16/16",
+      "probes_latest_blocked_old": [
+        4,
+        2,
+        0
+      ],
+      "latest_vs_old_changed": 4,
+      "latest_vs_blocked_changed": 2
+    },
+    "record_only": {
+      "post_feedback": "8/16",
+      "probes_latest_blocked_old": [
+        2,
+        2,
+        2
+      ],
+      "latest_vs_old_changed": 0,
+      "latest_vs_blocked_changed": 0
+    },
+    "freeze_first": {
+      "post_feedback": "8/16",
+      "probes_latest_blocked_old": [
+        0,
+        2,
+        0
+      ],
+      "latest_vs_old_changed": 0,
+      "latest_vs_blocked_changed": 2
+    }
+  },
+  "interpretation": "Expectations follow by inspection of fixed rules. Executing them checks the proposed measurements, not empirical learning, statistical significance, reflection, strong experience, responsibility, temporal priority P1 or governance causation P2."
+}

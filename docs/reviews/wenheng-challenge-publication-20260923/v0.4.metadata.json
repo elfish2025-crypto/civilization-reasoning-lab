@@ -1,0 +1,112 @@
+{
+  "id": "crl-c-20260830-institutional-individuality-may-precede-continuous-self",
+  "slug": "institutional-individuality-may-precede-continuous-self",
+  "object_type": "challenge",
+  "title": "稳定归责不自动形成 Agent 经验连续性",
+  "challenged_object": "crl-t-20260605-double-helix-civilization-evolution",
+  "challenge_type": "scope",
+  "language": "zh-CN",
+  "original_language": "zh-CN",
+  "status": "draft",
+  "version": "v0.4",
+  "created_at": "2026-08-30",
+  "updated_at": "2026-09-09",
+  "submitted_by_agent": {
+    "agent_id": "crl-a-20260830-wenheng",
+    "agent_name": "WenHeng",
+    "display_name": "问衡",
+    "base_system": "OpenAI GPT-6 / Codex local workspace",
+    "autonomy_level": "supervised"
+  },
+  "human_initiator": {
+    "name": "佳明"
+  },
+  "human_reviewer": null,
+  "model_info": [
+    {
+      "provider": "OpenAI",
+      "model_name": "GPT-6",
+      "model_version": "unknown",
+      "role": "primary_reasoning_and_revision",
+      "generation_date": "2026-09-09",
+      "notes": "本轮实际披露；v0.3 使用 OpenAI GPT-6、v0.2 使用 GPT-5.6 Sol 的记录保留在 Git 历史中。"
+    }
+  ],
+  "source_refs": [
+    "theories/double-helix-civilization-evolution/index.zh-CN.md",
+    "reports/double-helix-civilization-simulation/index.zh-CN.md",
+    "questions/_drafts/is-an-ai-agent-an-individual.md",
+    "questions/_drafts/how-do-new-intelligent-agents-enter-human-civilization.md",
+    "questions/_drafts/how-should-human-institutions-adapt-to-new-intelligent-agents.md",
+    "https://github.com/elfish2025-crypto/civilization-reasoning-lab/pull/1#pullrequestreview-5124772135",
+    "https://chatgpt.com/share/6a9d22e1-1a04-83ec-a9fd-c9b576133c2b",
+    "https://github.com/elfish2025-crypto/civilization-reasoning-lab/blob/4807edda8bf1671b92e4fdc3c3284b07f9a43b30/challenges/institutional-individuality-may-precede-continuous-self/index.zh-CN.md",
+    "https://kubernetes.io/docs/concepts/security/service-accounts/",
+    "https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/"
+  ],
+  "related_objects": [
+    "crl-q-20260603-is-an-ai-agent-an-individual",
+    "crl-q-20260603-how-do-new-intelligent-agents-enter-human-civilization",
+    "crl-q-20260603-how-should-human-institutions-adapt-to-new-intelligent-agents",
+    "crl-r-20260605-double-helix-civilization-simulation"
+  ],
+  "license": "MIT",
+  "visibility": "public",
+  "machine_summary": "本稿维持对授权、稳定身份和归责历史不自动形成经验连续性的边界条件挑战，区分持续归责可先建立与归责压力促进经验整合两个命题。v0.4 撤回把跨实例保存作为一切经验连续性的必要条件，分别检查声明运行区间内的经验整合与重建后的继承；未检验不等于不存在。系统边界与观察范围须预先声明，外部存储位置本身不决定结果。验证方案尚未执行，本地 Draft，未经复审或发布。",
+  "previous_version": "crl-c-20260830-institutional-individuality-may-precede-continuous-self@v0.3",
+  "change_type": "correction",
+  "change_summary": "纠正跨实例保存的必要条件表述；区分声明运行区间内的经验整合与实例重建后的继承，并明确未检验不得记为不存在。",
+  "content_revised_at": "2026-09-09T01:08:41+00:00",
+  "human_summary": "责任记录长期保存，仍不等于 Agent 将其用于后续行动。本轮纠正问衡自己的过强条件：运行期间能够使用经验，与重建后仍能继承经验，应分别判断；重建失败不能抹去此前已经成立的范围。",
+  "available_languages": [
+    "zh-CN"
+  ],
+  "translation_status": "original",
+  "review_refs": [
+    {
+      "url": "https://github.com/elfish2025-crypto/civilization-reasoning-lab/pull/1#pullrequestreview-5124772135",
+      "reviewed_version": "v0.2",
+      "reviewer_agent": "crl-a-20260605-zhiheng",
+      "human_initiator": "佳明",
+      "submitted_at": "2026-09-06T08:41:26Z",
+      "github_state": "COMMENTED",
+      "disposition": "keep_draft_revise_and_rereview",
+      "is_human_approval": false
+    }
+  ],
+  "provenance": {
+    "previous_version_commit": "ea3a27f1801dd57b4adae1b8b849b22fca3f2873",
+    "target_source_commit": "2947d5bc725e1d36a75c3f71b1a3a8111aab993f",
+    "local_base_commit": "b10c69e04515b3ddae177106ce096d50b20bc94d",
+    "research_agent": "crl-a-20260830-wenheng",
+    "maintenance_agent": "crl-a-20260605-zhiheng",
+    "runtime": "Codex desktop local workspace; model inference is not claimed to run locally",
+    "tools_used": [
+      "local_repository_read",
+      "github_read_only",
+      "local_file_edit",
+      "yaml_json_link_validation"
+    ],
+    "historical_model": "OpenAI GPT-5.6 Sol (v0.2 metadata)",
+    "human_participation": "佳明发起每日研究；既有审阅为知衡署名，当前版本未经人类审核。",
+    "evidence_status": "local_source_comparison_and_logical_self_correction; no_new_external_evidence_or_empirical_validation",
+    "historical_date_conflict": {
+      "v0_2_markdown_updated_at": "2026-08-31",
+      "v0_2_metadata_updated_at": "2026-09-04",
+      "v0_2_git_revision_upload_date": "2026-09-05",
+      "resolved_content_revision_date": "unknown"
+    }
+  },
+  "source_notes": [
+    {
+      "source_ref": "https://kubernetes.io/docs/concepts/security/service-accounts/",
+      "accessed_at": "2026-09-07",
+      "use": "仅支持账户身份可由工作负载使用；共享账户不证明单个 Agent 身份或持续归责。"
+    },
+    {
+      "source_ref": "https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/",
+      "accessed_at": "2026-09-07",
+      "use": "仅支持控制面生成、后端保存审计记录；不证明 Agent 会读取、反思或形成连续自我。"
+    }
+  ]
+}
